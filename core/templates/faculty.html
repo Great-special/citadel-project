@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+
+  <style>
+      .bio-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: var(--navy-deep);
+        z-index: 1000;
+        overflow-y: auto;
+        padding: 60px 20px;
+      }
+
+      .bio-grid {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 60px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .bio-image-box {
+        background: #fff;
+        padding: 12px;
+        border: 1px solid var(--gold);
+        box-shadow: 15px 15px 0px rgba(200, 150, 12, 0.1);
+        height: fit-content;
+      }
+
+      .bio-image-box img {
+        width: 100%;
+        display: block;
+        filter: contrast(1.05) grayscale(10%);
+      }
+
+      .gold-caps { color: var(--gold); text-transform: uppercase; font-weight: 900; letter-spacing: 0.2em; font-size: 0.95rem; }
+      .display-serif { font-family: 'Cormorant Garamond', serif; font-size: 3.2rem; color: #fff; line-height: 1.1; margin: 10px 0; }
+      .italic-sub { font-style: italic; color: rgba(255,255,255,0.78); font-size: 1.3rem; margin-bottom: 30px; }
+      .prose-body p { color: #fff; line-height: 1.85; font-size: 1.18rem; margin-bottom: 20px; }
+
+      @media (max-width: 800px) { .bio-grid { grid-template-columns: 1fr; } }
+
+    
+      .proof-band { display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:18px; margin-top:40px; }
+      .proof-item { border:1px solid rgba(255,255,255,0.08); background:rgba(255,255,255,0.03); border-radius:12px; padding:22px 22px 20px; min-height:150px; }
+      .proof-item h4 { font-family: var(--serif, 'Cormorant Garamond', serif); font-size: 1.35rem; color: #fff; margin-bottom:10px; font-weight:600; }
+      .proof-item p { font-size: 1rem; line-height:1.68; color: rgba(255,255,255,0.72); }
+      .cred-strip { margin-top: 22px; display:flex; flex-wrap:wrap; gap:10px; }
+      .cred-pill { padding:8px 14px; border:1px solid rgba(255,255,255,0.18); border-radius:999px; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.78); font-weight:500; }
+      .fac-card .fac-name { font-size: 1.7rem; }
+      .fac-card .fac-role { font-size: 1.02rem; line-height:1.55; }
+      .fac-card .fac-cred { font-size: 1.02rem; line-height:1.72; }
+      .chip { font-size: 12px; padding: 7px 11px; }
+      .diff-card h4 { font-size: 1.55rem; }
+      .diff-card p { font-size: 1.05rem; line-height:1.72; }
+      @media (max-width: 1100px) { .proof-band { grid-template-columns:repeat(2, 1fr); } }
+      @media (max-width: 600px) { .proof-band { grid-template-columns:1fr; } }
+  </style>
+{% endblock css %}
+
+{% block content %}
+
+
+    <div >
+  <section class="hero hero-home hero-short"><div class="hero-content">
+    <p class="eyebrow">Citadel Exzellenz Faculty</p>
+    <h1 class="hero-h1">Not a catalogue. People who built it<span class="gold">.</span></h1>
+    <p class="hero-body">Citadel Akademie faculty combines active professors, executive coaches, geospatial specialists, and senior oil and gas practitioners drawn from institutions such as the University of St Andrews, Oxford, Bochum, and frontline industry leadership. This is a faculty designed for boardroom relevance, operational realism, and credibility under scrutiny.</p>
+                <div class="cred-strip" aria-label="Executive proof signals">
+                    <span class="cred-pill">University of St Andrews</span>
+                    <span class="cred-pill">Oxford</span>
+                    <span class="cred-pill">Bochum</span>
+                    <span class="cred-pill">Chevron Experience</span>
+                    <span class="cred-pill">Davos / UNESCO</span>
+                    <span class="cred-pill">GeoAI &amp; Integrity</span>
+                </div>
+                <div class="proof-band">
+                    <div class="proof-item"><h4>Named faculty</h4><p>Every programme is tied to real experts with visible credentials, not interchangeable facilitators behind a generic brochure.</p></div>
+                    <div class="proof-item"><h4>Institutional depth</h4><p>The faculty profile signals links to respected academic and professional environments across Europe and Africa.</p></div>
+                    <div class="proof-item"><h4>Executive relevance</h4><p>Profiles show experience with senior leaders, boards, government-facing work, and high-stakes organisational settings.</p></div>
+                    <div class="proof-item"><h4>Operational realism</h4><p>Technical faculty bring years of Chevron, offshore engineering, integrity, and field execution experience into the room.</p></div>
+                </div>
+  </div></section>
+
+  <section class="section bg-surface"><div class="section-inner">
+    <p class="section-eye" style="color:#2d7038">Leadership &amp; Intelligence Faculty</p>
+    <div class="fac-grid">
+      <div id="igbokwe" class="fac-card" style="border-left-color:#2d7038; cursor:pointer;" onclick="showBio('igbokwe')"><span class="fac-stream" style="color:#2d7038">Tracks 1, 2 &amp; 3 · Programme Director</span><h4 class="fac-name">Dr. Onyedika A. Igbokwe</h4><p class="fac-role">Programme Director · University of St Andrews · Earth Sciences · GIS</p><p class="fac-cred">Dr. rer. nat. · 14 publications · Shell SPDC Consultant (£52,500) · Erasmus Mundus Scholar · Assistant Professor </p><div class="fac-chips"><span class="chip">PhD Researcher</span><span class="chip">Academic Scholar</span><span class="chip">St Andrews</span><span class="chip">GeoAI</span><span class="chip">14 Pubs</span></div></div>
+      
+      <div id="romenska" class="fac-card" style="border-left-color:#2d7038; cursor:pointer;" onclick="showBio('romenska')"><span class="fac-stream" style="color:#2d7038">Tracks 1, 2 &amp; 5 · Associate Professor</span><h4 class="fac-name">Dr. Sandra Romenska</h4><p class="fac-role">Lead Instructor, Leadership · University of St Andrews · Business School</p><p class="fac-cred">DPhil Oxford · Associate Professor · Speaker: Davos, UNESCO, Fulbright · 20 years leadership development</p><div class="fac-chips"><span class="chip">DPhil Oxford</span><span class="chip">Assoc. Professor</span><span class="chip">Davos</span><span class="chip">UNESCO</span></div></div>
+      
+      <div id="neville" class="fac-card" style="border-left-color:#2d7038; cursor:pointer;" onclick="showBio('neville')"><span class="fac-stream" style="color:#2d7038">Track 1 · Associate Professor</span><h4 class="fac-name">Dr. Fergus Neville</h4><p class="fac-role">Associate Faculty · University of St Andrews · Business School</p><p class="fac-cred">Associate Professor · 20 years social identity research · Adviser: UK Govt, UEFA, Saudi Ministry of Health</p><div class="fac-chips"><span class="chip">Assoc. Professor</span><span class="chip">UK Govt</span><span class="chip">UEFA</span><span class="chip">BBC/CNN</span></div></div>
+      
+      <div id="onyeukwu" class="fac-card" style="border-left-color:#01696f; cursor:pointer;" onclick="showBio('onyeukwu')"><span class="fac-stream" style="color:#01696f">Track 3 · Lead Faculty</span><h4 class="fac-name">Nnadozie Onyeukwu</h4><p class="fac-role">GeoTech Training Lead · University of St Andrews · Earth Sciences</p><p class="fac-cred">Geospatial MSc × 3 universities (Erasmus Mundus) · Former Nigerian Air Force intelligence · EASA + AUVSI UAV Certified</p><div class="fac-chips"><span class="chip">Erasmus Mundus</span><span class="chip">Air Force Intel</span><span class="chip">EASA</span><span class="chip">AUVSI</span></div></div>
+    </div>
+  </div></section>
+
+  <section class="section bg-main"><div class="section-inner">
+    <p class="section-eye" style="color:var(--gold)">Oil &amp; Gas Technical Faculty</p>
+    <div class="fac-grid">
+      <div id="onwuegbuchulem" class="fac-card" style="border-left-color:#8a4500; cursor:pointer;" onclick="showBio('onwuegbuchulem')"><span class="fac-stream" style="color:#8a4500">Track 4 · Lead Faculty</span><h4 class="fac-name">Dr. Uche Onwuegbuchulem</h4><p class="fac-role">Asset Integrity Lead · 13 years Chevron Escravos/EGTL  ·  EZOK Energy </p><p class="fac-cred">PhD Civil Eng · MSc Structural Eng (Manchester) · COREN Registered · BOSIET OPITO · Lead Consultant, EZOK Energy</p><div class="fac-chips"><span class="chip">COREN Registered</span><span class="chip">BOSIET OPITO</span><span class="chip">OFC Certified</span><span class="chip">Chevron 13 yrs</span><span class="chip">PhD</span></div></div>
+      
+      <div id="udogwu" class="fac-card" style="border-left-color:#8a4500; cursor:pointer;" onclick="showBio('udogwu')"><span class="fac-stream" style="color:#8a4500">Track 4 · Lead Faculty</span><h4 class="fac-name">Christian N. Udogwu</h4><p class="fac-role">Offshore Engineering Lead · 15+ years Chevron · 4 secondments</p><p class="fac-cred">BSc Chemical Eng (KNUST) · $8B+ project portfolio · BOSIET OPITO · 15+ years Chevron Nigeria</p><div class="fac-chips"><span class="chip">BOSIET OPITO </span><span class="chip">Chevron 15+ yrs</span><span class="chip">$8B+ Projects</span><span class="chip">KNUST</span></div></div>
+    </div>
+  </div></section>
+
+  <div id="bio-overlay" class="bio-overlay">
+    <div class="bio-container">
+      <button class="bio-close" onclick="closeBio()">CLOSE ×</button>
+      <div class="bio-grid">
+        <div class="bio-image-box">
+          <img id="bio-img" src="" alt="Faculty Member">
+        </div>
+        <div class="bio-info">
+          <p id="bio-eyebrow" class="gold-caps">Facilitator Profile</p>
+          <h2 id="bio-name" class="display-serif"></h2>
+          <p id="bio-sub" class="italic-sub"></p>
+          <div id="bio-text" class="prose-body"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section bg-surface"><div class="section-inner">
+    <div class="diff-grid">
+      <div class="diff-card"><h4>Not textbooks.</h4><p>These are people who built, led, advised, and delivered in the environments your teams operate in.</p></div>
+      <div class="diff-card"><h4>Not generalists.</h4><p>Each faculty member brings deep domain authority built over years of research, teaching, advisory work, and frontline execution.</p></div>
+      <div class="diff-card"><h4>Not contractors.</h4><p>Every faculty member is a named, accessible, credentialled practitioner whose profile can stand up in front of executive buyers and procurement reviewers.</p></div>
+    </div>
+  </div></section>
+</div>
+{% endblock content %}
+{% block script %}
+    <script>
+        const facultyData = {
+          igbokwe: {
+            name: "Dr. Onyedika Anthony Igbokwe",
+            role: "Programme Director · University of St Andrews · Earth Sciences · GIS",
+            img: "/static/images/man.jpeg",
+            bio: `<p>Dr. Onyedika Anthony Igbokwe is an Assistant Professor in Structural Geology, GIS, and Project Management at the University of St Andrews School of Earth and Environmental Sciences. He also serves as the Programme Director and Lead Instructor in Data Science, GIS, and AI Business Leadership Strategies at Citadel Exzellenz, Germany.</p>
+                <p>With over a decade of experience delivering training in GIS-based decision analysis for managers, team and people management, emotional intelligence awareness, and self-management, Dr. Igbokwe has trained and inspired hundreds of managers across several countries. His interdisciplinary approach bridges the gap between technical precision and leadership performance.</p>
+                <p>He holds three MSc degrees: Geospatial Technologies (University of Muenster, Germany), Water & Environmental Management (Loughborough University, UK), and Resources and Energy (Ruhr University Bochum, Germany). He earned his PhD in Structural and Carbonate Geology from Ruhr University Bochum, Germany.</p>`
+          },
+          romenska: {
+            name: "Dr. Sandra Romenska",
+            role: "Lead Instructor, Leadership · University of St Andrews · Business School",
+            img: "/static/images/woman.jpeg",
+            bio: `<p>Dr. Sandra Romenska is an Associate Professor in Leadership and Leadership Development at the University of St Andrews Business School and an executive coach and leadership consultant with over 20 years of international experience. She has worked with more than 500 senior leaders and executives across 50+ organisations in over 15 countries, delivering leadership development and coaching for board-level and executive cohorts across the UK, Europe, and Africa.</p>
+                <p>Her work combines executive coaching, senior team development, and the design and delivery of large-scale leadership development programmes for complex organisations operating in high-stakes environments. She has led multi-year leadership and governance initiatives and delivered programmes in partnership with Harvard Business School, the Institute of Directors UK, and Save the Children UK. At the enterprise level, she assesses strategic direction, board effectiveness, and organisational performance.</p>
+                <p>At the University of St Andrews, she has held senior roles including Deputy Head of School and Programme Director. She is a Visiting Senior Lecturer for the Executive MBA at the American University in Bulgaria, a Senior Consultant at Citadel Exzellenz, and serves as an External Examiner for Northumbria University Business School.</p>
+                <p>A sought-after keynote speaker, she has delivered contributions to international forums including UNESCO, the World Universities Forum in Davos, and the PMI Global Congress. She holds a DPhil from the University of Oxford and an MA from the University of Warwick.</p>`
+          },
+          neville: {
+            name: "Dr. Fergus Neville",
+            role: "Associate Faculty · University of St Andrews · Business School",
+            img: "/static/images/neville_profile.jpg",
+            bio: "<p>Dr. Fergus Neville is an Associate Professor with 20 years of social identity research. He has served as an adviser to the UK Government, UEFA, and the Saudi Ministry of Health. His work focuses on organizational behavior and group dynamics.</p>"
+          },
+          onyeukwu: {
+            name: "Nnadozie Onyeukwu",
+            role: "GeoTech Training Lead · University of St Andrews · Earth Sciences",
+            img: "/static/images/onyeukwu_profile.jpg",
+            bio: "<p>Nnadozie Onyeukwu is a Geospatial expert and former Nigerian Air Force intelligence officer. He holds an Erasmus Mundus Geospatial MSc from three universities and is EASA and AUVSI UAV certified, leading the Group's GeoAI training initiatives.</p>"
+          },
+          onwuegbuchulem: {
+            name: "Dr. Uche Onwuegbuchulem",
+            role: "Asset Integrity Lead · EZOK Energy",
+            img: "/static/images/uche_profile.jpg",
+            bio: "<p>Dr. Uche Onwuegbuchulem brings 13 years of operational experience from Chevron Escravos/EGTL. A COREN registered engineer with a PhD in Civil Engineering, he specializes in structural integrity and offshore engineering management.</p>"
+          },
+          udogwu: {
+            name: "Christian N. Udogwu",
+            role: "Offshore Engineering Lead · 15+ years Chevron",
+            img: "/static/images/christian_profile.jpg",
+            bio: "<p>Christian Udogwu is a Chemical Engineer with over 15 years of experience at Chevron Nigeria. Having managed a portfolio exceeding $8B, he provides deep operational realism to the technical faculty's curriculum.</p>"
+          }
+        };
+
+        function showBio(id) {
+            const data = facultyData[id];
+            
+            if (data) {
+                // Populate the content
+                document.getElementById('bio-img').src = data.img;
+                document.getElementById('bio-img').alt = data.name;
+                document.getElementById('bio-name').innerText = data.name;
+                document.getElementById('bio-sub').innerText = data.role; // Maps to the fac-role in your data
+                document.getElementById('bio-text').innerHTML = data.bio;
+
+                // Show the overlay
+                const overlay = document.getElementById('bio-overlay');
+                overlay.style.display = 'block';
+                
+                // Prevent background scrolling
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeBio() {
+            document.getElementById('bio-overlay').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        // Close overlay when clicking outside the container
+        window.onclick = function(event) {
+            const overlay = document.getElementById('bio-overlay');
+            if (event.target == overlay) {
+                closeBio();
+            }
+        }
+
+    </script>
+{% endblock script %}

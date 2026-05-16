@@ -1,0 +1,2406 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Citadel Akademie — Training that bridges Africa and Europe</title>
+    <meta name="description" content="Citadel Akademie — professor-led intensive training across the Africa-Europe corridor. Leadership, Executive Coaching, Geospatial Intelligence, Oil & Gas Technical, and Bespoke Programmes.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z' fill='%230C1E3C'/%3E%3Ctext x='35' y='65' font-family='sans-serif' font-size='48' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='central'%3EC%3C/text%3E%3Ctext x='68' y='65' font-family='sans-serif' font-size='38' font-weight='700' fill='%23C8960C' text-anchor='middle' dominant-baseline='central'%3EX%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+    /* ═══════════════════════════════════════
+       DESIGN TOKENS — enlarged for UI/UX readability
+       ═══════════════════════════════════════ */
+    :root {
+      --navy: #0C1E3C;
+      --navy-deep: #081530;
+      --navy-soft: #132748;
+      --gold: #C8960C;
+      --gold-soft: #E0B84B;
+      --cream: #F6F1E4;
+      --ink: #0B1220;
+      --paper: #FAF7F0;
+      --surface: #10243F;
+      --surface-2: #142B48;
+      --border: rgba(200,150,12,0.22);
+      --border-soft: rgba(255,255,255,0.08);
+      --text: #E9EDF3;
+      --text-mute: #AAB5C4;
+      --text-dim: #8090A5;
+
+      --serif: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+      --sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      --radius-sm: 4px;
+      --radius: 8px;
+      --radius-lg: 14px;
+
+      --t1: cubic-bezier(0.2, 0.7, 0.2, 1);
+      --t2: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html[data-theme="light"] {
+      --navy: #0C1E3C;
+      --navy-deep: #FFFFFF;
+      --navy-soft: #F5F1E6;
+      --gold: #9E7506;
+      --gold-soft: #B88A1A;
+      --ink: #0B1220;
+      --surface: #FFFFFF;
+      --surface-2: #F2ECDC;
+      --border: rgba(12,30,60,0.18);
+      --border-soft: rgba(12,30,60,0.08);
+      --text: #0B1220;
+      --text-mute: #3E4C59;
+      --text-dim: #6B7785;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--text);
+      background: var(--navy-deep);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    html[data-theme="light"] body { background: #FBF8EF; }
+
+    img, svg { display: block; max-width: 100%; }
+    button { background: none; border: none; cursor: pointer; color: inherit; font: inherit; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ═══════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(8,21,48,0.72);
+      border-bottom: 1px solid var(--border-soft);
+      transition: background 0.3s var(--t2);
+    }
+    html[data-theme="light"] .nav { background: rgba(251,248,239,0.82); }
+
+    .nav-inner {
+      max-width: 1320px; margin: 0 auto;
+      padding: 16px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; padding: 6px 4px; }
+    
+    .nav-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;          
+      font-size: 20px;           
+      letter-spacing: 0.04em;    
+      text-transform: uppercase; 
+      color: var(--text);
+    }
+
+    .nav-brand-accent {
+      color: var(--gold);
+      font-weight: 900;
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-link {
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      position: relative;
+      transition: color 0.2s var(--t2);
+    }
+    .nav-link:hover, .nav-link.active { color: var(--text); }
+    .nav-link.active::after {
+      content: ''; position: absolute; bottom: 2px; left: 16px; right: 16px;
+      height: 1px; background: var(--gold);
+    }
+
+    .nav-cta-btn {
+      margin-left: 8px;
+      padding: 12px 22px;
+      background: var(--gold);
+      color: var(--navy-deep) !important;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s var(--t2);
+    }
+    .nav-cta-btn:hover { background: var(--gold-soft); transform: translateY(-1px); }
+
+    .theme-btn {
+      margin-left: 8px;
+      width: 38px; height: 38px;
+      display: grid; place-items: center;
+      font-size: 16px;
+      color: var(--text-mute);
+      border-radius: 50%;
+      transition: all 0.2s var(--t2);
+    }
+    .theme-btn:hover { color: var(--gold); background: rgba(200,150,12,0.08); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; width: 30px; height: 30px; justify-content: center; align-items: center; }
+    .hamburger span { width: 22px; height: 1.5px; background: var(--text); transition: all 0.25s var(--t2); }
+
+    .mob-menu {
+      display: none; flex-direction: column;
+      padding: 16px 32px;
+      background: var(--navy); border-top: 1px solid var(--border-soft);
+    }
+    .mob-menu.open { display: flex; }
+    .mob-link {
+      padding: 14px 0; text-align: left;
+      font-size: 15px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .mob-link.active { color: var(--gold); }
+
+    /* ═══════════════════════════════════════
+       UPCOMING PROGRAMMES BANNER (dismissible, auto-expiring)
+       ═══════════════════════════════════════ */
+    .upcoming-banner {
+      position: relative;
+      background: linear-gradient(135deg, #0C1E3C 0%, #0E2244 60%, #132B4A 100%);
+      border-bottom: 1px solid rgba(200,150,12,0.28);
+      padding: 14px 32px;
+      margin-top: 72px;
+      overflow: hidden;
+    }
+    html[data-theme="light"] .upcoming-banner {
+      background: linear-gradient(135deg, #0C1E3C 0%, #132B4A 100%);
+    }
+    .upcoming-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 40% 200% at 85% 50%, rgba(200,150,12,0.15), transparent 70%);
+      pointer-events: none;
+    }
+    .upcoming-inner {
+      max-width: 1320px; margin: 0 auto;
+      display: flex; align-items: center; gap: 16px;
+      flex-wrap: wrap;
+      position: relative; z-index: 1;
+    }
+    .upcoming-pulse {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .upcoming-pulse::before {
+      content: ''; width: 8px; height: 8px;
+      border-radius: 50%; background: var(--gold);
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+    @keyframes pulseDot { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.4; transform:scale(1.3); } }
+    .upcoming-title {
+      font-family: var(--serif);
+      font-size: 19px; font-weight: 600;
+      color: #fff;
+      flex: 1; min-width: 200px;
+    }
+    .upcoming-meta {
+      font-size: 13px; color: rgba(255,255,255,0.65);
+      letter-spacing: 0.02em;
+    }
+    .upcoming-cta {
+      padding: 10px 18px;
+      background: rgba(200,150,12,0.15);
+      border: 1px solid rgba(200,150,12,0.4);
+      color: var(--gold);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s var(--t2);
+      flex-shrink: 0;
+    }
+    .upcoming-cta:hover { background: var(--gold); color: var(--navy-deep); }
+    .upcoming-close {
+      width: 30px; height: 30px;
+      display: grid; place-items: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 18px;
+      border-radius: 50%;
+      transition: all 0.2s var(--t2);
+      flex-shrink: 0;
+    }
+    .upcoming-close:hover { color: #fff; background: rgba(255,255,255,0.08); }
+
+    /* ═══════════════════════════════════════
+       UPCOMING PROGRAMMES MODAL
+       ═══════════════════════════════════════ */
+    .up-modal {
+      display: none;
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(8,21,48,0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 40px 20px;
+      overflow-y: auto;
+    }
+    .up-modal.open { display: flex; align-items: flex-start; justify-content: center; }
+    .up-modal-card {
+      max-width: 760px; width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+    }
+    html[data-theme="light"] .up-modal-card { background: #fff; }
+    .up-modal-hero {
+      padding: 40px 44px 32px;
+      background: linear-gradient(135deg, #0C1E3C 0%, #142B4C 100%);
+      color: #fff;
+      border-bottom: 3px solid var(--gold);
+      position: relative;
+    }
+    .up-close-btn {
+      position: absolute; top: 16px; right: 16px;
+      width: 36px; height: 36px;
+      display: grid; place-items: center;
+      color: rgba(255,255,255,0.65);
+      font-size: 22px;
+      border-radius: 50%;
+      transition: all 0.2s var(--t2);
+    }
+    .up-close-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    .up-partners {
+      display: inline-flex; gap: 14px; align-items: center;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .up-modal-title {
+      font-family: var(--serif);
+      font-size: 36px; font-weight: 500;
+      line-height: 1.1; color: #fff;
+      margin-bottom: 10px;
+    }
+    .up-modal-sub {
+      font-family: var(--serif);
+      font-size: 22px; font-style: italic;
+      color: var(--gold-soft);
+    }
+    .up-modal-body { padding: 36px 44px 40px; }
+    .up-stats-row {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+      margin-bottom: 28px;
+    }
+    .up-stat-num {
+      font-family: var(--serif);
+      font-size: 34px; font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .up-stat-label {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--text-mute);
+      margin-top: 8px;
+    }
+    .up-modal-body p {
+      font-size: 17px; line-height: 1.72;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+    .up-modal-body strong { color: var(--text); font-weight: 600; }
+    .up-facilitator {
+      padding: 20px 24px;
+      background: var(--surface-2);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius-sm);
+      margin: 24px 0 28px;
+    }
+    html[data-theme="light"] .up-facilitator { background: #F5F1E6; }
+    .up-fac-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .up-fac-name {
+      font-family: var(--serif);
+      font-size: 20px; font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .up-fac-bio {
+      font-size: 14px; line-height: 1.65;
+      color: var(--text-mute);
+    }
+    .up-modal-ctas {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    /* ═══════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════ */
+    .hero {
+      position: relative;
+      padding: 60px 32px 120px;
+      overflow: hidden;
+    }
+    .hero-akad {
+      background:
+        radial-gradient(ellipse 90% 60% at 70% 20%, rgba(200,150,12,0.15), transparent 60%),
+        radial-gradient(ellipse 70% 80% at 10% 80%, rgba(24,95,165,0.25), transparent 60%),
+        linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 50%, var(--navy-deep) 100%);
+    }
+    html[data-theme="light"] .hero-akad {
+      background:
+        radial-gradient(ellipse 90% 60% at 70% 20%, rgba(200,150,12,0.10), transparent 60%),
+        radial-gradient(ellipse 70% 80% at 10% 80%, rgba(24,95,165,0.08), transparent 60%),
+        linear-gradient(180deg, #FBF8EF 0%, #F5F1E6 100%);
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(200,150,12,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,150,12,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+    }
+    .hero-content { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; padding-top: 80px; }
+    .hero-logo-row { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+    .hero-division {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 500;
+      color: #67A8DA;
+      letter-spacing: 0.02em;
+    }
+    html[data-theme="light"] .hero-division { color: #185FA5; }
+
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .hero-h1 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(40px, 6vw, 74px);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 100px;
+      max-width: 1000px;
+    }
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--gold-soft);
+      font-weight: 400;
+    }
+    .gold { color: var(--gold); }
+
+    .hero-body {
+      font-size: clamp(19px, 1.48vw, 23px);
+      line-height: 1.7;
+      color: var(--text-mute);
+      max-width: 820px;
+      margin-bottom: 90px;
+    }
+    .hero-body strong { color: var(--text); font-weight: 500; }
+
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 10px; }
+
+    .btn-primary {
+      padding: 15px 30px;
+      background: var(--gold);
+      color: var(--navy-deep);
+      font-size: 14px; font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s var(--t2);
+    }
+    .btn-primary:hover { background: var(--gold-soft); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(200,150,12,0.24); }
+
+    .btn-outline {
+      padding: 14px 28px;
+      background: transparent;
+      color: var(--text);
+      font-size: 14px; font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: all 0.2s var(--t2);
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .btn-ghost {
+      padding: 14px 22px;
+      color: var(--text-mute);
+      font-size: 14px; font-weight: 500;
+      letter-spacing: 0.06em;
+      transition: color 0.2s var(--t2);
+    }
+    .btn-ghost:hover { color: var(--gold); }
+
+    /* ═══════════════════════════════════════
+       SECTIONS
+       ═══════════════════════════════════════ */
+    .section { padding: 100px 32px; position: relative; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .bg-surface { background: var(--surface); }
+    html[data-theme="light"] .bg-surface { background: #F5F1E6; }
+    .bg-dark { background: var(--navy-deep); }
+    html[data-theme="light"] .bg-dark { background: #EBE3CE; }
+    .bg-main { background: var(--navy); }
+    html[data-theme="light"] .bg-main { background: #FBF8EF; }
+
+    .section-eye {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .section-h2 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(34px, 4.2vw, 54px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+    .section-sub {
+      font-size: 20px;
+      line-height: 1.65;
+      color: var(--text-mute);
+      max-width: 740px;
+      margin-bottom: 48px;
+    }
+    .section-sub strong { color: var(--text); font-weight: 500; }
+
+    /* ═══════════════════════════════════════
+       TRACK TABS
+       ═══════════════════════════════════════ */
+    .track-tabs {
+      display: flex; flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--border-soft);
+      padding-bottom: 0;
+    }
+    .track-tab {
+      padding: 16px 22px;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--text-dim);
+      position: relative;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.2s var(--t2);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .track-tab:hover { color: var(--text); }
+    .track-tab.active {
+      color: var(--text);
+      border-bottom-color: var(--tab-color, var(--gold));
+    }
+    .track-badge {
+      display: inline-block;
+      padding: 3px 9px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      background: var(--gold);
+      color: var(--navy-deep);
+      border-radius: 2px;
+    }
+
+    .track-faculty {
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--text-mute);
+      padding: 22px 0 22px;
+      border-bottom: 1px solid var(--border-soft);
+      margin-bottom: 18px;
+    }
+    .track-faculty .gold { font-weight: 500; }
+
+    /* SUB-TRACK CHIPS (for Track 4) */
+    .subtrack-bar {
+      display: flex; flex-wrap: wrap;
+      gap: 8px;
+      padding: 8px 0 26px;
+      border-bottom: 1px solid var(--border-soft);
+      margin-bottom: 36px;
+    }
+    .subtrack-chip {
+      padding: 9px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: var(--text-mute);
+      background: transparent;
+      border: 1px solid var(--border-soft);
+      border-radius: 100px;
+      transition: all 0.2s var(--t2);
+      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .subtrack-chip:hover {
+      color: var(--text);
+      border-color: var(--cluster-accent, var(--gold));
+    }
+    .subtrack-chip.active {
+      color: var(--navy-deep);
+      background: var(--cluster-accent, var(--gold));
+      border-color: var(--cluster-accent, var(--gold));
+      font-weight: 600;
+    }
+    html[data-theme="light"] .subtrack-chip.active { color: #fff; }
+    .subtrack-chip .count {
+      font-size: 11px; opacity: 0.7;
+    }
+    .subtrack-chip.active .count { opacity: 1; }
+
+    /* ═══════════════════════════════════════
+       PROGRAMME CARDS
+       ═══════════════════════════════════════ */
+    .prog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 22px;
+    }
+
+    .prog-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius);
+      padding: 34px 32px;
+      cursor: pointer;
+      transition: all 0.3s var(--t1);
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+      width: 100%;
+      display: flex; flex-direction: column;
+      min-height: 300px;
+    }
+    html[data-theme="light"] .prog-card { background: #FFFFFF; }
+
+    .prog-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--card-accent, var(--gold));
+      opacity: 0.8;
+      transition: width 0.3s var(--t1);
+    }
+    .prog-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--card-accent, var(--gold));
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+    }
+    html[data-theme="light"] .prog-card:hover { box-shadow: 0 18px 40px rgba(12,30,60,0.14); }
+    .prog-card:hover::before { width: 5px; }
+
+    .prog-cluster-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--card-accent, var(--gold));
+      margin-bottom: 8px;
+      opacity: 0.85;
+    }
+    .prog-num {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--gold);
+      margin-bottom: 12px;
+      letter-spacing: 0.03em;
+    }
+    .prog-title {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.18;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .prog-sub {
+      font-size: 16px;
+      font-style: italic;
+      color: var(--text-mute);
+      margin-bottom: 18px;
+      line-height: 1.45;
+    }
+    .prog-teaser {
+      font-size: 17px;
+      color: var(--text-mute);
+      line-height: 1.72;
+      margin-bottom: 22px;
+      flex: 1;
+    }
+    .prog-meta {
+      display: flex; flex-wrap: wrap;
+      gap: 10px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-soft);
+      margin-bottom: 18px;
+    }
+    .prog-tag {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 5px 11px;
+      background: rgba(200,150,12,0.08);
+      color: var(--gold);
+      border-radius: 3px;
+      border: 1px solid rgba(200,150,12,0.18);
+    }
+    .prog-tag.neutral {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-mute);
+      border-color: var(--border-soft);
+    }
+    html[data-theme="light"] .prog-tag.neutral { background: rgba(12,30,60,0.04); color: var(--text-mute); }
+    .prog-footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .prog-fee {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.01em;
+    }
+    .prog-arrow {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--card-accent, var(--gold));
+      transition: transform 0.2s var(--t2);
+    }
+    .prog-card:hover .prog-arrow { transform: translateX(4px); }
+
+    /* Bespoke = full-width hero card */
+    .prog-card.bespoke {
+      grid-column: 1 / -1;
+      min-height: 220px;
+      background: linear-gradient(135deg, var(--navy-soft), var(--surface-2));
+    }
+    html[data-theme="light"] .prog-card.bespoke { background: linear-gradient(135deg, #FFF 0%, #F5F1E6 100%); }
+    .prog-card.bespoke .prog-title { font-size: 32px; }
+
+    /* ═══════════════════════════════════════
+       QUOTE STRIP
+       ═══════════════════════════════════════ */
+    .quote-large {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(26px, 2.8vw, 38px);
+      line-height: 1.32;
+      color: var(--text);
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .quote-sub {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 28px;
+    }
+
+    .exec-proof-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 36px; }
+    .exec-proof-card { background: var(--surface-2); border: 1px solid var(--border-soft); border-radius: var(--radius); padding: 28px 28px 26px; }
+    html[data-theme="light"] .exec-proof-card { background: #fff; }
+    .exec-proof-kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .exec-proof-title { font-family: var(--serif); font-size: 26px; line-height: 1.22; color: var(--text); margin-bottom: 12px; font-weight: 600; }
+    .exec-proof-body { font-size: 17px; line-height: 1.72; color: var(--text-mute); }
+
+    /* ═══════════════════════════════════════
+       FLYWHEEL
+       ═══════════════════════════════════════ */
+    .flywheel-row { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .flywheel-text { max-width: 760px; }
+    .flywheel-body {
+      font-family: var(--serif);
+      font-size: clamp(24px, 2.5vw, 32px);
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--text);
+      margin-top: 14px;
+    }
+
+    /* ═══════════════════════════════════════
+       COURSE DETAIL PAGE
+       ═══════════════════════════════════════ */
+    #courseDetailView { display: none; }
+    #courseDetailView.open { display: block; }
+    body.locked { overflow: hidden; }
+
+    .cd-breadcrumb {
+      max-width: 1200px; margin: 0 auto;
+      padding: 120px 32px 24px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .cd-breadcrumb .crumb-sep { color: var(--text-dim); opacity: 0.5; }
+    .cd-breadcrumb .crumb-link { color: var(--text-mute); transition: color 0.2s var(--t2); }
+    .cd-breadcrumb .crumb-link:hover { color: var(--gold); }
+    .cd-breadcrumb .crumb-current { color: var(--text); }
+
+    .cd-hero {
+      position: relative;
+      padding: 32px 32px 72px;
+      overflow: hidden;
+      background: var(--navy);
+    }
+    html[data-theme="light"] .cd-hero { background: #F5F1E6; }
+    .cd-hero::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 100%; height: 4px;
+      background: var(--cd-accent, var(--gold));
+    }
+    .cd-hero-inner { max-width: 1200px; margin: 0 auto; }
+
+    .cd-track-label {
+      display: inline-block;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--cd-accent, var(--gold));
+      padding: 6px 0;
+      margin-bottom: 22px;
+      position: relative;
+    }
+    .cd-track-label::before {
+      content: ''; position: absolute; left: -40px; top: 50%;
+      width: 28px; height: 1px;
+      background: var(--cd-accent, var(--gold));
+    }
+    .cd-title {
+      font-family: var(--serif);
+      font-size: clamp(34px, 5vw, 60px);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 14px;
+      max-width: 900px;
+    }
+    .cd-subtitle {
+      font-family: var(--serif);
+      font-size: clamp(21px, 2.2vw, 28px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-mute);
+      max-width: 840px;
+    }
+
+    .cd-layout {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 72px 32px 120px;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .cd-main { min-width: 0; }
+
+    .cd-block { margin-bottom: 56px; }
+    .cd-block:last-child { margin-bottom: 0; }
+    .cd-block-h {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 22px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .cd-block-body {
+      font-size: 19px;
+      line-height: 1.78;
+      color: var(--text);
+    }
+    .cd-block-body + .cd-block-body { margin-top: 18px; }
+    .cd-block-body strong { color: var(--text); font-weight: 600; }
+
+    .cd-bullets { list-style: none; padding: 0; margin: 0; }
+    .cd-bullets li {
+      position: relative;
+      padding: 15px 0 15px 36px;
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .cd-bullets li:last-child { border-bottom: 0; }
+    .cd-bullets li::before {
+      content: ''; position: absolute; left: 0; top: 24px;
+      width: 20px; height: 1px;
+      background: var(--cd-accent, var(--gold));
+    }
+
+    /* Sidebar */
+    .cd-side {
+      position: sticky; top: 88px;
+      background: var(--surface);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    html[data-theme="light"] .cd-side { background: #FFFFFF; }
+
+    .cd-fee-strip {
+      padding: 30px 30px 26px;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    html[data-theme="light"] .cd-fee-strip { background: #F5F1E6; }
+    .cd-fee-eye {
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+    .cd-fee-amt {
+      font-family: var(--serif);
+      font-size: 42px; font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.01em;
+    }
+    .cd-fee-note {
+      font-size: 14px;
+      color: var(--text-mute);
+      margin-top: 6px;
+    }
+
+    .cd-facts { padding: 24px 30px; border-bottom: 1px solid var(--border-soft); }
+    .cd-fact {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--border-soft);
+      font-size: 15px;
+    }
+    .cd-fact:last-child { border-bottom: 0; padding-bottom: 0; }
+    .cd-fact-label {
+      color: var(--text-dim);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 12px;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+    .cd-fact-value { color: var(--text); font-weight: 500; text-align: right; }
+
+    .cd-actions { padding: 24px 26px 30px; display: flex; flex-direction: column; gap: 11px; }
+    .cd-btn {
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px;
+      padding: 15px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s var(--t2);
+      width: 100%;
+      text-align: center;
+    }
+    .cd-btn-primary {
+      background: var(--gold);
+      color: var(--navy-deep);
+      border: 1px solid var(--gold);
+    }
+    .cd-btn-primary:hover {
+      background: var(--gold-soft);
+      border-color: var(--gold-soft);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(200,150,12,0.24);
+    }
+    .cd-btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .cd-btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .cd-btn svg { flex-shrink: 0; width: 17px; height: 17px; }
+
+    .cd-back-row { max-width: 1200px; margin: 0 auto; padding: 0 32px 48px; }
+    .cd-back-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      padding: 10px 0;
+      transition: color 0.2s var(--t2);
+    }
+    .cd-back-btn:hover { color: var(--gold); }
+
+    /* ═══════════════════════════════════════
+       ADMIN PANEL (hidden until unlocked)
+       ═══════════════════════════════════════ */
+    #adminToggle {
+      position: fixed; bottom: 20px; right: 20px;
+      width: 48px; height: 48px;
+      display: none; place-items: center;
+      background: var(--gold); color: var(--navy-deep);
+      border-radius: 50%;
+      z-index: 200;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      font-size: 22px;
+      transition: all 0.2s var(--t2);
+    }
+    #adminToggle.unlocked { display: grid; }
+    #adminToggle:hover { transform: scale(1.06); background: var(--gold-soft); }
+
+    .admin-drawer {
+      display: none;
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: min(560px, 92vw);
+      background: var(--navy-deep);
+      border-left: 1px solid var(--border);
+      z-index: 300;
+      overflow-y: auto;
+      box-shadow: -16px 0 40px rgba(0,0,0,0.5);
+    }
+    .admin-drawer.open { display: block; animation: slideIn 0.3s var(--t1); }
+    @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    html[data-theme="light"] .admin-drawer { background: #FFFFFF; }
+
+    .admin-head {
+      padding: 22px 28px;
+      border-bottom: 1px solid var(--border-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 14px;
+      position: sticky; top: 0;
+      background: var(--navy-deep);
+      z-index: 10;
+    }
+    html[data-theme="light"] .admin-head { background: #fff; }
+    .admin-title {
+      font-family: var(--serif);
+      font-size: 22px; font-weight: 600;
+      color: var(--text);
+    }
+    .admin-title span { color: var(--gold); }
+    .admin-close {
+      width: 36px; height: 36px;
+      display: grid; place-items: center;
+      font-size: 22px;
+      color: var(--text-mute);
+      border-radius: 50%;
+      transition: all 0.2s var(--t2);
+    }
+    .admin-close:hover { color: var(--text); background: var(--surface-2); }
+
+    .admin-tabs {
+      display: flex; border-bottom: 1px solid var(--border-soft);
+      padding: 0 28px;
+      background: var(--navy-deep);
+      position: sticky; top: 80px; z-index: 9;
+    }
+    html[data-theme="light"] .admin-tabs { background: #fff; }
+    .admin-tab {
+      padding: 14px 18px;
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--text-mute);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.2s var(--t2);
+    }
+    .admin-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+    .admin-body { padding: 24px 28px 80px; }
+    .admin-section-h {
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold);
+      margin: 24px 0 14px;
+    }
+    .admin-section-h:first-child { margin-top: 0; }
+
+    .admin-field { margin-bottom: 14px; }
+    .admin-field label {
+      display: block;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-mute);
+      margin-bottom: 6px;
+    }
+    .admin-field input,
+    .admin-field textarea,
+    .admin-field select {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 14px;
+      line-height: 1.5;
+      transition: border-color 0.2s var(--t2);
+    }
+    html[data-theme="light"] .admin-field input,
+    html[data-theme="light"] .admin-field textarea,
+    html[data-theme="light"] .admin-field select { background: #F5F1E6; }
+    .admin-field input:focus,
+    .admin-field textarea:focus,
+    .admin-field select:focus { outline: none; border-color: var(--gold); }
+    .admin-field textarea { resize: vertical; min-height: 70px; }
+    .admin-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .admin-btn-row {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .admin-btn {
+      padding: 10px 18px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s var(--t2);
+      cursor: pointer;
+    }
+    .admin-btn.primary { background: var(--gold); color: var(--navy-deep); }
+    .admin-btn.primary:hover { background: var(--gold-soft); }
+    .admin-btn.secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border-soft); }
+    .admin-btn.secondary:hover { border-color: var(--gold); color: var(--gold); }
+    .admin-btn.danger { background: transparent; color: #E06A5E; border: 1px solid rgba(224,106,94,0.4); }
+    .admin-btn.danger:hover { background: rgba(224,106,94,0.1); }
+
+    .admin-course-list { display: flex; flex-direction: column; gap: 8px; }
+    .admin-course-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 12px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-sm);
+    }
+    html[data-theme="light"] .admin-course-row { background: #F5F1E6; }
+    .admin-course-info { flex: 1; min-width: 0; }
+    .admin-course-title {
+      font-family: var(--serif);
+      font-size: 16px; font-weight: 600; color: var(--text);
+      margin-bottom: 3px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .admin-course-meta { font-size: 12px; color: var(--text-mute); }
+    .admin-course-actions { display: flex; gap: 6px; flex-shrink: 0; }
+    .admin-icon-btn {
+      width: 32px; height: 32px;
+      display: grid; place-items: center;
+      border-radius: 4px;
+      color: var(--text-mute);
+      transition: all 0.2s var(--t2);
+    }
+    .admin-icon-btn:hover { background: var(--surface-2); color: var(--gold); }
+    .admin-icon-btn.danger:hover { background: rgba(224,106,94,0.1); color: #E06A5E; }
+
+    .admin-empty { text-align: center; padding: 36px 20px; color: var(--text-dim); font-style: italic; }
+
+    .admin-login {
+      padding: 80px 40px; text-align: center;
+    }
+    .admin-login h3 {
+      font-family: var(--serif); font-size: 26px;
+      color: var(--text); margin-bottom: 10px;
+    }
+    .admin-login p { color: var(--text-mute); font-size: 14px; margin-bottom: 24px; }
+    .admin-login input {
+      width: 100%; max-width: 300px; margin: 0 auto;
+      padding: 12px 16px; font-size: 15px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); color: var(--text);
+      text-align: center;
+    }
+    .admin-login-note {
+      margin-top: 14px; font-size: 11px; color: var(--text-dim);
+      font-style: italic; letter-spacing: 0.04em;
+    }
+
+    .admin-toast {
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
+      padding: 14px 24px;
+      background: var(--gold);
+      color: var(--navy-deep);
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 0.06em;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      z-index: 1000;
+      opacity: 0;
+      transition: all 0.3s var(--t1);
+      pointer-events: none;
+    }
+    .admin-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════ */
+    .footer { background: var(--navy-deep); border-top: 1px solid var(--border-soft); padding: 72px 32px 32px; }
+    html[data-theme="light"] .footer { background: #F2ECDC; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; margin-bottom: 48px; }
+    .footer-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--serif);
+      font-size: 20px; font-weight: 600;
+      color: var(--text); margin-bottom: 14px;
+    }
+    .footer-tagline { font-family: var(--serif); font-style: italic; font-size: 17px; color: var(--gold); margin-bottom: 24px; }
+    .footer-legal { font-size: 17px; line-height: 1.7; color: var(--text-dim); }
+    .footer-grid h5 { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+    .footer-grid button, .footer-grid a {
+      display: block; padding: 7px 0;
+      font-size: 17px; color: var(--text-mute);
+      transition: color 0.2s var(--t2); text-align: left;
+    }
+    .footer-grid button:hover, .footer-grid a:hover { color: var(--gold); }
+    .footer-bottom {
+      padding-top: 28px;
+      border-top: 1px solid var(--border-soft);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+      font-size: 13px; color: var(--text-dim);
+    }
+    .footer-bottom-links { display: flex; gap: 24px; }
+
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .cd-layout { grid-template-columns: 1fr; gap: 48px; padding: 48px 32px 80px; }
+      .cd-side { position: static; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .up-stats-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-inner { padding: 12px 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { padding: 60px 20px 80px; }
+      .hero-content { padding-top: 80px; }
+      .section { padding: 72px 20px; }
+      .track-tabs { flex-direction: column; border-bottom: 0; }
+      .track-tab { border: 1px solid var(--border-soft); border-radius: var(--radius-sm); margin-bottom: 0; padding: 14px 18px; }
+      .track-tab.active { border-color: var(--tab-color); background: rgba(200,150,12,0.04); }
+      .prog-grid { grid-template-columns: 1fr; }
+      .exec-proof-grid { grid-template-columns: 1fr; }
+      .upcoming-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .upcoming-title { font-size: 16px; }
+      .up-modal-hero { padding: 32px 26px 26px; }
+      .up-modal-body { padding: 26px; }
+      .up-modal-title { font-size: 28px; }
+      .admin-drawer { width: 100vw; }
+    }
+    @media (max-width: 480px) {
+      .hero-h1 { font-size: 36px; }
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .hero-ctas .btn-primary, .hero-ctas .btn-outline { text-align: center; }
+      .cd-title { font-size: 32px; }
+    }
+
+    .fade-in { animation: fadeUp 0.5s var(--t1) both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════
+         NAVIGATION
+         ═══════════════════════════════════════ -->
+    <nav class="nav" id="mainNav">
+      <div class="nav-inner">
+          <button class="nav-logo" onclick="goTo('home')">
+              <svg width="39" height="44" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#fff"/><text x="36" y="65" font-family="Outfit,sans-serif" font-size="60" font-weight="900" fill="#0C1E3C" text-anchor="middle" dominant-baseline="central">C </text><text x="73" y="65" font-family="Outfit,sans-serif" font-size="50" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg>
+              <div class="nav-brand">Citadel <span class="nav-brand-accent">Exzellenz</span></div>
+          </button>
+          <div class="nav-links">
+              <button class="nav-link" onclick="window.location.href='{% url 'index' %}'">Group</button>
+              <button class="nav-link active" onclick="window.location.href='{% url 'akademie' %}'">Akademie</button>
+              <button class="nav-link" onclick="window.location.href='{% url 'geotech' %}'">GeoTech</button>
+              <button class="nav-link" onclick="window.location.href='{% url 'faculty' %}'">Faculty</button>
+              <button class="nav-link" onclick="window.location.href='{% url 'insights' %}'">Intelligence</button>
+              <button class="nav-cta-btn" onclick="window.location.href='{% url 'contact' %}'">Request a Consultation</button>
+              <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" id="themeBtn">☀</button>
+          </div>
+          <button class="hamburger" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+      <div class="mob-menu" id="mobMenu">
+          <button class="nav-link" onclick="window.location.href='{% url 'index' %}'">Group</button>
+              <button class="nav-link active" onclick="window.location.href='{% url 'akademie' %}'">Akademie</button>
+              <button class="nav-link" onclick="window.location.href='{% url 'geotech' %}'">GeoTech</button>
+              <button class="nav-link" onclick="window.location.href='{% url 'faculty' %}'">Faculty</button>
+              <button class="nav-link" onclick="window.location.href='{% url 'insights' %}'">Intelligence</button>
+          <button class="mob-link" onclick="window.location.href='{% url 'contact' %}'">Contact</button>
+      </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════
+         AKADEMIE MAIN PAGE
+         ═══════════════════════════════════════ -->
+    <div id="akademieMain">
+
+        <!-- Upcoming Programmes Banner (rendered by JS, auto-expires) -->
+        <div id="upcomingBannerSlot"></div>
+
+        <section class="hero hero-akad">
+            <div class="hero-content">
+                <div class="hero-logo-row">
+                    <svg width="30" height="36" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#185FA5"/><text x="35" y="65" font-family="Outfit,sans-serif" font-size="48" font-weight="800" fill="#fff" text-anchor="middle" dominant-baseline="central">C</text><text x="68" y="65" font-family="Outfit,sans-serif" font-size="38" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg>
+                    <span class="hero-division">Citadel Akademie</span>
+                </div>
+                <p class="eyebrow">Training &amp; Leadership · A Citadel Exzellenz Group Company</p>
+                <h1 class="hero-h1">Your strategy is written. Your people are ready to execute it — <em>or they're not<span class="gold">.</span></em></h1>
+                <p class="hero-body">Citadel Akademie builds the leadership, digital, and operational capability that turns your strategy into execution — through professor-led intensive training across the Africa-Europe corridor. <strong>ESMT Berlin trains Europeans. Meirc trains the Gulf. We train the leaders who bridge Africa and Europe.</strong></p>
+                <p class="hero-body">German precision engineering applied to workforce performance. Structured, repeatable, auditable. Performance benchmarks — not just certificates. 500+ professionals trained across energy and government.</p>
+                <div class="hero-ctas">
+                    <button class="btn-primary" onclick="goTo('contact')">Request a Programme Proposal</button>
+                    <button class="btn-outline" onclick="goTo('contact')">Request a Group Quote →</button>
+                    <button class="btn-ghost" onclick="goTo('faculty')">Meet the Faculty →</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-surface">
+            <div class="section-inner">
+                <p class="section-eye">Programme Catalogue</p>
+                <h2 class="section-h2">Five Tracks. One Standard.</h2>
+                <p class="section-sub">Engineered around your outcomes, not our catalogue. Every engagement concludes with a performance benchmark. Every programme delivered <strong>online, in-person, or in-house</strong> at your site.</p>
+
+                <div class="track-tabs" id="trackTabs"></div>
+                <p class="track-faculty" id="trackFaculty"></p>
+                <div id="subtrackBarSlot"></div>
+                <div class="prog-grid" id="progGrid"></div>
+            </div>
+        </section>
+
+        <section class="section bg-dark" style="text-align:center">
+            <div class="section-inner" style="max-width:960px">
+                <h2 class="quote-large">&ldquo;Germany exports precision engineering. Citadel Akademie applies the same discipline to workforce performance.&rdquo;</h2>
+                <p class="quote-sub">Structured · Repeatable · Auditable</p>
+            </div>
+        </section>
+
+        <section class="section bg-surface">
+            <div class="section-inner">
+                <p class="section-eye">Executive-Level Proof</p>
+                <h2 class="section-h2">Why institutional buyers can trust the room.</h2>
+                <div class="exec-proof-grid">
+                    <div class="exec-proof-card">
+                        <div class="exec-proof-kicker">Faculty Standard</div>
+                        <h3 class="exec-proof-title">Named faculty, not anonymous facilitators.</h3>
+                        <p class="exec-proof-body">The wider Citadel faculty includes named practitioners and academics from institutions such as the University of St Andrews, Oxford, Bochum, and senior operational roles across the oil and gas industry.</p>
+                    </div>
+                    <div class="exec-proof-card">
+                        <div class="exec-proof-kicker">Delivery Standard</div>
+                        <h3 class="exec-proof-title">Built for boards, field teams, and regulated operations.</h3>
+                        <p class="exec-proof-body">Across leadership, geospatial intelligence, and oil and gas technical tracks, the programme catalogue is designed around executive decisions, operational risk, and measurable capability transfer rather than classroom theatre.</p>
+                    </div>
+                    <div class="exec-proof-card">
+                        <div class="exec-proof-kicker">Outcome Standard</div>
+                        <h3 class="exec-proof-title">Benchmarked performance, not attendance-only certificates.</h3>
+                        <p class="exec-proof-body">Every engagement is positioned around structured, repeatable, auditable delivery with post-programme benchmarking and options for capability embedding after the classroom ends.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-main">
+            <div class="section-inner">
+                <div class="flywheel-row">
+                    <div class="flywheel-text">
+                        <p class="section-eye gold">The Flywheel</p>
+                        <p class="flywheel-body">You have invested in the platform. Now invest in the people who must operate it, govern it, and extract value from it. Every software deployment creates a training requirement. Every training engagement creates a stronger adoption case for the platform behind it.</p>
+                    </div>
+                    <button class="btn-outline" onclick="goTo('geotech')">Explore the GeoTech Platform</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Course detail view (populated by JS) -->
+    <div id="courseDetailView" aria-hidden="true"></div>
+
+    <!-- Upcoming Programmes Modal (populated by JS) -->
+    <div id="upModal" class="up-modal" role="dialog" aria-hidden="true"></div>
+
+    <!-- Admin drawer toggle + drawer -->
+    <button id="adminToggle" onclick="toggleAdmin()" aria-label="Admin panel" title="Admin (Ctrl+Shift+A)">⚙</button>
+    <div id="adminDrawer" class="admin-drawer" role="dialog" aria-hidden="true"></div>
+    <div id="adminToast" class="admin-toast" role="status" aria-live="polite"></div>
+
+    
+    <!-- ═══════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <svg width="26" height="31" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#fff"/><text x="35" y="65" font-family="Outfit,sans-serif" font-size="48" font-weight="800" fill="#0C1E3C" text-anchor="middle" dominant-baseline="central">C</text><text x="68" y="65" font-family="Outfit,sans-serif" font-size="38" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg>
+                        <span>Citadel Exzellenz Group</span>
+                    </div>
+                    <p class="footer-tagline">Intelligence that executes.</p>
+                    <p class="footer-legal">Citadel Exzellenz · HRB 22474, Münster<br>USt-IdNr.: DE453937721</p>
+                    <p class="footer-legal">info@citadelexzellenz.com</p>
+                </div>
+                <div>
+                  <h5>Akademie</h5>
+                  <button onclick="switchTrackById(0)">Leadership Journey</button>
+                  <button onclick="switchTrackById(1)">Executive Coaching</button>
+                  <button onclick="switchTrackById(2)">Geospatial &amp; Data</button>
+                  <button onclick="switchTrackById(3)">Oil &amp; Gas Technical</button>
+                  <button onclick="switchTrackById(4)">Bespoke / In-House</button>
+              </div>
+                <div>
+                    <h5>GeoTech</h5>
+                    <button onclick="goTo('geotech')">Citadel PROS</button>
+                    <button onclick="goTo('geotech')">Citadel GIM</button>
+                    <button onclick="goTo('geotech')">Citadel uDMS</button>
+                </div>
+                <div>
+                    <h5>Group</h5>
+                    <button onclick="goTo('faculty')">Faculty Network</button>
+                    <button onclick="goTo('insights')">Intelligence</button>
+                    <button onclick="goTo('contact')">Contact</button>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Citadel Exzellenz Group. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="imprint.html">Imprint</a>
+                </div>
+                <p>The Meridian Standard · citadelexzellenz.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════
+         DATA + LOGIC
+         ═══════════════════════════════════════ -->
+    <script>
+    /* =========================================
+       DEFAULT DATA MODEL
+       ========================================= */
+    /*const DEFAULT_FEE = "€3,999";
+    const DEFAULT_FORMAT = "Online · In-Person · In-House";
+    const STORAGE_KEY = "citadel_akademie_data_v2";
+    const ADMIN_PASS = "citadel2026"; // simple client-side gate; replace with real auth in production
+    const ADMIN_FLAG = "citadel_admin_unlocked";
+    */
+    const DEFAULT_TRACKS = {{ tracks_json|safe }};
+    const DEFAULT_UPCOMING = {{ upcoming_json|safe }};
+
+    /* =========================================
+       STATE + STORAGE
+       ========================================= */
+    let TRACKS   = JSON.parse(JSON.stringify(DEFAULT_TRACKS));
+    let UPCOMING = JSON.parse(JSON.stringify(DEFAULT_UPCOMING));
+    let currentTrack = 0;
+    let currentCluster = "all"; // for sub-tracks (Track 4)
+    let currentCourse = null;
+
+    const $  = (sel, ctx = document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+
+    function loadData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed && Array.isArray(parsed.tracks) && parsed.tracks.length) {
+            TRACKS = parsed.tracks;
+          }
+          if (parsed && Array.isArray(parsed.upcoming)) {
+            UPCOMING = parsed.upcoming;
+          }
+        }
+      } catch(e) { console.warn("Load failed, using defaults:", e); }
+      if (!TRACKS.length) TRACKS = JSON.parse(JSON.stringify(DEFAULT_TRACKS));
+      if (!UPCOMING.length) UPCOMING = JSON.parse(JSON.stringify(DEFAULT_UPCOMING));
+    }
+
+    function saveData() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ tracks: TRACKS, upcoming: UPCOMING }));
+        return true;
+      } catch(e) { console.warn("Save failed:", e); return false; }
+    }
+
+    function resetData() {
+      localStorage.removeItem(STORAGE_KEY);
+      TRACKS = JSON.parse(JSON.stringify(DEFAULT_TRACKS));
+      UPCOMING = JSON.parse(JSON.stringify(DEFAULT_UPCOMING));
+      renderTrackTabs(); renderTrack(); renderUpcomingBanner();
+      renderAdmin();
+      toast("Reset to defaults");
+    }
+
+    function findCourse(id) {
+      for (const t of TRACKS) {
+        const c = (t.courses || []).find(c => c.id === id);
+        if (c) return { track: t, course: c };
+      }
+      return null;
+    }
+
+    /* =========================================
+       TRACK TABS + CARDS
+       ========================================= */
+    function renderTrackTabs() {
+      const tabs = $('#trackTabs');
+      tabs.innerHTML = TRACKS.map((t, i) => `
+        <button class="track-tab ${i === currentTrack ? 'active' : ''}"
+                onclick="switchTrackById(${i})"
+                style="--tab-color:${t.color}">
+          ${t.label}${t.badge ? ` <span class="track-badge">${t.badge}</span>` : ''}
+        </button>
+      `).join('');
+    }
+
+    function renderSubtrackBar() {
+      const slot = $('#subtrackBarSlot');
+      const track = TRACKS[currentTrack];
+      if (!track.clusters || !track.clusters.length) { slot.innerHTML = ''; return; }
+
+      const counts = {};
+      counts.all = track.courses.length;
+      track.clusters.forEach(c => { if (c.id !== 'all') counts[c.id] = 0; });
+      track.courses.forEach(c => { if (c.cluster && counts[c.cluster] !== undefined) counts[c.cluster]++; });
+
+      const activeCluster = track.clusters.find(c => c.id === currentCluster) || track.clusters[0];
+      const clusterColor = activeCluster.color || track.color;
+
+      slot.innerHTML = `
+        <div class="subtrack-bar" style="--cluster-accent:${clusterColor}">
+          ${track.clusters.map(c => `
+            <button class="subtrack-chip ${c.id === currentCluster ? 'active' : ''}"
+                    onclick="switchCluster('${c.id}')"
+                    style="--cluster-accent:${c.color || track.color}">
+              <span>${c.label}</span>
+              <span class="count">· ${counts[c.id] || 0}</span>
+            </button>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function renderTrack() {
+      const track = TRACKS[currentTrack];
+      $('#trackFaculty').innerHTML = `Faculty: <span class="gold">${track.faculty}</span>`;
+      renderSubtrackBar();
+
+      let courses = track.courses || [];
+      if (track.clusters && currentCluster !== "all") {
+        courses = courses.filter(c => c.cluster === currentCluster);
+      }
+
+      const activeCluster = track.clusters && track.clusters.find(c => c.id === currentCluster);
+      const clusterLabel = (activeCluster && activeCluster.id !== 'all') ? activeCluster.label : '';
+      const cardAccent = (activeCluster && activeCluster.color) || track.color;
+
+      const grid = $('#progGrid');
+      if (!courses.length) {
+        grid.innerHTML = `<p style="color:var(--text-mute); padding: 40px 20px; text-align:center; grid-column:1/-1; font-style:italic;">No programmes in this cluster yet.</p>`;
+        return;
+      }
+
+      grid.innerHTML = courses.map(c => {
+        const courseCluster = track.clusters && c.cluster ? track.clusters.find(cl => cl.id === c.cluster) : null;
+        const courseAccent = (courseCluster && courseCluster.color) || cardAccent;
+        const courseLabel = courseCluster ? courseCluster.label : '';
+        return `
+          <button class="prog-card ${track.bespoke ? 'bespoke' : ''}"
+                  style="--card-accent:${courseAccent}"
+                  onclick="openCourse('${c.id}')">
+            ${courseLabel ? `<div class="prog-cluster-label">${courseLabel}</div>` : ''}
+            <div class="prog-num">${c.num}</div>
+            <h3 class="prog-title">${c.title}</h3>
+            <p class="prog-sub">${c.subtitle}</p>
+            <p class="prog-teaser">${c.teaser}</p>
+            <div class="prog-meta">
+              <span class="prog-tag">${c.duration}</span>
+              <span class="prog-tag neutral">${c.level}</span>
+              <span class="prog-tag neutral">Online · In-Person · In-House</span>
+            </div>
+            <div class="prog-footer">
+              <span class="prog-fee">${c.fee || DEFAULT_FEE}</span>
+              <span class="prog-arrow">View Programme →</span>
+            </div>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function switchTrackById(i) {
+      currentTrack = i;
+      currentCluster = "all";
+      renderTrackTabs();
+      renderTrack();
+      document.getElementById('trackTabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function switchCluster(id) {
+      currentCluster = id;
+      renderTrack();
+    }
+
+    /* =========================================
+       COURSE DETAIL VIEW
+       ========================================= */
+    function openCourse(id) {
+      const result = findCourse(id);
+      if (!result) return;
+      const { track, course } = result;
+      currentCourse = course;
+
+      const courseCluster = (track.clusters && course.cluster) ? track.clusters.find(cl => cl.id === course.cluster) : null;
+      const accent = (courseCluster && courseCluster.color) || track.color;
+
+      const icons = {
+        register: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="12" y1="12" x2="12" y2="18"/></svg>`,
+        online:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+        info:     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>`,
+        pdf:      `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
+        back:     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>`
+      };
+
+      const view = $('#courseDetailView');
+      view.style.setProperty('--cd-accent', accent);
+      view.innerHTML = `
+        <nav class="cd-breadcrumb" aria-label="Breadcrumb">
+          <button class="crumb-link" onclick="closeCourse()">Akademie</button>
+          <span class="crumb-sep">/</span>
+          <button class="crumb-link" onclick="closeCourse(${track.id})">${track.short}</button>
+          ${courseCluster && courseCluster.id !== 'all' ? `
+            <span class="crumb-sep">/</span>
+            <span class="crumb-current" style="color:${courseCluster.color};">${courseCluster.label}</span>
+          ` : ''}
+          <span class="crumb-sep">/</span>
+          <span class="crumb-current">${course.title}</span>
+        </nav>
+
+        <header class="cd-hero">
+          <div class="cd-hero-inner">
+            <div class="cd-track-label">${track.label}${courseCluster && courseCluster.id !== 'all' ? ' · ' + courseCluster.label : ''}</div>
+            <h1 class="cd-title">${course.title}</h1>
+            <p class="cd-subtitle">${course.subtitle}</p>
+          </div>
+        </header>
+
+        <div class="cd-layout">
+          <article class="cd-main">
+            <section class="cd-block">
+              <h2 class="cd-block-h">Programme Synopsis</h2>
+              <p class="cd-block-body">${course.synopsis}</p>
+            </section>
+
+            <section class="cd-block">
+              <h2 class="cd-block-h">Who Should Attend</h2>
+              <p class="cd-block-body">${course.audience}</p>
+            </section>
+
+            <section class="cd-block">
+              <h2 class="cd-block-h">What Makes It Different</h2>
+              <ul class="cd-bullets">
+                <li><strong>German precision methodology.</strong> Structured, repeatable, auditable — every module benchmarked against measurable performance outcomes, not attendance.</li>
+                <li><strong>Professor-led faculty.</strong> Delivered by senior practitioners and scholars with operational and boardroom experience across the Africa-Europe corridor.</li>
+                <li><strong>Flexible delivery.</strong> Online, in-person, or in-house — without degrading rigour. Group quotes available for cohort enrolments.</li>
+                <li><strong>Post-programme embedding.</strong> LEADHABIT™ and Citadel Akademie coaching options convert classroom insight into sustained practice.</li>
+              </ul>
+            </section>
+
+            <section class="cd-block">
+              <h2 class="cd-block-h">Delivery &amp; Faculty</h2>
+              <p class="cd-block-body"><strong>Track Faculty:</strong> ${track.faculty}</p>
+              <p class="cd-block-body"><strong>Delivery Formats:</strong> Online (live professor-led cohort), In-Person (open enrolment at designated venues), or In-House (on-site at your facility, customised to your operating context).</p>
+              <p class="cd-block-body">Every engagement concludes with a performance benchmark and an auditable competency certificate.</p>
+            </section>
+          </article>
+
+          <aside class="cd-side" aria-label="Registration and enquiries">
+            <div class="cd-fee-strip">
+              <div class="cd-fee-eye">Programme Fee</div>
+              <div class="cd-fee-amt">${course.fee || DEFAULT_FEE}</div>
+              <div class="cd-fee-note">Per participant · Group quotes available on request</div>
+            </div>
+            <div class="cd-facts">
+              <div class="cd-fact"><span class="cd-fact-label">Duration</span><span class="cd-fact-value">${course.duration}</span></div>
+              <div class="cd-fact"><span class="cd-fact-label">Level</span><span class="cd-fact-value">${course.level}</span></div>
+              <div class="cd-fact"><span class="cd-fact-label">Training Format</span><span class="cd-fact-value">Online · In-Person · In-House</span></div>
+              <div class="cd-fact"><span class="cd-fact-label">Language</span><span class="cd-fact-value">English</span></div>
+              <div class="cd-fact"><span class="cd-fact-label">Certificate</span><span class="cd-fact-value">Yes · Performance-benchmarked</span></div>
+            </div>
+            <div class="cd-actions">
+              <button class="cd-btn cd-btn-primary" onclick="courseAction('register','${course.id}')">${icons.register} Register Now</button>
+              <button class="cd-btn cd-btn-outline" onclick="courseAction('online','${course.id}')">${icons.online} Request Online Sessions</button>
+              <button class="cd-btn cd-btn-outline" onclick="courseAction('info','${course.id}')">${icons.info} Request For Information</button>
+              <button class="cd-btn cd-btn-outline" onclick="courseAction('pdf','${course.id}')">${icons.pdf} Download PDF</button>
+            </div>
+          </aside>
+        </div>
+
+        <div class="cd-back-row">
+          <button class="cd-back-btn" onclick="closeCourse()">${icons.back} Back to Programme Catalogue</button>
+        </div>
+      `;
+      $('#akademieMain').style.display = 'none';
+      view.classList.add('open');
+      view.setAttribute('aria-hidden', 'false');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    function closeCourse(trackId) {
+      const view = $('#courseDetailView');
+      view.classList.remove('open');
+      view.setAttribute('aria-hidden', 'true');
+      view.innerHTML = '';
+      $('#akademieMain').style.display = '';
+      if (typeof trackId === 'number') switchTrackById(trackId);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    function courseAction(type, courseId) {
+      const map = {
+        register: 'registration',
+        online:   'online / in-house delivery',
+        info:     'additional information',
+        pdf:      'PDF brochure download'
+      };
+      const result = findCourse(courseId);
+      const title = result ? result.course.title : '';
+      alert(`Thank you — your request for ${map[type]} on "${title}" has been captured.\n\nOur admissions team will reach out within one business day.\n\n(Integration point: wire this button to your CRM / email / PDF endpoint.)`);
+    }
+
+    /* =========================================
+       UPCOMING PROGRAMMES
+       ========================================= */
+    function visibleUpcoming() {
+      const today = new Date().toISOString().slice(0,10);
+      return UPCOMING.filter(e => !e.expires || e.expires >= today);
+    }
+
+    function renderUpcomingBanner() {
+      const slot = $('#upcomingBannerSlot');
+      const active = visibleUpcoming();
+      if (!active.length) { slot.innerHTML = ''; return; }
+
+      const dismissed = sessionStorage.getItem('up_dismissed_' + active[0].id) === '1';
+      if (dismissed) { slot.innerHTML = ''; return; }
+
+      const e = active[0];
+      slot.innerHTML = `
+        <div class="upcoming-banner" role="region" aria-label="Upcoming programme announcement">
+          <div class="upcoming-inner">
+            <span class="upcoming-pulse">Upcoming</span>
+            <div style="display:flex; flex-direction:column; gap:4px; flex:1; min-width:200px;">
+              <span class="upcoming-title">${e.title}</span>
+              <span class="upcoming-meta">${e.dates} · ${e.location} · ${e.partners}</span>
+            </div>
+            <button class="upcoming-cta" onclick="openUpcoming('${e.id}')">View Details &amp; Secure a Place →</button>
+            <button class="upcoming-close" onclick="dismissUpcoming('${e.id}')" aria-label="Dismiss">×</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function dismissUpcoming(id) {
+      sessionStorage.setItem('up_dismissed_' + id, '1');
+      renderUpcomingBanner();
+    }
+
+    function openUpcoming(id) {
+      const e = UPCOMING.find(x => x.id === id);
+      if (!e) return;
+      const modal = $('#upModal');
+      modal.innerHTML = `
+        <div class="up-modal-card" onclick="event.stopPropagation()">
+          <div class="up-modal-hero">
+            <button class="up-close-btn" onclick="closeUpcoming()" aria-label="Close">×</button>
+            <div class="up-partners">${e.partners}</div>
+            <h2 class="up-modal-title">${e.title}</h2>
+            <p class="up-modal-sub">${e.subtitle}</p>
+          </div>
+          <div class="up-modal-body">
+            ${e.stats ? `
+              <div class="up-stats-row">
+                ${e.stats.map(s => `<div><div class="up-stat-num">${s.n}</div><div class="up-stat-label">${s.l}</div></div>`).join('')}
+              </div>` : ''}
+            <p><strong>${e.dates}</strong> · ${e.location}</p>
+            ${e.sectors ? `<p><strong>Sector Focus:</strong> ${e.sectors.join(' · ')}</p>` : ''}
+            <p>${e.body}</p>
+            ${e.facilitator ? `
+              <div class="up-facilitator">
+                <div class="up-fac-label">${e.facilitator.label || 'Facilitator'}</div>
+                <div class="up-fac-name">${e.facilitator.name}</div>
+                <p class="up-fac-bio">${e.facilitator.bio}</p>
+              </div>` : ''}
+            <div class="up-modal-ctas">
+              <button class="btn-primary" onclick="courseAction('register','${e.id}')">Secure Your Place</button>
+              <button class="btn-outline" onclick="courseAction('info','${e.id}')">Request More Information</button>
+              <button class="btn-outline" onclick="courseAction('pdf','${e.id}')">Download Flyer</button>
+            </div>
+          </div>
+        </div>
+      `;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      modal.onclick = (ev) => { if (ev.target === modal) closeUpcoming(); };
+      document.body.classList.add('locked');
+    }
+
+    function closeUpcoming() {
+      const modal = $('#upModal');
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('locked');
+    }
+
+    /* =========================================
+       ADMIN PANEL
+       ========================================= */
+    let adminTab = 'courses'; // 'courses' | 'tracks' | 'upcoming'
+    let editingCourse = null; // { trackId, courseId } or null for new
+    let editingTrack = null;
+    let editingEvent = null;
+
+    function isAdminUnlocked() {
+      return sessionStorage.getItem(ADMIN_FLAG) === '1';
+    }
+
+    function unlockAdmin() {
+      sessionStorage.setItem(ADMIN_FLAG, '1');
+      $('#adminToggle').classList.add('unlocked');
+    }
+
+    function lockAdmin() {
+      sessionStorage.removeItem(ADMIN_FLAG);
+      $('#adminToggle').classList.remove('unlocked');
+      closeAdmin();
+    }
+
+    function toggleAdmin() {
+      const drawer = $('#adminDrawer');
+      if (drawer.classList.contains('open')) closeAdmin();
+      else openAdmin();
+    }
+
+    function openAdmin() {
+      const drawer = $('#adminDrawer');
+      if (!isAdminUnlocked()) {
+        drawer.innerHTML = `
+          <div class="admin-head">
+            <div class="admin-title"><span>⚙</span> Admin</div>
+            <button class="admin-close" onclick="closeAdmin()" aria-label="Close">×</button>
+          </div>
+          <div class="admin-login">
+            <h3>Admin Access</h3>
+            <p>Enter the access code to manage courses, tracks, and upcoming programmes.</p>
+            <input type="password" id="admin-pass" placeholder="Access code" onkeypress="if(event.key==='Enter') tryLogin()" autofocus />
+            <div><button class="admin-btn primary" style="margin-top:14px;" onclick="tryLogin()">Unlock</button></div>
+            <div class="admin-login-note">Default code: citadel2026 · Replace with real auth in production</div>
+          </div>
+        `;
+        drawer.classList.add('open');
+        drawer.setAttribute('aria-hidden', 'false');
+        setTimeout(() => { const p = $('#admin-pass'); if (p) p.focus(); }, 100);
+        return;
+      }
+      renderAdmin();
+      drawer.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
+    }
+
+    function tryLogin() {
+      const val = ($('#admin-pass') || {}).value || '';
+      if (val === ADMIN_PASS) {
+        unlockAdmin();
+        renderAdmin();
+        toast('Admin unlocked');
+      } else {
+        toast('Incorrect code');
+      }
+    }
+
+    function closeAdmin() {
+      const drawer = $('#adminDrawer');
+      drawer.classList.remove('open');
+      drawer.setAttribute('aria-hidden', 'true');
+      editingCourse = null; editingTrack = null; editingEvent = null;
+    }
+
+    function renderAdmin() {
+      const drawer = $('#adminDrawer');
+      if (!isAdminUnlocked()) return openAdmin();
+
+      drawer.innerHTML = `
+        <div class="admin-head">
+          <div class="admin-title"><span>⚙</span> Akademie Admin</div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <button class="admin-btn secondary" onclick="exportJSON()" style="padding:8px 12px; font-size:11px;">Export</button>
+            <button class="admin-btn secondary" onclick="importJSON()" style="padding:8px 12px; font-size:11px;">Import</button>
+            <button class="admin-btn danger" onclick="if(confirm('Reset all courses, tracks, and events to defaults?')) resetData()" style="padding:8px 12px; font-size:11px;">Reset</button>
+            <button class="admin-close" onclick="closeAdmin()" aria-label="Close">×</button>
+          </div>
+        </div>
+        <div class="admin-tabs">
+          <button class="admin-tab ${adminTab==='courses'?'active':''}" onclick="setAdminTab('courses')">Courses</button>
+          <button class="admin-tab ${adminTab==='tracks'?'active':''}" onclick="setAdminTab('tracks')">Tracks</button>
+          <button class="admin-tab ${adminTab==='upcoming'?'active':''}" onclick="setAdminTab('upcoming')">Upcoming</button>
+          <div style="flex:1"></div>
+          <button class="admin-tab" onclick="lockAdmin()" style="color:#E06A5E;">Lock</button>
+        </div>
+        <div class="admin-body" id="admin-body"></div>
+      `;
+
+      renderAdminBody();
+    }
+
+    function setAdminTab(t) { adminTab = t; editingCourse = null; editingTrack = null; editingEvent = null; renderAdminBody(); renderAdmin(); }
+
+    function renderAdminBody() {
+      const body = $('#admin-body');
+      if (!body) return;
+      if (adminTab === 'courses') renderAdminCourses(body);
+      else if (adminTab === 'tracks') renderAdminTracks(body);
+      else renderAdminUpcoming(body);
+    }
+
+    function renderAdminCourses(body) {
+      if (editingCourse) { renderCourseEditor(body); return; }
+
+      body.innerHTML = `
+        <p class="admin-section-h">Select a track</p>
+        <select id="admin-track-sel" onchange="renderAdminBody()" style="width:100%; padding:10px 12px; background:var(--surface); border:1px solid var(--border-soft); border-radius:4px; color:var(--text); margin-bottom:18px;">
+          ${TRACKS.map((t,i) => `<option value="${i}">${t.label}</option>`).join('')}
+        </select>
+        <div id="admin-track-courses"></div>
+      `;
+      const sel = $('#admin-track-sel');
+      // Remember last selection
+      if (adminTab === 'courses' && typeof window._adminSelectedTrack === 'number') sel.value = window._adminSelectedTrack;
+      sel.onchange = () => { window._adminSelectedTrack = parseInt(sel.value); renderAdminCoursesList(); };
+      renderAdminCoursesList();
+    }
+
+    function renderAdminCoursesList() {
+      const tIdx = parseInt(($('#admin-track-sel')||{}).value || '0');
+      window._adminSelectedTrack = tIdx;
+      const track = TRACKS[tIdx];
+      const container = $('#admin-track-courses');
+      if (!container) return;
+
+      container.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <p class="admin-section-h" style="margin:0;">${track.courses.length} Course${track.courses.length!==1?'s':''}</p>
+          <button class="admin-btn primary" onclick="editingCourse = { trackId: ${tIdx}, courseId: null }; renderAdminBody();">+ Add Course</button>
+        </div>
+        <div class="admin-course-list">
+          ${track.courses.length ? track.courses.map((c, i) => `
+            <div class="admin-course-row">
+              <div class="admin-course-info">
+                <div class="admin-course-title">${c.title}</div>
+                <div class="admin-course-meta">${c.num} · ${c.duration} · ${c.level}${c.cluster && track.clusters ? ' · ' + (track.clusters.find(cl=>cl.id===c.cluster)||{label:''}).label : ''}</div>
+              </div>
+              <div class="admin-course-actions">
+                <button class="admin-icon-btn" onclick="moveCourse(${tIdx}, ${i}, -1)" title="Move up" ${i===0?'disabled style="opacity:0.3;"':''}>↑</button>
+                <button class="admin-icon-btn" onclick="moveCourse(${tIdx}, ${i}, 1)" title="Move down" ${i===track.courses.length-1?'disabled style="opacity:0.3;"':''}>↓</button>
+                <button class="admin-icon-btn" onclick="editingCourse = { trackId: ${tIdx}, courseId: '${c.id}' }; renderAdminBody();" title="Edit">✎</button>
+                <button class="admin-icon-btn danger" onclick="deleteCourse(${tIdx}, '${c.id}')" title="Delete">🗑</button>
+              </div>
+            </div>
+          `).join('') : '<div class="admin-empty">No courses. Add one to start.</div>'}
+        </div>
+      `;
+    }
+
+    function renderCourseEditor(body) {
+      const track = TRACKS[editingCourse.trackId];
+      const existing = editingCourse.courseId ? track.courses.find(c => c.id === editingCourse.courseId) : null;
+      const c = existing || { id: '', num: '', title: '', subtitle: '', duration: '', level: '', teaser: '', synopsis: '', audience: '', fee: DEFAULT_FEE, cluster: '' };
+
+      const clusterOptions = track.clusters ? track.clusters.filter(cl => cl.id !== 'all').map(cl => `<option value="${cl.id}" ${c.cluster===cl.id?'selected':''}>${cl.label}</option>`).join('') : '';
+
+      body.innerHTML = `
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+          <button class="admin-btn secondary" onclick="editingCourse = null; renderAdminBody();" style="padding:6px 12px;">← Back</button>
+          <p class="admin-section-h" style="margin:0;">${existing ? 'Edit' : 'New'} course · ${track.label}</p>
+        </div>
+
+        <div class="admin-field-row">
+          <div class="admin-field">
+            <label>Course ID (slug)</label>
+            <input type="text" id="f-id" value="${c.id}" placeholder="e.g. leadership-leap" ${existing?'readonly style="opacity:0.6;"':''} />
+          </div>
+          <div class="admin-field">
+            <label>Number / Code</label>
+            <input type="text" id="f-num" value="${c.num}" placeholder="e.g. 01 Leadership Journey" />
+          </div>
+        </div>
+
+        <div class="admin-field">
+          <label>Title</label>
+          <input type="text" id="f-title" value="${(c.title||'').replace(/"/g,'&quot;')}" />
+        </div>
+        <div class="admin-field">
+          <label>Subtitle</label>
+          <input type="text" id="f-subtitle" value="${(c.subtitle||'').replace(/"/g,'&quot;')}" />
+        </div>
+
+        <div class="admin-field-row">
+          <div class="admin-field">
+            <label>Duration</label>
+            <input type="text" id="f-duration" value="${c.duration||''}" placeholder="e.g. 5 Days" />
+          </div>
+          <div class="admin-field">
+            <label>Level</label>
+            <input type="text" id="f-level" value="${c.level||''}" placeholder="e.g. Advanced" />
+          </div>
+        </div>
+
+        <div class="admin-field-row">
+          <div class="admin-field">
+            <label>Fee</label>
+            <input type="text" id="f-fee" value="${c.fee||DEFAULT_FEE}" placeholder="${DEFAULT_FEE}" />
+          </div>
+          ${track.clusters ? `
+          <div class="admin-field">
+            <label>Cluster / Sub-track</label>
+            <select id="f-cluster">
+              <option value="">— None —</option>
+              ${clusterOptions}
+            </select>
+          </div>` : `<div></div>`}
+        </div>
+
+        <div class="admin-field">
+          <label>Teaser (~30 words, for the card)</label>
+          <textarea id="f-teaser" rows="3">${c.teaser||''}</textarea>
+        </div>
+
+        <div class="admin-field">
+          <label>Synopsis (two sentences, for the detail page)</label>
+          <textarea id="f-synopsis" rows="6">${c.synopsis||''}</textarea>
+        </div>
+
+        <div class="admin-field">
+          <label>Audience</label>
+          <textarea id="f-audience" rows="3">${c.audience||''}</textarea>
+        </div>
+
+        <div class="admin-btn-row">
+          <button class="admin-btn primary" onclick="saveCourse()">${existing ? 'Save Changes' : 'Create Course'}</button>
+          <button class="admin-btn secondary" onclick="editingCourse = null; renderAdminBody();">Cancel</button>
+        </div>
+      `;
+    }
+
+    function saveCourse() {
+      const track = TRACKS[editingCourse.trackId];
+      const existing = editingCourse.courseId ? track.courses.find(c => c.id === editingCourse.courseId) : null;
+
+      const id = ($('#f-id').value || '').trim();
+      if (!id) { toast('ID is required'); return; }
+      const title = ($('#f-title').value || '').trim();
+      if (!title) { toast('Title is required'); return; }
+      if (!existing && track.courses.some(c => c.id === id)) { toast('ID must be unique'); return; }
+
+      const payload = {
+        id,
+        num: ($('#f-num').value || '').trim(),
+        title,
+        subtitle: ($('#f-subtitle').value || '').trim(),
+        duration: ($('#f-duration').value || '').trim() || '—',
+        level: ($('#f-level').value || '').trim() || '—',
+        fee: ($('#f-fee').value || '').trim() || DEFAULT_FEE,
+        teaser: ($('#f-teaser').value || '').trim(),
+        synopsis: ($('#f-synopsis').value || '').trim(),
+        audience: ($('#f-audience').value || '').trim()
+      };
+      const clusterField = $('#f-cluster');
+      if (clusterField) payload.cluster = clusterField.value || undefined;
+
+      if (existing) {
+        Object.assign(existing, payload);
+        toast('Course updated');
+      } else {
+        track.courses.push(payload);
+        toast('Course created');
+      }
+      saveData();
+      editingCourse = null;
+      renderAdminBody();
+      renderTrack();
+    }
+
+    function deleteCourse(trackId, courseId) {
+      if (!confirm('Delete this course permanently?')) return;
+      const track = TRACKS[trackId];
+      track.courses = track.courses.filter(c => c.id !== courseId);
+      saveData();
+      renderAdminBody();
+      renderTrack();
+      toast('Course deleted');
+    }
+
+    function moveCourse(trackId, i, dir) {
+      const track = TRACKS[trackId];
+      const j = i + dir;
+      if (j < 0 || j >= track.courses.length) return;
+      const [moved] = track.courses.splice(i, 1);
+      track.courses.splice(j, 0, moved);
+      saveData();
+      renderAdminBody();
+      renderTrack();
+    }
+
+    /* ——— TRACKS TAB ——— */
+    function renderAdminTracks(body) {
+      if (editingTrack !== null) { renderTrackEditor(body); return; }
+      body.innerHTML = `
+        <p class="admin-section-h">${TRACKS.length} Tracks</p>
+        <div class="admin-course-list">
+          ${TRACKS.map((t, i) => `
+            <div class="admin-course-row" style="border-left: 3px solid ${t.color};">
+              <div class="admin-course-info">
+                <div class="admin-course-title">${t.label}</div>
+                <div class="admin-course-meta">${t.courses.length} course${t.courses.length!==1?'s':''} · ${t.faculty}</div>
+              </div>
+              <div class="admin-course-actions">
+                <button class="admin-icon-btn" onclick="editingTrack = ${i}; renderAdminBody();" title="Edit">✎</button>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        <p style="margin-top:18px; font-size:12px; color:var(--text-dim); font-style:italic;">Tip: edit a track's label, faculty line, or colour. To add a fully new track, use Export / Import with a modified JSON.</p>
+      `;
+    }
+
+    function renderTrackEditor(body) {
+      const t = TRACKS[editingTrack];
+      body.innerHTML = `
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+          <button class="admin-btn secondary" onclick="editingTrack = null; renderAdminBody();" style="padding:6px 12px;">← Back</button>
+          <p class="admin-section-h" style="margin:0;">Edit track</p>
+        </div>
+        <div class="admin-field"><label>Label</label><input type="text" id="t-label" value="${(t.label||'').replace(/"/g,'&quot;')}" /></div>
+        <div class="admin-field"><label>Short Label (breadcrumb)</label><input type="text" id="t-short" value="${(t.short||'').replace(/"/g,'&quot;')}" /></div>
+        <div class="admin-field"><label>Faculty Line</label><textarea id="t-faculty" rows="3">${t.faculty||''}</textarea></div>
+        <div class="admin-field-row">
+          <div class="admin-field"><label>Colour (hex)</label><input type="text" id="t-color" value="${t.color||'#C8960C'}" /></div>
+          <div class="admin-field"><label>Badge (optional)</label><input type="text" id="t-badge" value="${t.badge||''}" placeholder="e.g. NEW" /></div>
+        </div>
+        <div class="admin-btn-row">
+          <button class="admin-btn primary" onclick="saveTrack()">Save Changes</button>
+          <button class="admin-btn secondary" onclick="editingTrack = null; renderAdminBody();">Cancel</button>
+        </div>
+      `;
+    }
+
+    function saveTrack() {
+      const t = TRACKS[editingTrack];
+      t.label   = ($('#t-label').value || '').trim() || t.label;
+      t.short   = ($('#t-short').value || '').trim() || t.short;
+      t.faculty = ($('#t-faculty').value || '').trim() || t.faculty;
+      t.color   = ($('#t-color').value || '').trim() || t.color;
+      const badge = ($('#t-badge').value || '').trim();
+      if (badge) t.badge = badge; else delete t.badge;
+      saveData();
+      editingTrack = null;
+      renderAdminBody();
+      renderTrackTabs(); renderTrack();
+      toast('Track updated');
+    }
+
+    /* ——— UPCOMING TAB ——— */
+    function renderAdminUpcoming(body) {
+      if (editingEvent !== null) { renderEventEditor(body); return; }
+      const today = new Date().toISOString().slice(0,10);
+      body.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <p class="admin-section-h" style="margin:0;">${UPCOMING.length} Event${UPCOMING.length!==1?'s':''}</p>
+          <button class="admin-btn primary" onclick="editingEvent = 'new'; renderAdminBody();">+ Add Event</button>
+        </div>
+        <div class="admin-course-list">
+          ${UPCOMING.length ? UPCOMING.map((e, i) => {
+            const expired = e.expires && e.expires < today;
+            return `
+              <div class="admin-course-row" style="opacity:${expired?'0.55':'1'};">
+                <div class="admin-course-info">
+                  <div class="admin-course-title">${e.title}</div>
+                  <div class="admin-course-meta">${e.dates} · ${e.location} · ${expired ? '⛔ Expired ' + e.expires : '✓ Active until ' + (e.expires || '—')}</div>
+                </div>
+                <div class="admin-course-actions">
+                  <button class="admin-icon-btn" onclick="editingEvent = ${i}; renderAdminBody();" title="Edit">✎</button>
+                  <button class="admin-icon-btn danger" onclick="deleteEvent(${i})" title="Delete">🗑</button>
+                </div>
+              </div>
+            `;
+          }).join('') : '<div class="admin-empty">No upcoming events.</div>'}
+        </div>
+      `;
+    }
+
+    function renderEventEditor(body) {
+      const isNew = editingEvent === 'new';
+      const e = isNew ? { id: '', title: '', subtitle: '', partners: '', dates: '', location: '', expires: '', sectors: [], stats: [], body: '', facilitator: {} } : UPCOMING[editingEvent];
+      body.innerHTML = `
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+          <button class="admin-btn secondary" onclick="editingEvent = null; renderAdminBody();" style="padding:6px 12px;">← Back</button>
+          <p class="admin-section-h" style="margin:0;">${isNew ? 'New event' : 'Edit event'}</p>
+        </div>
+        <div class="admin-field-row">
+          <div class="admin-field"><label>Event ID (slug)</label><input type="text" id="e-id" value="${e.id||''}" ${isNew?'':'readonly style="opacity:0.6;"'} /></div>
+          <div class="admin-field"><label>Auto-expiry date (YYYY-MM-DD)</label><input type="date" id="e-expires" value="${e.expires||''}" /></div>
+        </div>
+        <div class="admin-field"><label>Title</label><input type="text" id="e-title" value="${(e.title||'').replace(/"/g,'&quot;')}" /></div>
+        <div class="admin-field"><label>Subtitle</label><input type="text" id="e-subtitle" value="${(e.subtitle||'').replace(/"/g,'&quot;')}" /></div>
+        <div class="admin-field"><label>Partners (pipe or dot separated)</label><input type="text" id="e-partners" value="${(e.partners||'').replace(/"/g,'&quot;')}" /></div>
+        <div class="admin-field-row">
+          <div class="admin-field"><label>Dates</label><input type="text" id="e-dates" value="${(e.dates||'').replace(/"/g,'&quot;')}" /></div>
+          <div class="admin-field"><label>Location</label><input type="text" id="e-location" value="${(e.location||'').replace(/"/g,'&quot;')}" /></div>
+        </div>
+        <div class="admin-field"><label>Sectors (comma-separated)</label><input type="text" id="e-sectors" value="${(e.sectors||[]).join(', ')}" /></div>
+        <div class="admin-field"><label>Stats (n|label, one per line)</label><textarea id="e-stats" rows="4" placeholder="3.5|Intensive Days">${(e.stats||[]).map(s => s.n+'|'+s.l).join('\n')}</textarea></div>
+        <div class="admin-field"><label>Body copy</label><textarea id="e-body" rows="6">${e.body||''}</textarea></div>
+        <p class="admin-section-h">Facilitator (optional)</p>
+        <div class="admin-field"><label>Name</label><input type="text" id="e-fac-name" value="${((e.facilitator||{}).name||'').replace(/"/g,'&quot;')}" /></div>
+        <div class="admin-field"><label>Bio</label><textarea id="e-fac-bio" rows="4">${((e.facilitator||{}).bio)||''}</textarea></div>
+        <div class="admin-btn-row">
+          <button class="admin-btn primary" onclick="saveEvent()">${isNew ? 'Create Event' : 'Save Changes'}</button>
+          <button class="admin-btn secondary" onclick="editingEvent = null; renderAdminBody();">Cancel</button>
+        </div>
+      `;
+    }
+
+    function saveEvent() {
+      const isNew = editingEvent === 'new';
+      const id = ($('#e-id').value || '').trim();
+      if (!id) { toast('Event ID required'); return; }
+
+      const statsText = ($('#e-stats').value || '').trim();
+      const stats = statsText ? statsText.split('\n').map(l => l.trim()).filter(Boolean).map(l => {
+        const [n, ...rest] = l.split('|');
+        return { n: (n||'').trim(), l: rest.join('|').trim() };
+      }).filter(s => s.n && s.l) : [];
+
+      const sectorsText = ($('#e-sectors').value || '').trim();
+      const sectors = sectorsText ? sectorsText.split(',').map(s => s.trim()).filter(Boolean) : [];
+
+      const facName = ($('#e-fac-name').value || '').trim();
+      const facBio = ($('#e-fac-bio').value || '').trim();
+
+      const payload = {
+        id,
+        title: ($('#e-title').value || '').trim(),
+        subtitle: ($('#e-subtitle').value || '').trim(),
+        partners: ($('#e-partners').value || '').trim(),
+        dates: ($('#e-dates').value || '').trim(),
+        location: ($('#e-location').value || '').trim(),
+        expires: ($('#e-expires').value || '').trim(),
+        sectors, stats,
+        body: ($('#e-body').value || '').trim(),
+        facilitator: facName ? { label: 'Lead Facilitator', name: facName, bio: facBio } : undefined
+      };
+
+      if (isNew) {
+        if (UPCOMING.some(x => x.id === id)) { toast('ID must be unique'); return; }
+        UPCOMING.push(payload);
+        toast('Event created');
+      } else {
+        UPCOMING[editingEvent] = payload;
+        toast('Event updated');
+      }
+      saveData();
+      editingEvent = null;
+      renderAdminBody();
+      renderUpcomingBanner();
+    }
+
+    function deleteEvent(i) {
+      if (!confirm('Delete this event?')) return;
+      UPCOMING.splice(i, 1);
+      saveData();
+      renderAdminBody();
+      renderUpcomingBanner();
+      toast('Event deleted');
+    }
+
+    /* ——— EXPORT / IMPORT ——— */
+    function exportJSON() {
+      const payload = { tracks: TRACKS, upcoming: UPCOMING, exportedAt: new Date().toISOString() };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = `citadel-akademie-data-${new Date().toISOString().slice(0,10)}.json`;
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      toast('Exported');
+    }
+
+    function importJSON() {
+      const input = document.createElement('input');
+      input.type = 'file'; input.accept = 'application/json';
+      input.onchange = (ev) => {
+        const f = ev.target.files[0]; if (!f) return;
+        const r = new FileReader();
+        r.onload = (e) => {
+          try {
+            const data = JSON.parse(e.target.result);
+            if (Array.isArray(data.tracks)) TRACKS = data.tracks;
+            if (Array.isArray(data.upcoming)) UPCOMING = data.upcoming;
+            saveData();
+            renderTrackTabs(); renderTrack(); renderUpcomingBanner(); renderAdminBody();
+            toast('Imported');
+          } catch(err) { toast('Import failed — invalid JSON'); }
+        };
+        r.readAsText(f);
+      };
+      input.click();
+    }
+
+    function toast(msg) {
+      const el = $('#adminToast');
+      if (!el) return;
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(window._toastT);
+      window._toastT = setTimeout(() => el.classList.remove('show'), 2200);
+    }
+
+    /* =========================================
+       NAVIGATION
+       ========================================= */
+    function goTo(page) {
+      const pages = {
+        home: 'index.html',
+        akademie: 'akademie.html',
+        geotech: 'geotech.html',
+        faculty: 'faculty.html',
+        insights: 'intelligence.html',
+        contact: 'contact.html'
+      };
+      if (page === 'akademie') {
+        closeCourse();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (pages[page]) {
+        window.location.href = pages[page];
+      }
+      const mob = $('#mobMenu'); if (mob) mob.classList.remove('open');
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const cur = html.getAttribute('data-theme');
+      const next = cur === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      $('#themeBtn').textContent = next === 'dark' ? '☀' : '☾';
+      try { localStorage.setItem('citadel_theme', next); } catch(e) {}
+    }
+
+    function toggleMob() { $('#mobMenu').classList.toggle('open'); }
+
+    /* =========================================
+       INIT
+       ========================================= */
+    document.addEventListener('DOMContentLoaded', () => {
+      // Theme restore
+      try {
+        const saved = localStorage.getItem('citadel_theme');
+        if (saved) {
+          document.documentElement.setAttribute('data-theme', saved);
+          $('#themeBtn').textContent = saved === 'dark' ? '☀' : '☾';
+        }
+      } catch(e) {}
+
+      loadData();
+      renderTrackTabs();
+      renderTrack();
+      renderUpcomingBanner();
+
+      if (isAdminUnlocked()) $('#adminToggle').classList.add('unlocked');
+      if (window.location.hash === '#admin') { unlockAdmin(); openAdmin(); }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          if ($('#upModal').classList.contains('open')) closeUpcoming();
+          else if ($('#adminDrawer').classList.contains('open')) closeAdmin();
+          else if ($('#courseDetailView').classList.contains('open')) closeCourse();
+        }
+        // Ctrl+Shift+A → admin
+        if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+          e.preventDefault();
+          if (!isAdminUnlocked()) openAdmin();
+          else toggleAdmin();
+        }
+      });
+    });
+    function courseAction(type, id) {
+        if (type === 'pdf') {
+            const url = `Flyers_SOE Governance (1).pdf`;
+
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `flyer_${id}.pdf`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }
+    </script>
+</body>
+</html>

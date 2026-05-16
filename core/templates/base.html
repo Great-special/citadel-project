@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Citadel Exzellenz Group — The Meridian Standard</title>
+    <meta name="description" content="The Meridian Standard — the discipline of operating between Africa and Europe in earth sciences, geospatial intelligence, and leadership. Held by a faculty, not a founder.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z' fill='%230C1E3C'/%3E%3Ctext x='35' y='65' font-family='sans-serif' font-size='48' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='central'%3EC%3C/text%3E%3Ctext x='68' y='65' font-family='sans-serif' font-size='38' font-weight='700' fill='%23C8960C' text-anchor='middle' dominant-baseline='central'%3EX%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    {% block css %}
+    
+    {% endblock css %}
+</head>
+<body>
+    <!-- ═══════════════════════════════════════
+         NAVIGATION
+         ═══════════════════════════════════════ -->
+    <nav class="nav" id="mainNav">
+        <div class="nav-inner">
+            <button class="nav-logo" onclick="window.location.href='{% url 'index' %}'">
+                <svg width="39" height="44" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#fff"/><text x="36" y="65" font-family="Outfit,sans-serif" font-size="60" font-weight="900" fill="#0C1E3C" text-anchor="middle" dominant-baseline="central">C </text><text x="73" y="65" font-family="Outfit,sans-serif" font-size="50" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg>
+                <div class="nav-brand">Citadel <span class="nav-brand-accent">Exzellenz</span></div>
+            </button>
+            <div class="nav-links">
+                <button class="nav-link" onclick="window.location.href='{% url 'index' %}'">Group</button>
+                <button class="nav-link active" onclick="window.location.href='{% url 'akademie' %}'">Akademie</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'geotech' %}'">GeoTech</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'faculty' %}'">Faculty</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'insights' %}'">Intelligence</button>
+                <button class="nav-cta-btn" onclick="window.location.href='{% url 'contact' %}'">Request a Consultation</button>
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" id="themeBtn">☀</button>
+            </div>
+            <button class="hamburger" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+        <div class="mob-menu" id="mobMenu">
+            <button class="nav-link" onclick="window.location.href='{% url 'index' %}'">Group</button>
+                <button class="nav-link active" onclick="window.location.href='{% url 'akademie' %}'">Akademie</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'geotech' %}'">GeoTech</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'faculty' %}'">Faculty</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'insights' %}'">Intelligence</button>
+            <button class="mob-link" onclick="window.location.href='{% url 'contact' %}'">Contact</button>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock content %}
+
+        <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <svg width="26" height="31" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#fff"/><text x="35" y="65" font-family="Outfit,sans-serif" font-size="48" font-weight="800" fill="#0C1E3C" text-anchor="middle" dominant-baseline="central">C</text><text x="68" y="65" font-family="Outfit,sans-serif" font-size="38" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg>
+                        <span>Citadel Exzellenz Group</span>
+                    </div>
+                    <p class="footer-tagline">Intelligence that executes.</p>
+                    <p class="footer-legal">Citadel Exzellenz · HRB 22474, Münster<br>USt-IdNr.: DE453937721</p>
+                    <p class="footer-legal">info@citadelexzellenz.com</p>
+                </div>
+                <div>
+                    <h5>Akademie</h5>
+                    <button onclick="window.location.href='{% url 'akademie' %}'">Leadership Journey</button>
+                    <button onclick="window.location.href='{% url 'akademie' %}'">Executive Coaching</button>
+                    <button onclick="window.location.href='{% url 'akademie' %}'">Geospatial &amp; Data</button>
+                    <button onclick="window.location.href='{% url 'akademie' %}'">Oil &amp; Gas Technical</button>
+                    <button onclick="window.location.href='{% url 'akademie' %}'">Bespoke / In-House</button>
+                </div>
+                <div>
+                    <h5>GeoTech</h5>
+                    <button onclick="window.location.href='{% url 'geotech' %}'">Citadel PROS</button>
+                    <button onclick="window.location.href='{% url 'geotech' %}'">Citadel GIM</button>
+                    <button onclick="window.location.href='{% url 'geotech' %}'">Citadel uDMS</button>
+                </div>
+                <div>
+                    <h5>Group</h5>
+                    <button onclick="window.location.href='{% url 'faculty' %}'">Faculty Network</button>
+                    <button onclick="window.location.href='{% url 'insights' %}'">Intelligence</button>
+                    <button onclick="window.location.href='{% url 'contact' %}'">Contact</button>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Citadel Exzellenz Group. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="imprint.html">Imprint</a>
+                </div>
+                <p>The Meridian Standard · citadelexzellenz.com</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="{% static 'js/script.js' %}"></script>
+    {% block script %}{% endblock script %}
+
+</body>
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Privacy Policy — Citadel Exzellenz Group</title>
+    <meta name="description" content="Privacy Policy of Citadel Exzellenz Group.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z' fill='%230C1E3C'/%3E%3Ctext x='35' y='65' font-family='sans-serif' font-size='48' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='central'%3EC%3C/text%3E%3Ctext x='68' y='65' font-family='sans-serif' font-size='38' font-weight='700' fill='%23C8960C' text-anchor='middle' dominant-baseline='central'%3EX%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ═══════════════════════════════════════
+           CSS VARIABLES & THEME
+           ═══════════════════════════════════════ */
+        :root {
+            --gold: #C8960C;
+            --gold-light: #D9A520;
+            --teal: #01696f;
+            --navy: #0C1E3C;
+            --navy-deep: #060E1C;
+            --akad-blue: #185FA5;
+            --geo-teal: #006470;
+            --accent-cyan: #00a8b5;
+            --radius-md: 20px;
+            --radius-sm: 12px;
+            --transition-smooth: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        [data-theme="dark"] {
+            --bg: #0C1E3C;
+            --bg2: #0F2440;
+            --surface: #132B4A;
+            --text: #E8E6E0;
+            --muted: #8A9BB5;
+            --faint: #506070;
+            --border: rgba(200, 150, 12, 0.15);
+            --border-soft: rgba(200, 150, 12, 0.1);
+            --text-mute: #9aabc9;
+        }
+
+        [data-theme="light"] {
+            --bg: #F5F3EE;
+            --bg2: #EDEAE3;
+            --surface: #FDFCFA;
+            --text: #1E1C18;
+            --muted: #6B6860;
+            --faint: #A8A69F;
+            --border: #D8D5CC;
+            --border-soft: #e0ddd4;
+            --text-mute: #5c5a52;
+        }
+
+        /* ═══════════════════════════════════════
+           RESET & BASE
+           ═══════════════════════════════════════ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'Outfit', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            font-size: 18px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+       
+        .theme-btn, .lang-btn {
+            margin-left: 8px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(200,150,12,0.12);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .lang-btn {
+            width: auto;
+            border-radius: 40px;
+            padding: 0 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        .lang-btn.active {
+            background: var(--gold);
+            color: #0C1E3C;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 22px;
+            height: 2px;
+            background: var(--text);
+        }
+        .mob-menu {
+            display: none;
+            flex-direction: column;
+            padding: 16px 24px;
+            background: var(--navy);
+            border-top: 1px solid var(--border-soft);
+        }
+        .mob-menu.open {
+            display: flex;
+        }
+        .mob-link {
+            padding: 12px 0;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 0.9rem;
+            color: var(--text-mute);
+            cursor: pointer;
+        }
+        @media (max-width: 860px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .nav-inner { padding: 12px 20px; }
+        }
+
+        /* Hero */
+        .heroz {
+            position: relative;
+            min-height: 35vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(165deg, #060E1C 0%, #0C1E3C 60%);
+            padding-top: 80px;
+        }
+        .hero-contentz {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 2rem 2rem;
+        }
+        .eyebrowz {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        .hero-h1z {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 500;
+            color: white;
+        }
+        .gold {
+            color: var(--gold);
+        }
+
+        /* Section styles */
+        .bg-surfacez {
+            background: var(--surface);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+        }
+
+        .sectionz {
+            padding: clamp(3rem, 7vw, 5rem) 0;
+            position: relative;
+        }
+
+        .section-innerz {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 1.8rem;
+        }
+
+        .section-h2z {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: var(--gold);
+            margin: 2rem 0 1rem 0;
+            border-left: 4px solid var(--gold);
+            padding-left: 1.2rem;
+        }
+
+        .section-h2z:first-of-type {
+            margin-top: 0;
+        }
+
+        .section-bodyz {
+            font-size: 1.05rem;
+            margin: 1.2rem 0;
+            color: var(--muted);
+            line-height: 1.7;
+            padding: 0.2rem 0;
+        }
+
+        .section-bodyz strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .section-bodyz ul {
+            margin: 0.5rem 0 0.5rem 1.5rem;
+            padding-left: 0;
+        }
+        .section-bodyz li {
+            margin: 0.25rem 0;
+            list-style-type: none;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+        .section-bodyz li::before {
+            content: "⬅";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.8rem;
+        }
+
+        a {
+            color: var(--gold-light);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(200, 150, 12, 0.3);
+            transition: all 0.25s ease;
+        }
+
+        a:hover {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        .legal-divider-modernz {
+            margin: 2rem 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), rgba(200, 150, 12, 0.3), transparent);
+        }
+
+        .legal-badgez {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(200, 150, 12, 0.08);
+            border-radius: 60px;
+            padding: 0.2rem 1rem 0.2rem 0.8rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.02em;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .lang-switch-containerz {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1.5rem;
+            gap: 0.5rem;
+        }
+
+        .theme-togglerz {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(200, 150, 12, 0.3);
+            width: 48px;
+            height: 48px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            font-size: 1.5rem;
+            transition: all 0.2s;
+        }
+
+        .green-boxz {
+            margin: 32px auto 20px auto;
+            width: fit-content;
+            max-width: 90vw;
+            background: rgba(0, 100, 112, 0.1);
+            border-color: rgba(0, 100, 112, 0.35);
+            color: rgb(58, 170, 6);
+            border-width: 1.5px;
+            border-style: solid;
+            border-radius: 48px;
+            padding: 0.85rem 2rem;
+            transition: var(--transition-smooth);
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+        }
+        @media (max-width: 640px) {
+            .section-innerz {
+                padding: 0 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ═══════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════ -->
+    <nav class="nav transparent" id="mainNav">
+    <div class="nav-inner">
+        <button class="nav-logo" onclick="goTo('home')">
+        <svg width="39" height="44" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#fff"/><text x="36" y="65" font-family="Outfit,sans-serif" font-size="60" font-weight="900" fill="#0C1E3C" text-anchor="middle" dominant-baseline="central">C </text><text x="73" y="65" font-family="Outfit,sans-serif" font-size="50" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg>
+        <div class="nav-brand">Citadel <span class="nav-brand-accent">Exzellenz</span></div>
+        </button>
+        <div class="nav-links">
+        <button class="nav-link active" onclick="goTo('home')">Group</button>
+        <button class="nav-link" onclick="goTo('akademie')">Akademie</button>
+        <button class="nav-link" onclick="goTo('geotech')">GeoTech</button>
+        <button class="nav-link" onclick="goTo('faculty')">Faculty</button>
+        <button class="nav-link" onclick="goTo('insights')">Intelligence</button>
+        <button class="nav-cta-btn" onclick="goTo('contact')">Book a Discovery Call</button>
+        <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" id="themeBtn">☀</button>
+        </div>
+        <button class="hamburger" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mob-menu" id="mobMenu">
+        <button class="mob-link active" onclick="goTo('home')">Group</button>
+        <button class="mob-link" onclick="goTo('akademie')">Akademie</button>
+        <button class="mob-link" onclick="goTo('geotech')">GeoTech</button>
+        <button class="mob-link" onclick="goTo('faculty')">Faculty</button>
+        <button class="mob-link" onclick="goTo('insights')">Intelligence</button>
+        <button class="mob-link" onclick="goTo('contact')">Contact</button>
+    </div>
+    </nav>
+
+    <section class="heroz">
+        <div class="hero-contentz">
+            <p class="eyebrowz" id="eyebrowText">Citadel Exzellenz Group · Legal</p>
+            <h1 class="hero-h1z" id="heroTitle">Privacy Policy<span class="gold">.</span></h1>
+        </div>
+    </section>
+
+    <section class="sectionz bg-surfacez">
+        <div class="section-innerz" style="max-width:880px">
+            <!-- Language Switcher Buttons -->
+            <div class="lang-switch-containerz">
+                <button class="lang-btn" id="langEnBtn" onclick="setLanguage('en')">🇬🇧 ENGLISH</button>
+                <button class="lang-btn" id="langDeBtn" onclick="setLanguage('de')">🇩🇪 DEUTSCH</button>
+            </div>
+
+            <div class="legal-badgez" id="badgeText">
+                <span style="font-size:1.1rem;">⬅</span> 
+                <span>DATA PROTECTION & PRIVACY</span>
+            </div>
+
+            <!-- English Version -->
+            <div id="englishContent">
+                <h2 class="section-h2z">Privacy Policy</h2>
+                <p class="section-bodyz">
+                    Citadel Exzellenz Group respects your privacy and is committed to protecting your personal data. 
+                    This Privacy Policy explains how we collect, use, store, and protect your information when you 
+                    visit our website, interact with our services, or engage in our programmes.
+                </p>
+
+                <div class="legal-divider-modernz"></div>
+
+                <h2 class="section-h2z">1. Data Controller</h2>
+                <p class="section-bodyz">
+                    <strong>Citadel Exzellenz UG (haftungsbeschränkt)</strong><br>
+                    Münster, Germany<br>
+                    Commercial Register: HRB 22474<br>
+                    Email: <a href="mailto:info@citadelexzellenz.com">info@citadelexzellenz.com</a>
+                </p>
+
+                <h2 class="section-h2z">2. Data We Collect</h2>
+                <div class="section-bodyz">
+                    <ul>
+                        <li>Identity data (name, organisation)</li>
+                        <li>Contact data (email address, phone number)</li>
+                        <li>Communication data (messages, inquiries, booking requests)</li>
+                        <li>Technical data (IP address, browser type, device information)</li>
+                        <li>Usage data (pages visited, interaction with content)</li>
+                    </ul>
+                </div>
+
+                <h2 class="section-h2z">3. How We Use Your Data</h2>
+                <div class="section-bodyz">
+                    <ul>
+                        <li>To respond to enquiries and provide services</li>
+                        <li>To manage bookings and programme participation</li>
+                        <li>To improve website performance and user experience</li>
+                        <li>To ensure security and prevent misuse</li>
+                        <li>To comply with legal obligations</li>
+                    </ul>
+                </div>
+
+                <h2 class="section-h2z">4. Legal Basis for Processing</h2>
+                <div class="section-bodyz">
+                    <ul>
+                        <li>Your consent (Art. 6(1)(a) GDPR)</li>
+                        <li>Performance of a contract (Art. 6(1)(b) GDPR)</li>
+                        <li>Legal obligations (Art. 6(1)(c) GDPR)</li>
+                        <li>Legitimate interests (Art. 6(1)(f) GDPR)</li>
+                    </ul>
+                </div>
+
+                <h2 class="section-h2z">5. Data Sharing</h2>
+                <p class="section-bodyz">We do not sell your personal data. We may share data only with trusted service providers who assist in operating our website, analytics, or communication systems, and only under strict confidentiality agreements.</p>
+
+                <h2 class="section-h2z">6. Data Retention</h2>
+                <p class="section-bodyz">We retain personal data only for as long as necessary to fulfil the purposes outlined in this policy or as required by applicable law.</p>
+
+                <h2 class="section-h2z">7. Your Rights (GDPR)</h2>
+                <div class="section-bodyz">
+                    <ul>
+                        <li>Access your personal data</li>
+                        <li>Correct inaccurate data</li>
+                        <li>Request deletion of your data</li>
+                        <li>Restrict or object to processing</li>
+                        <li>Request data portability</li>
+                    </ul>
+                </div>
+                <p class="section-bodyz">To exercise your rights, contact us at: <a href="mailto:info@citadelexzellenz.com">info@citadelexzellenz.com</a></p>
+
+                <h2 class="section-h2z">8. Cookies & Tracking</h2>
+                <p class="section-bodyz">Our website may use cookies and similar technologies to improve functionality and analyse usage. You can control cookie settings through your browser.</p>
+
+                <h2 class="section-h2z">9. Security</h2>
+                <p class="section-bodyz">We implement appropriate technical and organisational measures to protect your data against unauthorised access, alteration, disclosure, or destruction.</p>
+
+                <h2 class="section-h2z">10. Changes to This Policy</h2>
+                <p class="section-bodyz">We may update this Privacy Policy from time to time. Updates will be posted on this page with a revised date.</p>
+
+                <div class="green-boxz">
+                    <span style="margin-right:0.5rem;">⬅</span> 
+                    Your privacy is our priority — data protection by design.
+                    <span style="margin-left:0.4rem;">⬅</span>
+                </div>
+
+                <p class="section-bodyz" style="margin-top:32px; font-size:0.85rem; font-style:italic; text-align:center;">This page is a legal template and should be reviewed by a qualified legal professional for full GDPR compliance.</p>
+            </div>
+
+            <!-- German Version -->
+            <div id="germanContent" style="display:none;">
+                <h2 class="section-h2z">Datenschutzerklärung</h2>
+                <p class="section-bodyz">
+                    Die Citadel Exzellenz Group respektiert Ihre Privatsphäre und ist dem Schutz Ihrer persönlichen Daten verpflichtet. 
+                    Diese Datenschutzerklärung erklärt, wie wir Ihre Daten erheben, verwenden, speichern und schützen, wenn Sie 
+                    unsere Website besuchen, mit unseren Diensten interagieren oder an unseren Programmen teilnehmen.
+                </p>
+
+                <div class="legal-divider-modernz"></div>
+
+                <h2 class="section-h2z">1. Verantwortlicher für die Datenverarbeitung</h2>
+                <p class="section-bodyz">
+                    <strong>Citadel Exzellenz UG (haftungsbeschränkt)</strong><br>
+                    Münster, Deutschland<br>
+                    Handelsregister: HRB 22474<br>
+                    E-Mail: <a href="mailto:info@citadelexzellenz.com">info@citadelexzellenz.com</a>
+                </p>
+
+                <h2 class="section-h2z">2. Erhobene Datenkategorien</h2>
+                <div class="section-bodyz">
+                    <ul>
+                        <li>Identifikationsdaten (Name, Organisation)</li>
+                        <li>Kontaktdaten (E-Mail-Adresse, Telefonnummer)</li>
+                        <li>Kommunikationsdaten (Nachrichten, Anfragen, Buchungsanfragen)</li>
+                        <li>Technische Daten (IP-Adresse, Browsertyp, Geräteinformationen)</li>
+                        <li>Nutzungsdaten (besuchte Seiten, Interaktion mit Inhalten)</li>
+                    </ul>
+                </div>
+
+                <h2 class="section-h2z">3. Verwendung Ihrer Daten</h2>
+                <div class="section-bodyz">
+                    <ul>
+                        <li>Beantwortung von Anfragen und Erbringung von Dienstleistungen</li>
+                        <li>Verwaltung von Buchungen und Programmteilnahmen</li>
+                        <li>Verbesserung der Website-Leistung und Benutzererfahrung</li>
+                        <li>Gewährleistung der Sicherheit und Missbrauchsprävention</li>
+                        <li>Erfüllung gesetzlicher Verpflichtungen</li>
+                    </ul>
+                </div>
+
+                <h2 class="section-h2z">4. Rechtsgrundlagen der Verarbeitung</h2>
+                <div class="section-bodyz">
+                    <ul>
+                        <li>Ihre Einwilligung (Art. 6(1)(a) DSGVO)</li>
+                        <li>Vertragserfüllung (Art. 6(1)(b) DSGVO)</li>
+                        <li>Rechtliche Verpflichtungen (Art. 6(1)(c) DSGVO)</li>
+                        <li>Berechtigte Interessen (Art. 6(1)(f) DSGVO)</li>
+                    </ul>
+                </div>
+
+                <h2 class="section-h2z">5. Weitergabe von Daten</h2>
+                <p class="section-bodyz">Wir verkaufen Ihre personenbezogenen Daten nicht. Wir geben Daten nur an vertrauenswürdige Dienstleister weiter, die uns beim Betrieb unserer Website, bei Analysen oder Kommunikationssystemen unterstützen, und nur unter strengen Vertraulichkeitsvereinbarungen.</p>
+
+                <h2 class="section-h2z">6. Speicherdauer</h2>
+                <p class="section-bodyz">Wir speichern personenbezogene Daten nur so lange, wie es für die in dieser Richtlinie dargelegten Zwecke erforderlich ist oder gesetzliche Aufbewahrungsfristen bestehen.</p>
+
+                <h2 class="section-h2z">7. Ihre Rechte (DSGVO)</h2>
+                <div class="section-bodyz">
+                    <ul>
+                        <li>Auskunft über Ihre personenbezogenen Daten</li>
+                        <li>Berichtigung unrichtiger Daten</li>
+                        <li>Löschung Ihrer Daten</li>
+                        <li>Einschränkung oder Widerspruch gegen die Verarbeitung</li>
+                        <li>Datenübertragbarkeit</li>
+                    </ul>
+                </div>
+                <p class="section-bodyz">Zur Ausübung Ihrer Rechte kontaktieren Sie uns bitte unter: <a href="mailto:info@citadelexzellenz.com">info@citadelexzellenz.com</a></p>
+
+                <h2 class="section-h2z">8. Cookies & Tracking</h2>
+                <p class="section-bodyz">Unsere Website verwendet möglicherweise Cookies und ähnliche Technologien, um die Funktionalität zu verbessern und die Nutzung zu analysieren. Sie können die Cookie-Einstellungen über Ihren Browser steuern.</p>
+
+                <h2 class="section-h2z">9. Sicherheit</h2>
+                <p class="section-bodyz">Wir implementieren angemessene technische und organisatorische Maßnahmen, um Ihre Daten vor unbefugtem Zugriff, Veränderung, Offenlegung oder Zerstörung zu schützen.</p>
+
+                <h2 class="section-h2z">10. Änderungen dieser Richtlinie</h2>
+                <p class="section-bodyz">Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Aktualisierungen werden auf dieser Seite mit einem überarbeiteten Datum veröffentlicht.</p>
+
+                <div class="green-boxz">
+                    <span style="margin-right:0.5rem;">⬅</span> 
+                    Ihre Privatsphäre ist unsere Priorität — Datenschutz durch Technikgestaltung.
+                    <span style="margin-left:0.4rem;">⬅</span>
+                </div>
+
+                <p class="section-bodyz" style="margin-top:32px; font-size:0.85rem; font-style:italic; text-align:center;">Diese Seite ist eine rechtliche Vorlage und sollte von einem qualifizierten Rechtsanwalt auf vollständige DSGVO-Konformität geprüft werden.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="theme-togglerz" id="themeTogglez">
+        <span id="themeIconz">🌙</span>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <svg width="26" height="31" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#fff"/><text x="35" y="65" font-family="Outfit,sans-serif" font-size="48" font-weight="800" fill="#0C1E3C" text-anchor="middle" dominant-baseline="central">C</text><text x="68" y="65" font-family="Outfit,sans-serif" font-size="38" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg>
+                        <span>Citadel Exzellenz Group</span>
+                    </div>
+                    <p class="footer-tagline">Intelligence that executes.</p>
+                    <p class="footer-legal">Citadel Exzellenz · HRB 22474, Münster<br>USt-IdNr.: DE453937721</p>
+                    <p class="footer-legal">info@citadelexzellenz.com</p>
+                </div>
+                <div>
+                    <h5>Akademie</h5>
+                    <button onclick="goTo('akademie')">Leadership Journey</button>
+                    <button onclick="goTo('akademie')">Executive Coaching</button>
+                    <button onclick="goTo('akademie')">Geospatial &amp; Data</button>
+                    <button onclick="goTo('akademie')">Oil &amp; Gas Technical</button>
+                    <button onclick="goTo('akademie')">Bespoke / In-House</button>
+                </div>
+                <div>
+                    <h5>GeoTech</h5>
+                    <button onclick="goTo('geotech')">Citadel PROS</button>
+                    <button onclick="goTo('geotech')">Citadel GIM</button>
+                    <button onclick="goTo('geotech')">Citadel uDMS</button>
+                </div>
+                <div>
+                    <h5>Group</h5>
+                    <button onclick="goTo('faculty')">Faculty Network</button>
+                    <button onclick="goTo('insights')">Intelligence</button>
+                    <button onclick="goTo('contact')">Contact</button>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Citadel Exzellenz Group. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="imprint.html">Imprint</a>
+                </div>
+                <p>The Meridian Standard · citadelexzellenz.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMob() {
+            document.getElementById('mobMenu').classList.toggle('open');
+        }
+
+        function setLanguage(lang) {
+            const englishDiv = document.getElementById('englishContent');
+            const germanDiv = document.getElementById('germanContent');
+            const enBtn = document.getElementById('langEnBtn');
+            const deBtn = document.getElementById('langDeBtn');
+            const eyebrow = document.getElementById('eyebrowText');
+            const heroTitle = document.getElementById('heroTitle');
+            const badge = document.getElementById('badgeText');
+
+            if (lang === 'en') {
+                englishDiv.style.display = 'block';
+                germanDiv.style.display = 'none';
+                enBtn.classList.add('active');
+                deBtn.classList.remove('active');
+                eyebrow.innerHTML = 'Citadel Exzellenz Group · Legal';
+                heroTitle.innerHTML = 'Privacy Policy<span class="gold">.</span>';
+                badge.innerHTML = '<span style="font-size:1.1rem;">⬅</span> <span>DATA PROTECTION & PRIVACY</span>';
+                document.title = 'Privacy Policy — Citadel Exzellenz Group';
+            } else {
+                englishDiv.style.display = 'none';
+                germanDiv.style.display = 'block';
+                deBtn.classList.add('active');
+                enBtn.classList.remove('active');
+                eyebrow.innerHTML = 'Citadel Exzellenz Gruppe · Rechtliches';
+                heroTitle.innerHTML = 'Datenschutzerklärung<span class="gold">.</span>';
+                badge.innerHTML = '<span style="font-size:1.1rem;">⬅</span> <span>DATENSCHUTZ & PRIVATSPHÄRE</span>';
+                document.title = 'Datenschutzerklärung — Citadel Exzellenz Gruppe';
+            }
+            localStorage.setItem('privacy-language', lang);
+        }
+
+        // Theme management
+        const toggleBtn = document.getElementById('themeTogglez');
+        const themeIcon = document.getElementById('themeIconz');
+        const themeNavBtn = document.getElementById('themeNavBtn');
+        const rootHtml = document.documentElement;
+        
+        function setTheme(theme) {
+            rootHtml.setAttribute('data-theme', theme);
+            localStorage.setItem('citadel-theme', theme);
+            themeIcon.innerText = theme === 'dark' ? '🌙' : '☀️';
+            if (themeNavBtn) themeNavBtn.innerText = theme === 'dark' ? '☀️' : '🌙';
+        }
+        
+        const savedTheme = localStorage.getItem('citadel-theme');
+        setTheme(savedTheme === 'light' ? 'light' : 'dark');
+        
+        toggleBtn.addEventListener('click', () => {
+            const current = rootHtml.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        });
+        if (themeNavBtn) themeNavBtn.addEventListener('click', () => {
+            const current = rootHtml.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        });
+
+        // Load saved language
+        const savedLang = localStorage.getItem('privacy-language');
+        if (savedLang === 'de') setLanguage('de');
+        else setLanguage('en');
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

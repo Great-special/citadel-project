@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div>
+  <section class="hero hero-home hero-tall"><div class="hero-content">
+    <div class="contact-grid">
+      <div>
+        <p class="eyebrow">Start a Conversation</p>
+        <h1 class="hero-h1" style="font-size:clamp(2.2rem,4vw,3.4rem)">Tell us your challenge<span class="gold">.</span> We'll match you with the right faculty.</h1>
+        <p class="hero-body">Every engagement begins with a diagnostic, not a catalogue. Book a discovery call with Dr. Igbokwe to discuss your specific requirements.</p>
+        <div class="contact-details">
+          <p><strong>Phone:</strong> +49 (0) 251 3790 6631</p>
+          <p><strong>WhatsApp:</strong> +44 (0) 7438 463590</p>
+          <p><strong>Email:</strong> info@citadelexzellenz.com</p>
+          <p><strong>Venues:</strong> Münster · St Andrews · Edinburgh · London · Abuja · Lagos</p>
+          <p><strong>Web:</strong> citadelexzellenz.com</p>
+          <p><strong>Registration:</strong> i-Citadel Exzellenz UG · HRB 22474 · USt-IdNr.: DE453937721</p>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form action="{% url 'contact' %}" method="post">
+          {% csrf_token %}
+          <h3>Book a Discovery Call</h3>
+          <div class="form-group"><label>Full Name</label><input name="full_name" type="text"></div>
+          <div class="form-group"><label>Organisation</label><input name="organisation" type="text"></div>
+          <div class="form-group"><label>Email</label><input name="email" type="email"></div>
+          <div class="form-group"><label>Role / Title</label><input name="role" type="text"></div>
+          <div class="form-group"><label>I'm interested in</label><select name="interest"><option>Training Programme Proposal</option><option>GeoTech Early Access</option><option>Government Capacity Building</option><option>Faculty Briefing</option></select></div>
+          <button type="submit" class="btn-primary" style="width:100%;margin-top:8px">Book Discovery Call</button>
+        </form>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+{% endblock content %}
