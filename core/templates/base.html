@@ -4,7 +4,7 @@
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Citadel Exzellenz Group — The Meridian Standard</title>
     <meta name="description" content="The Meridian Standard — the discipline of operating between Africa and Europe in earth sciences, geospatial intelligence, and leadership. Held by a faculty, not a founder.">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z' fill='%230C1E3C'/%3E%3Ctext x='35' y='65' font-family='sans-serif' font-size='48' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='central'%3EC%3C/text%3E%3Ctext x='68' y='65' font-family='sans-serif' font-size='38' font-weight='700' fill='%23C8960C' text-anchor='middle' dominant-baseline='central'%3EX%3C/text%3E%3C/svg%3E">
@@ -28,7 +28,7 @@
             </button>
             <div class="nav-links">
                 <button class="nav-link" onclick="window.location.href='{% url 'index' %}'">Group</button>
-                <button class="nav-link active" onclick="window.location.href='{% url 'akademie' %}'">Akademie</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'akademie' %}'">Akademie</button>
                 <button class="nav-link" onclick="window.location.href='{% url 'geotech' %}'">GeoTech</button>
                 <button class="nav-link" onclick="window.location.href='{% url 'faculty' %}'">Faculty</button>
                 <button class="nav-link" onclick="window.location.href='{% url 'insights' %}'">Intelligence</button>
@@ -39,7 +39,7 @@
         </div>
         <div class="mob-menu" id="mobMenu">
             <button class="nav-link" onclick="window.location.href='{% url 'index' %}'">Group</button>
-                <button class="nav-link active" onclick="window.location.href='{% url 'akademie' %}'">Akademie</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'akademie' %}'">Akademie</button>
                 <button class="nav-link" onclick="window.location.href='{% url 'geotech' %}'">GeoTech</button>
                 <button class="nav-link" onclick="window.location.href='{% url 'faculty' %}'">Faculty</button>
                 <button class="nav-link" onclick="window.location.href='{% url 'insights' %}'">Intelligence</button>
@@ -49,7 +49,7 @@
 
     {% block content %}{% endblock content %}
 
-        <footer class="footer">
+    <footer class="footer">
         <div class="footer-inner">
             <div class="footer-grid">
                 <div>
@@ -85,8 +85,8 @@
             <div class="footer-bottom">
                 <p>© 2026 Citadel Exzellenz Group. All rights reserved.</p>
                 <div class="footer-bottom-links">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="imprint.html">Imprint</a>
+                    <a href="{% url 'privacy' %}">Privacy Policy</a>
+                    <a href="{% url 'imprint' %}">Imprint</a>
                 </div>
                 <p>The Meridian Standard · citadelexzellenz.com</p>
             </div>

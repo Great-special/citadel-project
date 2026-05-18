@@ -1421,8 +1421,8 @@
             <div class="footer-bottom">
                 <p>© 2026 Citadel Exzellenz Group. All rights reserved.</p>
                 <div class="footer-bottom-links">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="imprint.html">Imprint</a>
+                    <a href="{% url 'privacy' %}">Privacy Policy</a>
+                    <a href="{% url 'imprint' %}">Imprint</a>
                 </div>
                 <p>The Meridian Standard · citadelexzellenz.com</p>
             </div>
@@ -1686,10 +1686,10 @@
               <div class="cd-fact"><span class="cd-fact-label">Certificate</span><span class="cd-fact-value">Yes · Performance-benchmarked</span></div>
             </div>
             <div class="cd-actions">
-              <button class="cd-btn cd-btn-primary" onclick="courseAction('register','${course.id}')">${icons.register} Register Now</button>
-              <button class="cd-btn cd-btn-outline" onclick="courseAction('online','${course.id}')">${icons.online} Request Online Sessions</button>
-              <button class="cd-btn cd-btn-outline" onclick="courseAction('info','${course.id}')">${icons.info} Request For Information</button>
-              <button class="cd-btn cd-btn-outline" onclick="courseAction('pdf','${course.id}')">${icons.pdf} Download PDF</button>
+              <a href="/register-course/?course_id=${course.id}&action=register" class="cd-btn cd-btn-primary">${icons.register} Register Now</a>
+              <a href="/register-course/?course_id=${course.id}&action=online" class="cd-btn cd-btn-outline">${icons.online} Request Online Sessions</a>
+              <a href="/register-course/?course_id=${course.id}&action=info" class="cd-btn cd-btn-outline">${icons.info} Request For Information</a>
+              <a href="/register-course/?course_id=${course.id}&action=pdf" class="cd-btn cd-btn-outline">${icons.pdf} Download PDF</a>
             </div>
           </aside>
         </div>
@@ -1715,16 +1715,9 @@
     }
 
     function courseAction(type, courseId) {
-      const map = {
-        register: 'registration',
-        online:   'online / in-house delivery',
-        info:     'additional information',
-        pdf:      'PDF brochure download'
-      };
-      const result = findCourse(courseId);
-      const title = result ? result.course.title : '';
-      alert(`Thank you — your request for ${map[type]} on "${title}" has been captured.\n\nOur admissions team will reach out within one business day.\n\n(Integration point: wire this button to your CRM / email / PDF endpoint.)`);
+      window.location.href = `/register-course/?course_id=${courseId}&action=${type}`;
     }
+
 
     /* =========================================
        UPCOMING PROGRAMMES

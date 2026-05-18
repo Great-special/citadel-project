@@ -9,6 +9,7 @@ urlpatterns = [
     path('imprint/', views.imprint_view, name='imprint'), 
     path('contact/', views.contact_view, name='contact'),
     path('intelligence/', views.insights_view, name='insights'),
+    path('privacy/', views.privacy_view, name='privacy'),
     
     path('register-course/', views.register_course, name='register_course'),
     path('payment-checkout/<int:id>/', views.payment_page, name='payment_page'),

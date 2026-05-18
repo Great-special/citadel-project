@@ -1,0 +1,606 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+  <style>
+    .register-page {
+      background:
+        radial-gradient(circle at top right, rgba(200, 150, 12, 0.14), transparent 32%),
+        linear-gradient(180deg, rgba(6, 14, 28, 0.98) 0%, rgba(12, 30, 60, 1) 18%, rgba(6, 14, 28, 1) 100%);
+    }
+
+    .register-hero .hero-h1 {
+      margin-bottom: 28px;
+      max-width: 11ch;
+    }
+
+    .register-hero .hero-body {
+      max-width: 58ch;
+      margin-bottom: 28px;
+    }
+
+    .register-breadcrumb {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 18px;
+      font-size: 0.94rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .register-breadcrumb a {
+      color: var(--gold);
+    }
+
+    .register-proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .register-proof span {
+      padding: 10px 16px;
+      border: 1px solid rgba(200, 150, 12, 0.24);
+      border-radius: 999px;
+      background: rgba(200, 150, 12, 0.06);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .register-section {
+      padding-top: 0;
+      margin-top: -24px;
+    }
+
+    .register-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .register-panel,
+    .register-side-card {
+      border: 1px solid rgba(200, 150, 12, 0.14);
+      border-radius: 8px;
+      background: rgba(8, 21, 48, 0.78);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .register-panel {
+      padding: clamp(28px, 4vw, 44px);
+    }
+
+    .register-panel-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 28px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .register-panel-head h2,
+    .register-side-card h3,
+    .course-list-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3vw, 2.7rem);
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.08;
+      margin-bottom: 8px;
+    }
+
+    .register-panel-head p,
+    .register-side-copy,
+    .course-list-copy {
+      color: rgba(255, 255, 255, 0.66);
+      font-size: 1rem;
+      line-height: 1.72;
+      max-width: 50ch;
+    }
+
+    .register-meta {
+      text-align: right;
+      min-width: 180px;
+    }
+
+    .register-meta-label {
+      display: block;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.48);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .register-meta-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      color: var(--gold);
+      line-height: 1.1;
+    }
+
+    .flash-stack {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .flash {
+      padding: 14px 16px;
+      border-radius: 6px;
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    .flash.success {
+      border: 1px solid rgba(45, 112, 56, 0.38);
+      background: rgba(45, 112, 56, 0.16);
+      color: #d6f0db;
+    }
+
+    .flash.error {
+      border: 1px solid rgba(201, 102, 102, 0.32);
+      background: rgba(201, 102, 102, 0.14);
+      color: #ffdede;
+    }
+
+    .register-form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .register-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .register-field-wide {
+      grid-column: 1 / -1;
+    }
+
+    .register-label {
+      font-size: 0.84rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.54);
+    }
+
+    .reg-input,
+    .reg-select,
+    .register-course-select {
+      width: 100%;
+      min-height: 54px;
+      padding: 14px 16px;
+      border: 1px solid rgba(200, 150, 12, 0.14);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+      font: inherit;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    }
+
+    .reg-input:focus,
+    .reg-select:focus,
+    .register-course-select:focus {
+      border-color: rgba(200, 150, 12, 0.48);
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-1px);
+    }
+
+    .reg-select option,
+    .register-course-select option {
+      color: #0B1220;
+    }
+
+    .field-error {
+      font-size: 0.9rem;
+      color: #ffcccc;
+      line-height: 1.5;
+    }
+
+    .field-hint {
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.48);
+      line-height: 1.55;
+    }
+
+    .register-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .register-actions p {
+      font-size: 0.96rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.6;
+      max-width: 34ch;
+    }
+
+    .register-side {
+      display: grid;
+      gap: 20px;
+      position: sticky;
+      top: 104px;
+    }
+
+    .register-side-card,
+    .course-list-card {
+      padding: 28px;
+    }
+
+    .course-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .course-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      line-height: 1.08;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .course-subtitle {
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 1rem;
+      line-height: 1.68;
+      margin-bottom: 20px;
+    }
+
+    .course-facts {
+      display: grid;
+      gap: 12px;
+      margin: 20px 0 24px;
+    }
+
+    .course-fact {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .course-fact-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.46);
+    }
+
+    .course-fact-value {
+      text-align: right;
+      color: #fff;
+      font-size: 0.96rem;
+      line-height: 1.5;
+    }
+
+    .course-summary {
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 0.98rem;
+      line-height: 1.75;
+    }
+
+    .course-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .course-list a {
+      display: block;
+      padding: 16px 18px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    }
+
+    .course-list a:hover,
+    .course-list a.is-active {
+      border-color: rgba(200, 150, 12, 0.34);
+      background: rgba(200, 150, 12, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .course-list-track {
+      display: block;
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .course-list-title {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.38rem;
+      color: #fff;
+      margin-bottom: 4px;
+      line-height: 1.18;
+    }
+
+    .course-list-meta {
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .empty-state {
+      padding: 18px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.64);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1040px) {
+      .register-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .register-side {
+        position: static;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .register-panel-head,
+      .register-actions {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .register-meta {
+        text-align: left;
+      }
+
+      .register-form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+{% endblock css %}
+
+{% block content %}
+  <main class="register-page">
+    <section class="hero hero-home hero-short register-hero">
+      <div class="hero-content">
+        <div class="register-breadcrumb">
+          <a href="{% url 'akademie' %}">Akademie</a>
+          <span>/</span>
+          <span>Course Registration</span>
+        </div>
+        <p class="eyebrow">Admissions</p>
+        <h1 class="hero-h2">Course registration that feels clear from the first step<span class="gold">.</span></h1>
+        <p class="hero-body">
+          Reserve a place, share the operational context we should know, and we will come back with the next step.
+          No generic funnel. No dead-end form.
+        </p>
+        <div class="register-proof" aria-label="Registration proof points">
+          <span>Professor-led cohorts</span>
+          <span>Admissions reply within one business day</span>
+          <span>Online, in-person, or in-house</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section register-section">
+      <div class="section-inner">
+        <div class="register-shell">
+          <section class="register-panel" aria-labelledby="registration-heading">
+            <div class="register-panel-head">
+              <div>
+                <h2 id="registration-heading">Course Registration</h2>
+                <p>
+                  Share the delegate details below. We will confirm availability, session fit, and any commercial
+                  next steps directly with you.
+                </p>
+              </div>
+              <div class="register-meta">
+                <span class="register-meta-label">Current focus</span>
+                <span class="register-meta-value">
+                  {% if selected_course %}
+                    {{ selected_course.title }}
+                  {% else %}
+                    Open enrolment
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+
+            {% if messages %}
+              <div class="flash-stack">
+                {% for message in messages %}
+                  <div class="flash {{ message.tags|default:'info' }}">{{ message }}</div>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% if form.non_field_errors %}
+              <div class="flash error">
+                {% for error in form.non_field_errors %}
+                  <div>{{ error }}</div>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <form method="post" novalidate>
+              {% csrf_token %}
+
+              <div class="register-form-grid">
+                <div class="register-field register-field-wide">
+                  <label class="register-label" for="course-select">Choose a course</label>
+                  {% if selected_course %}
+                    <input type="hidden" name="course_id" value="{{ selected_course.id }}">
+                    <div class="register-course-select" id="course-select" aria-readonly="true">
+                      {{ selected_course.title }} · {{ selected_course.category.short|default:selected_course.category.name }}
+                    </div>
+                    <p class="field-hint">Need a different programme? Pick another option from the course list on the right.</p>
+                  {% else %}
+                    <select class="register-course-select" id="course-select" name="course_id" required>
+                      <option value="">Select a programme</option>
+                      {% for course in courses %}
+                        <option value="{{ course.id }}" {% if request.POST.course_id == course.id|stringformat:'s' %}selected{% endif %}>
+                          {{ course.title }} · {{ course.category.short|default:course.category.name }}
+                        </option>
+                      {% endfor %}
+                    </select>
+                    <p class="field-hint">Choose the course you want to join and then complete the delegate details below.</p>
+                  {% endif %}
+                </div>
+
+                <div class="register-field">
+                  <label class="register-label" for="{{ form.session.id_for_label }}">Preferred session</label>
+                  {{ form.session }}
+                  {% for error in form.session.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                </div>
+
+                <div class="register-field">
+                  <label class="register-label" for="{{ form.title.id_for_label }}">Title</label>
+                  {{ form.title }}
+                  {% for error in form.title.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                </div>
+
+                <div class="register-field">
+                  <label class="register-label" for="{{ form.name.id_for_label }}">Full name</label>
+                  {{ form.name }}
+                  {% for error in form.name.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                </div>
+
+                <div class="register-field">
+                  <label class="register-label" for="{{ form.email.id_for_label }}">Email</label>
+                  {{ form.email }}
+                  {% for error in form.email.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                </div>
+
+                <div class="register-field">
+                  <label class="register-label" for="{{ form.designation.id_for_label }}">Designation / position</label>
+                  {{ form.designation }}
+                  {% for error in form.designation.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                </div>
+
+                <div class="register-field">
+                  <label class="register-label" for="{{ form.company.id_for_label }}">Company</label>
+                  {{ form.company }}
+                  {% for error in form.company.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                </div>
+
+                <div class="register-field register-field-wide">
+                  <label class="register-label" for="{{ form.address.id_for_label }}">Address</label>
+                  {{ form.address }}
+                  {% for error in form.address.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                </div>
+
+                <div class="register-field">
+                  <label class="register-label" for="{{ form.city.id_for_label }}">City</label>
+                  {{ form.city }}
+                  {% for error in form.city.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                </div>
+
+                <div class="register-field">
+                  <label class="register-label" for="{{ form.country.id_for_label }}">Country</label>
+                  {{ form.country }}
+                  {% for error in form.country.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                </div>
+
+                <div class="register-field">
+                  <label class="register-label" for="{{ form.telephone.id_for_label }}">Telephone</label>
+                  {{ form.telephone }}
+                  {% for error in form.telephone.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                </div>
+
+                <div class="register-field">
+                  <label class="register-label" for="{{ form.mobile.id_for_label }}">Mobile</label>
+                  {{ form.mobile }}
+                  {% for error in form.mobile.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                </div>
+
+                <div class="register-field register-field-wide">
+                  <label class="register-label" for="{{ form.fax.id_for_label }}">Fax</label>
+                  {{ form.fax }}
+                  {% for error in form.fax.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                </div>
+              </div>
+
+              <div class="register-actions">
+                <p>
+                  By submitting this form, you are asking our admissions team to contact you about registration and cohort fit.
+                </p>
+                <button type="submit" class="btn-primary">Submit Registration</button>
+              </div>
+            </form>
+          </section>
+
+          <aside class="register-side">
+            <section class="register-side-card" aria-labelledby="selected-course-heading">
+              {% if selected_course %}
+                <p class="course-eyebrow">{{ selected_course.category.short|default:selected_course.category.name }}</p>
+                <h3 id="selected-course-heading" class="course-title">{{ selected_course.title }}</h3>
+                {% if selected_course.subtitle %}
+                  <p class="course-subtitle">{{ selected_course.subtitle }}</p>
+                {% else %}
+                  <p class="course-subtitle">A focused programme built for practical decisions, not abstract theory.</p>
+                {% endif %}
+                <div class="course-facts">
+                  <div class="course-fact">
+                    <span class="course-fact-label">Duration</span>
+                    <span class="course-fact-value">{{ selected_course.duration }}</span>
+                  </div>
+                  <div class="course-fact">
+                    <span class="course-fact-label">Level</span>
+                    <span class="course-fact-value">{{ selected_course.level|default:'Professional cohort' }}</span>
+                  </div>
+                  <div class="course-fact">
+                    <span class="course-fact-label">Format</span>
+                    <span class="course-fact-value">{{ selected_course.training_format }}</span>
+                  </div>
+                  <div class="course-fact">
+                    <span class="course-fact-label">Fee</span>
+                    <span class="course-fact-value">{{ selected_course.fee_display }}</span>
+                  </div>
+                </div>
+                <p class="course-summary">
+                  {% if selected_course.teaser %}
+                    {{ selected_course.teaser }}
+                  {% else %}
+                    {{ selected_course.description|truncatewords:32 }}
+                  {% endif %}
+                </p>
+              {% else %}
+                <p class="course-eyebrow">Course summary</p>
+                <h3 id="selected-course-heading">Select a programme first</h3>
+                <p class="register-side-copy">
+                  This page works for both specific course registrations and general open-enrolment enquiries.
+                  Pick a programme from the form or the catalogue list here.
+                </p>
+              {% endif %}
+            </section>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock content %}

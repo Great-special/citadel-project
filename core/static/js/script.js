@@ -1,5 +1,23 @@
 /* ── PAGE NAVIGATION ── */
-let currentPage = 'home';
+
+function getCurrentPage() {
+    const path = window.location.pathname.replace(/^\/|\/$/g, '');
+    const map = {
+        '':            'home',
+        'akademie':    'akademie',
+        'geotech':     'geotech',
+        'faculty':     'faculty',
+        'intelligence':'insights',
+        'contact':     'contact',
+        'privacy':     'privacy',
+        'imprint':     'imprint'
+    };
+    return map[path] ?? 'home';
+}
+
+let currentPage = getCurrentPage();
+console.log('currentPage:', currentPage);
+
 const darkHeroPages = ['home','geotech','faculty','insights','contact','privacy','imprint'];
 
 function goTo(pageId) {
@@ -15,6 +33,7 @@ function goTo(pageId) {
     };
     window.location.href = pages[pageId];
 }
+
 
 function updateNav() {
   const nav = document.getElementById('mainNav');

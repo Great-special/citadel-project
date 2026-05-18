@@ -1,3 +1,6 @@
+{% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -9,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="{% static 'css/style.css' %}">
    <style>
         /* ═══════════════════════════════════════
            CSS VARIABLES & THEME
@@ -308,36 +311,37 @@
             }
         }
     </style>
+
 </head>
 <body>
     <!-- ═══════════════════════════════════════
      NAVIGATION
      ═══════════════════════════════════════ -->
-    <nav class="nav transparent" id="mainNav">
-    <div class="nav-inner">
-        <button class="nav-logo" onclick="goTo('home')">
-        <svg width="39" height="44" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#fff"/><text x="36" y="65" font-family="Outfit,sans-serif" font-size="60" font-weight="900" fill="#0C1E3C" text-anchor="middle" dominant-baseline="central">C </text><text x="73" y="65" font-family="Outfit,sans-serif" font-size="50" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg>
-        <div class="nav-brand">Citadel <span class="nav-brand-accent">Exzellenz</span></div>
-        </button>
-        <div class="nav-links">
-        <button class="nav-link active" onclick="goTo('home')">Group</button>
-        <button class="nav-link" onclick="goTo('akademie')">Akademie</button>
-        <button class="nav-link" onclick="goTo('geotech')">GeoTech</button>
-        <button class="nav-link" onclick="goTo('faculty')">Faculty</button>
-        <button class="nav-link" onclick="goTo('insights')">Intelligence</button>
-        <button class="nav-cta-btn" onclick="goTo('contact')">Book a Discovery Call</button>
-        <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" id="themeBtn">☀</button>
+    <nav class="nav" id="mainNav">
+        <div class="nav-inner">
+            <button class="nav-logo" onclick="window.location.href='{% url 'index' %}'">
+                <svg width="39" height="44" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#fff"/><text x="36" y="65" font-family="Outfit,sans-serif" font-size="60" font-weight="900" fill="#0C1E3C" text-anchor="middle" dominant-baseline="central">C </text><text x="73" y="65" font-family="Outfit,sans-serif" font-size="50" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg>
+                <div class="nav-brand">Citadel <span class="nav-brand-accent">Exzellenz</span></div>
+            </button>
+            <div class="nav-links">
+                <button class="nav-link" onclick="window.location.href='{% url 'index' %}'">Group</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'akademie' %}'">Akademie</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'geotech' %}'">GeoTech</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'faculty' %}'">Faculty</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'insights' %}'">Intelligence</button>
+                <button class="nav-cta-btn" onclick="window.location.href='{% url 'contact' %}'">Request a Consultation</button>
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" id="themeBtn">☀</button>
+            </div>
+            <button class="hamburger" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
         </div>
-        <button class="hamburger" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
-    <div class="mob-menu" id="mobMenu">
-        <button class="mob-link active" onclick="goTo('home')">Group</button>
-        <button class="mob-link" onclick="goTo('akademie')">Akademie</button>
-        <button class="mob-link" onclick="goTo('geotech')">GeoTech</button>
-        <button class="mob-link" onclick="goTo('faculty')">Faculty</button>
-        <button class="mob-link" onclick="goTo('insights')">Intelligence</button>
-        <button class="mob-link" onclick="goTo('contact')">Contact</button>
-    </div>
+        <div class="mob-menu" id="mobMenu">
+            <button class="nav-link" onclick="window.location.href='{% url 'index' %}'">Group</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'akademie' %}'">Akademie</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'geotech' %}'">GeoTech</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'faculty' %}'">Faculty</button>
+                <button class="nav-link {% if request.resolver_match.url_name == 'insights' %}active{% endif %}" onclick="window.location.href='{% url 'insights' %}'">Intelligence</button>
+            <button class="mob-link" onclick="window.location.href='{% url 'contact' %}'">Contact</button>
+        </div>
     </nav>
 
     <section class="heroz">

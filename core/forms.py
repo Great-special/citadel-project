@@ -9,6 +9,7 @@ class CourseRegistrationForm(forms.ModelForm):
         exclude = 'course',  # Exclude course field to be set programmatically
         widgets = {
             'session': forms.TextInput(attrs={'placeholder': 'Select a session'}),
+            'title': forms.Select(),
             'name': forms.TextInput(attrs={'placeholder': 'Name*'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Email*'}),
             'designation': forms.TextInput(attrs={'placeholder': 'Designation/Position'}),
@@ -20,3 +21,13 @@ class CourseRegistrationForm(forms.ModelForm):
             'mobile': forms.TextInput(attrs={'placeholder': 'Mobile*'}),
             'fax': forms.TextInput(attrs={'placeholder': 'Fax'}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for name, field in self.fields.items():
+            css_class = 'reg-select' if isinstance(field.widget, forms.Select) else 'reg-input'
+            existing = field.widget.attrs.get('class', '')
+            field.widget.attrs['class'] = f'{existing} {css_class}'.strip()
+            field.widget.attrs.setdefault('autocomplete', 'off')
+
+        self.fields['session'].widget.attrs['placeholder'] = 'Preferred session or intake'

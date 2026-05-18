@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from typing import Type
 from django.conf import settings
@@ -9,6 +10,7 @@ from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.urls import reverse
 import stripe
 import json
 
@@ -37,35 +39,42 @@ def contact_view(request):
 
 def akademie_view(request):
     context = {
-        'tracks_json':   json.dumps(serialize_tracks(),   ensure_ascii=False),
+        'tracks_json': json.dumps(serialize_tracks(), ensure_ascii=False),
         'upcoming_json': json.dumps(serialize_upcoming(), ensure_ascii=False),
     }
     return render(request, 'akademie.html', context)
+
 
 def imprint_view(request):
     return render(request, 'imprint.html')
 
 
+def privacy_view(request):
+    return render(request, 'privacy.html')
+
+
 def faculty_view(request):
     return render(request, 'faculty.html')
+
 
 def geotech_view(request):
     return render(request, 'geotech.html')
 
-def  insights_view(request):
+
+def insights_view(request):
     return render(request, 'intelligence.html')
 
 
 def payment_page(request, id):
     course = get_object_or_404(Course, id=id)
-    return render(request, 'ihrdc_layout/course_payment.html', {'stripe_key': settings.STRIPE_PUBLIC_KEY, 'course':course})
+    return render(request, 'ihrdc_layout/course_payment.html', {'stripe_key': settings.STRIPE_PUBLIC_KEY, 'course': course})
 
 
 def createstripe_checkout_session(request, id):
     """
     Create a checkout session and redirect the user to Stripe's checkout page
     """
- 
+
     current_domain = f"{request.scheme}://{request.get_host()}"
     print(current_domain)
     course = Course.objects.get(id=id)
@@ -76,14 +85,12 @@ def createstripe_checkout_session(request, id):
         phone = request.POST.get('phone', '')
         city = request.POST.get('city', '')
         country = request.POST.get('country', '')
-        postcode = request.POST.get('postcode', '')     
+        postcode = request.POST.get('postcode', '')
         quantity = request.POST.get('quantity', 1)
         currency = request.POST.get('currency', 'USD')
-    
-   
+
     image_url = course.image.url if course.image else '/static/layout/images/default_course_img.jfif'
-    
-    
+
     # creating enrolled customer
     enrolled = EnrolledCustomer.objects.create(
         customer=customer,
@@ -92,22 +99,22 @@ def createstripe_checkout_session(request, id):
         city=city,
         country=country,
         postcode=postcode,
-        course=course
+        course=course,
     )
     enrolled.save()
-    
+
     # creating payment history
     transaction = Payment.objects.create(
         customer=enrolled,
-        currency = currency,
-        amount = int(course.price) * int(quantity),
-        quantity = quantity,      
+        currency=currency,
+        amount=int(course.price) * int(quantity),
+        quantity=quantity,
     )
     transaction.save()
-    
+
     # Create a Stripe checkout session
     checkout_session = stripe.checkout.Session.create(
-        payment_method_types=["card",  "us_bank_account"], # "paypal",
+        payment_method_types=["card", "us_bank_account"],  # "paypal",
         line_items=[
             {
                 "price_data": {
@@ -138,6 +145,7 @@ def success(request):
 
 def cancel(request):
     return render(request, "ihrdc_layout/cancel.html")
+
 
 @method_decorator(csrf_exempt, name="dispatch")
 def stripe_webhook(request, format=None):
@@ -170,28 +178,61 @@ def stripe_webhook(request, format=None):
         payment = get_object_or_404(Payment, id=payment_id)
         payment.payment_status = "completed"
         payment.save()
-        
+
         # send_mail(
         #     subject="Here is your product",
         #     message=f"Thanks for your purchase. The URL is: {product.url}",
         #     recipient_list=[customer_email],
         #     from_email="your@email.com",
         # )
-        
+
     return HttpResponse(status=200)
 
 
-
 def register_course(request):
+    courses = Course.objects.select_related('category', 'cluster').all()
+    selected_course = None
+    requested_course_id = (
+        request.POST.get('course_id')
+        if request.method == 'POST'
+        else request.GET.get('course_id')
+    )
+
+    if requested_course_id:
+        selected_course = Course.objects.filter(id=requested_course_id).select_related(
+            'category',
+            'cluster',
+        ).first()
+
     if request.method == 'POST':
         form = CourseRegistrationForm(request.POST)
-        if form.is_valid():
-            reg = form.save(commit=False)
-            reg.course = get_object_or_404(Course, id=request.POST.get('course_id'))
-            reg.save()
-    
-            messages.success(request, "🎉 Registration successful!")
-            return redirect('home')
-        # Redirect back to previous page
-        messages.error(request, "⚠️ There was an error. Please check your input and try again.")
-        return redirect(request.META.get('HTTP_REFERER', 'home'))
+
+        if not requested_course_id:
+            form.add_error(None, 'Choose a course before submitting your registration.')
+        elif not selected_course:
+            form.add_error(None, 'Choose a valid course before submitting your registration.')
+
+        if form.is_valid() and selected_course:
+            registration = form.save(commit=False)
+            registration.course = selected_course
+            registration.save()
+
+            messages.success(
+                request,
+                'Registration received. Our admissions team will contact you within one business day.',
+            )
+            return redirect(f"{reverse('register_course')}?course_id={selected_course.id}")
+
+        messages.error(request, 'Please correct the highlighted fields.')
+    else:
+        form = CourseRegistrationForm()
+
+    return render(
+        request,
+        'register.html',
+        {
+            'form': form,
+            'courses': courses,
+            'selected_course': selected_course,
+        },
+    )
