@@ -294,12 +294,12 @@
             <p class="hero-h1-sub">Citadel Exzellenz closes it</p>
             <p class="hero-body">PetroKnowledge sells courses. ESRI sells software. Only Citadel Exzellenz delivers both the intelligence platform and the human capability to operate it — combining professor-led training, AI-powered geospatial intelligence, and senior-level consulting.</p>
             <div class="hero-paths">
-                <button class="path-card" onclick="goTo('akademie')"><span class="path-label">For Energy Companies</span><span class="path-desc">Pipeline intelligence, operator certification, and leadership training for IOCs and NOCs.</span></button>
-                <button class="path-card" onclick="goTo('akademie')"><span class="path-label">For Government Agencies</span><span class="path-desc">Capacity building, regulatory compliance, and geospatial infrastructure intelligence.</span></button>
+                <button class="path-card" onclick="window.location.href='{% url "akademie" %}'"><span class="path-label">For Energy Companies</span><span class="path-desc">Pipeline intelligence, operator certification, and leadership training for IOCs and NOCs.</span></button>
+                <button class="path-card" onclick="window.location.href='{% url "akademie" %}'"><span class="path-label">For Government Agencies</span><span class="path-desc">Capacity building, regulatory compliance, and geospatial infrastructure intelligence.</span></button>
             </div>
             <div class="hero-ctas">
-                <button class="btn-primary" onclick="goTo('contact')">Book a Discovery Call</button>
-                <button class="btn-outline" onclick="goTo('akademie')">Explore Programmes →</button>
+                <button class="btn-primary" onclick="window.location.href='{% url "contact" %}'">Book a Discovery Call</button>
+                <button class="btn-outline" onclick="window.location.href='{% url "akademie" %}'">Explore Programmes →</button>
             </div>
             </div>
         </section>
@@ -443,8 +443,8 @@
                     <p class="summary"><strong>Citadel Akademie.</strong> &nbsp;·&nbsp; <strong>Citadel GeoTech.</strong></p>
                     <p class="citadel-line">That is Citadel Exzellenz<span class="gold">.</span></p>
                     <div class="hero-ctas">
-                        <button class="btn-outline" onclick="goTo('faculty')">Meet the Faculty →</button>
-                        <button class="btn-primary" onclick="goTo('contact')">Book a Discovery Call</button>
+                        <button class="btn-outline" onclick="window.location.href='{% url "faculty" %}'">Meet the Faculty →</button>
+                        <button class="btn-primary" onclick="window.location.href='{% url "contact" %}'">Book a Discovery Call</button>
                     </div>
                 </div>
             </div>
@@ -456,14 +456,14 @@
             <p class="section-eye gold">Two Divisions. One Intelligence Platform.</p>
             <p class="green-box" style="color: rgb(58, 170, 6);">The only organisation positioned to deliver both.</p>
             <div class="div-grid">
-            <button class="div-card div-akad" onclick="goTo('akademie')">
+            <button class="div-card div-akad" onclick="window.location.href='{% url "akademie" %}'">
                 <svg width="28" height="34" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#185FA5"/><text x="35" y="65" font-family="Outfit,sans-serif" font-size="48" font-weight="800" fill="#fff" text-anchor="middle" dominant-baseline="central">C</text><text x="68" y="65" font-family="Outfit,sans-serif" font-size="38" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg>
                 <span class="div-label">Citadel Akademie — Training &amp; Leadership</span>
                 <h3 class="div-title">Germany exports precision engineering. Citadel Akademie applies the same standard to workforce performance.</h3>
                 <p class="div-desc">Five programme tracks. Eight faculty across St Andrews, Oxford, and the global oil and gas industry. Performance benchmarks — not just certificates.</p>
                 <span class="div-link">Explore Programmes →</span>
             </button>
-            <button class="div-card div-geo" onclick="goTo('geotech')">
+            <button class="div-card div-geo" onclick="window.location.href='{% url "geotech" %}'">
                 <svg width="28" height="34" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#006470"/><text x="35" y="65" font-family="Outfit,sans-serif" font-size="48" font-weight="800" fill="#fff" text-anchor="middle" dominant-baseline="central">C</text><text x="68" y="65" font-family="Outfit,sans-serif" font-size="38" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg>
                 <span class="div-label">Citadel GeoTech — AI Geospatial Intelligence</span>
                 <h3 class="div-title">Your SCADA tells you what. PROS tells you where, why, and what to do next.</h3>

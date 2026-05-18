@@ -518,30 +518,30 @@
                 </div>
                 <div>
                     <h5>Akademie</h5>
-                    <button onclick="goTo('akademie')">Leadership Journey</button>
-                    <button onclick="goTo('akademie')">Executive Coaching</button>
-                    <button onclick="goTo('akademie')">Geospatial &amp; Data</button>
-                    <button onclick="goTo('akademie')">Oil &amp; Gas Technical</button>
-                    <button onclick="goTo('akademie')">Bespoke / In-House</button>
+                    <button onclick="window.location.href='{% url "akademie" %}'">Leadership Journey</button>
+                    <button onclick="window.location.href='{% url "akademie" %}'">Executive Coaching</button>
+                    <button onclick="window.location.href='{% url "akademie" %}'">Geospatial &amp; Data</button>
+                    <button onclick="window.location.href='{% url "akademie" %}'">Oil &amp; Gas Technical</button>
+                    <button onclick="window.location.href='{% url "akademie" %}'">Bespoke / In-House</button>
                 </div>
                 <div>
                     <h5>GeoTech</h5>
-                    <button onclick="goTo('geotech')">Citadel PROS</button>
-                    <button onclick="goTo('geotech')">Citadel GIM</button>
-                    <button onclick="goTo('geotech')">Citadel uDMS</button>
+                    <button onclick="window.location.href='{% url "geotech" %}'">Citadel PROS</button>
+                    <button onclick="window.location.href='{% url "geotech" %}'">Citadel GIM</button>
+                    <button onclick="window.location.href='{% url "geotech" %}'">Citadel uDMS</button>
                 </div>
                 <div>
                     <h5>Group</h5>
-                    <button onclick="goTo('faculty')">Faculty Network</button>
-                    <button onclick="goTo('insights')">Intelligence</button>
-                    <button onclick="goTo('contact')">Contact</button>
+                    <button onclick="window.location.href='{% url "faculty" %}'">Faculty Network</button>
+                    <button onclick="window.location.href='{% url "insights" %}'">Intelligence</button>
+                    <button onclick="window.location.href='{% url "contact" %}'">Contact</button>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>© 2026 Citadel Exzellenz Group. All rights reserved.</p>
                 <div class="footer-bottom-links">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="imprint.html">Imprint</a>
+                    <a href="{% url "privacy" %}">Privacy Policy</a>
+                    <a href="{% url "imprint" %}">Imprint</a>
                 </div>
                 <p>The Meridian Standard · citadelexzellenz.com</p>
             </div>
