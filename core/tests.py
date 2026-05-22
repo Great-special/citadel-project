@@ -97,3 +97,14 @@ class CourseRegistrationPageTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(CourseRegistration.objects.count(), 0)
         self.assertContains(response, "Please correct the highlighted fields.")
+
+
+class SharedBaseTemplateTests(TestCase):
+    def test_index_mobile_menu_uses_mobile_link_styling(self):
+        response = self.client.get(reverse("index"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, '<div class="mob-menu" id="mobMenu">', html=False)
+        self.assertContains(response, '<button class="mob-link" onclick="window.location.href=\'/\'">Group</button>', html=False)
+        self.assertContains(response, '<button class="mob-link" onclick="window.location.href=\'/akademie/\'">Akademie</button>', html=False)
+        self.assertNotContains(response, '<div class="mob-menu" id="mobMenu">\n            <button class="nav-link"', html=False)

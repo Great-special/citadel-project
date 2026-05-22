@@ -59,6 +59,41 @@
       .diff-card p { font-size: 1.05rem; line-height:1.72; }
       @media (max-width: 1100px) { .proof-band { grid-template-columns:repeat(2, 1fr); } }
       @media (max-width: 600px) { .proof-band { grid-template-columns:1fr; } }
+
+      @media (max-width: 1024px) {
+        .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      }
+
+      @media (max-width: 768px) {
+        .hero-h1 { margin-bottom: 40px; }
+        .hero-body { margin-bottom: 28px; }
+        .proof-band { grid-template-columns: 1fr; margin-top: 28px; }
+        .proof-item { min-height: auto; }
+        .fac-grid { grid-template-columns: 1fr; }
+        .fac-card { padding: 28px 22px; }
+        .fac-card .fac-name { font-size: 1.5rem; }
+        .fac-stream { font-size: 0.72rem; letter-spacing: 0.08em; }
+        .bio-overlay { padding: 36px 16px; }
+        .bio-grid { gap: 28px; }
+        .display-serif { font-size: 2.3rem; }
+        .italic-sub { font-size: 1.1rem; margin-bottom: 22px; }
+        .prose-body p { font-size: 1rem; line-height: 1.75; }
+        .footer { padding: 56px 20px 24px; }
+        .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+        .footer-bottom { flex-direction: column; align-items: flex-start; }
+        .footer-bottom-links { flex-wrap: wrap; gap: 18px; }
+      }
+
+      @media (max-width: 480px) {
+        .hero-h1 { font-size: 2.6rem; }
+        .proof-item { padding: 20px 18px 18px; min-height: auto; }
+        .cred-pill { width: 100%; text-align: center; }
+        .fac-card { padding: 28px 18px; }
+        .gold-caps { font-size: 0.78rem; letter-spacing: 0.16em; }
+        .display-serif { font-size: 2rem; }
+        .bio-image-box { padding: 10px; box-shadow: 10px 10px 0px rgba(200, 150, 12, 0.1); }
+        .footer-bottom-links { flex-direction: column; gap: 10px; }
+      }
   </style>
 {% endblock css %}
 

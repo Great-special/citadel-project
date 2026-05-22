@@ -24,7 +24,7 @@ def serialize_tracks():
             'courses',
             queryset=Course.objects.select_related('cluster').order_by('rank_id', 'id')
         ),
-    ).order_by('order', 'id')
+    ).order_by('order', 'id')[:5]
 
     tracks = []
     for idx, cat in enumerate(categories):

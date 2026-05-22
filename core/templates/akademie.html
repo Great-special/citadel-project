@@ -1305,9 +1305,9 @@
                 <p class="hero-body">Citadel Akademie builds the leadership, digital, and operational capability that turns your strategy into execution — through professor-led intensive training across the Africa-Europe corridor. <strong>ESMT Berlin trains Europeans. Meirc trains the Gulf. We train the leaders who bridge Africa and Europe.</strong></p>
                 <p class="hero-body">German precision engineering applied to workforce performance. Structured, repeatable, auditable. Performance benchmarks — not just certificates. 500+ professionals trained across energy and government.</p>
                 <div class="hero-ctas">
-                    <button class="btn-primary" onclick="goTo('contact')">Request a Programme Proposal</button>
-                    <button class="btn-outline" onclick="goTo('contact')">Request a Group Quote →</button>
-                    <button class="btn-ghost" onclick="goTo('faculty')">Meet the Faculty →</button>
+                    <button class="btn-primary" onclick="window.location.href='{% url 'contact' %}'">Request a Programme Proposal</button>
+                    <button class="btn-outline" onclick="window.location.href='{% url 'contact' %}'">Request a Group Quote →</button>
+                    <button class="btn-ghost" onclick="window.location.href='{% url 'faculty' %}'">Meet the Faculty →</button>
                 </div>
             </div>
         </section>
@@ -1363,7 +1363,7 @@
                         <p class="section-eye gold">The Flywheel</p>
                         <p class="flywheel-body">You have invested in the platform. Now invest in the people who must operate it, govern it, and extract value from it. Every software deployment creates a training requirement. Every training engagement creates a stronger adoption case for the platform behind it.</p>
                     </div>
-                    <button class="btn-outline" onclick="goTo('geotech')">Explore the GeoTech Platform</button>
+                    <button class="btn-outline" onclick="window.location.href='{% url 'geotech' %}'">Explore the GeoTech Platform</button>
                 </div>
             </div>
         </section>
@@ -1407,15 +1407,17 @@
               </div>
                 <div>
                     <h5>GeoTech</h5>
-                    <button onclick="goTo('geotech')">Citadel PROS</button>
-                    <button onclick="goTo('geotech')">Citadel GIM</button>
-                    <button onclick="goTo('geotech')">Citadel uDMS</button>
+                    <button onclick="window.location.href='{% url 'geotech' %}'">Citadel PROS</button>
+                    <button onclick="window.location.href='{% url 'geotech' %}'">Citadel GIM</button>
+                    <button onclick="window.location.href='{% url 'geotech' %}'">Citadel uDMS</button>
                 </div>
                 <div>
                     <h5>Group</h5>
-                    <button onclick="goTo('faculty')">Faculty Network</button>
-                    <button onclick="goTo('insights')">Intelligence</button>
-                    <button onclick="goTo('contact')">Contact</button>
+                    <button onclick="window.location.href='{% url 'faculty' %}'">Faculty Network</button>
+                    <button onclick="window.location.href='{% url 'insights' %}'">Intelligence</button>
+                    <button onclick="window.location.href='{% url 'contact' %}'">Contact</button>
+                    <button onclick="window.location.href='https://i-citadelexz.com:2096/'">Webmail</button>
+                    <button onclick="window.location.href='https://i-citadelexz.com/admin/'">Admin</button>
                 </div>
             </div>
             <div class="footer-bottom">

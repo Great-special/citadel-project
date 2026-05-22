@@ -66,12 +66,15 @@ def insights_view(request):
 
 
 def payment_page(request, id):
+    """This view send and displays the enrollment page
+
+    """
     course = get_object_or_404(Course, id=id)
     return render(request, 'ihrdc_layout/course_payment.html', {'stripe_key': settings.STRIPE_PUBLIC_KEY, 'course': course})
 
 
 def createstripe_checkout_session(request, id):
-    """
+    """Takes the details from the enrollment page and handles payment.
     Create a checkout session and redirect the user to Stripe's checkout page
     """
 

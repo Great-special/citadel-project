@@ -57,7 +57,10 @@ function updateNav() {
 
 function updateLogoForScroll() {
   const nav = document.getElementById('mainNav');
-  const logo = document.getElementById('navLogo').querySelector('path');
+  const logoRoot = document.getElementById('navLogo');
+  if (!nav || !logoRoot) return;
+  const logo = logoRoot.querySelector('path');
+  if (!logo) return;
   // Keep logo white always for visibility
   logo.setAttribute('fill', '#fff');
 }

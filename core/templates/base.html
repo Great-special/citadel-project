@@ -22,7 +22,7 @@
          ═══════════════════════════════════════ -->
     <nav class="nav" id="mainNav">
         <div class="nav-inner">
-            <button class="nav-logo" onclick="window.location.href='{% url 'index' %}'">
+            <button class="nav-logo" id="navLogo" onclick="window.location.href='{% url 'index' %}'">
                 <svg width="39" height="44" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#fff"/><text x="36" y="65" font-family="Outfit,sans-serif" font-size="60" font-weight="900" fill="#0C1E3C" text-anchor="middle" dominant-baseline="central">C </text><text x="73" y="65" font-family="Outfit,sans-serif" font-size="50" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg>
                 <div class="nav-brand">Citadel <span class="nav-brand-accent">Exzellenz</span></div>
             </button>
@@ -38,11 +38,11 @@
             <button class="hamburger" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
         </div>
         <div class="mob-menu" id="mobMenu">
-            <button class="nav-link" onclick="window.location.href='{% url 'index' %}'">Group</button>
-                <button class="nav-link" onclick="window.location.href='{% url 'akademie' %}'">Akademie</button>
-                <button class="nav-link" onclick="window.location.href='{% url 'geotech' %}'">GeoTech</button>
-                <button class="nav-link" onclick="window.location.href='{% url 'faculty' %}'">Faculty</button>
-                <button class="nav-link" onclick="window.location.href='{% url 'insights' %}'">Intelligence</button>
+            <button class="mob-link" onclick="window.location.href='{% url 'index' %}'">Group</button>
+            <button class="mob-link" onclick="window.location.href='{% url 'akademie' %}'">Akademie</button>
+            <button class="mob-link" onclick="window.location.href='{% url 'geotech' %}'">GeoTech</button>
+            <button class="mob-link" onclick="window.location.href='{% url 'faculty' %}'">Faculty</button>
+            <button class="mob-link" onclick="window.location.href='{% url 'insights' %}'">Intelligence</button>
             <button class="mob-link" onclick="window.location.href='{% url 'contact' %}'">Contact</button>
         </div>
     </nav>
@@ -80,6 +80,8 @@
                     <button onclick="window.location.href='{% url 'faculty' %}'">Faculty Network</button>
                     <button onclick="window.location.href='{% url 'insights' %}'">Intelligence</button>
                     <button onclick="window.location.href='{% url 'contact' %}'">Contact</button>
+                    <button onclick="window.location.href='https://i-citadelexz.com:2096/'">Webmail</button>
+                    <button onclick="window.location.href='https://i-citadelexz.com/admin/'">Admin</button>
                 </div>
             </div>
             <div class="footer-bottom">
