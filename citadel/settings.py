@@ -36,8 +36,8 @@ if environment == 'production':
 else:
     DEBUG = True
     
-ALLOWED_HOSTS = ['i-citadelexz.com', '.i-citadelexz.com', 'localhost', '127.0.0.1', 'k8a-adaptable-darwin.circumeo-apps.net']
-CSRF_TRUSTED_ORIGINS = ["https://k8a-adaptable-darwin.circumeo-apps.net", "http://localhost", "https://i-citadelexz.com/"]
+ALLOWED_HOSTS = ['i-citadelexz.com', '.i-citadelexz.com', 'citadelexzellenz.com', 'localhost', '127.0.0.1', 'k8a-adaptable-darwin.circumeo-apps.net']
+CSRF_TRUSTED_ORIGINS = ["https://k8a-adaptable-darwin.circumeo-apps.net", "http://localhost", "https://i-citadelexz.com/", "https://citadelexzellenz.com/"]
 
 
 
