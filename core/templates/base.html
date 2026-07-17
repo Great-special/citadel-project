@@ -1,25 +1,58 @@
-{% load static %}
+{% load static content_blocks %}
 
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="{{ request.LANGUAGE_CODE|default:'en' }}" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Citadel Exzellenz Group — The Meridian Standard</title>
-    <meta name="description" content="The Meridian Standard — the discipline of operating between Africa and Europe in earth sciences, geospatial intelligence, and leadership. Held by a faculty, not a founder.">
+    <title>{% block title %}{% copy_text 'base.meta.title' 'Citadel Exzellenz Group - The Meridian Standard' %}{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}{% copy_text 'base.meta.description' 'The Meridian Standard - the discipline of operating between Africa and Europe in earth sciences, geospatial intelligence, and leadership. Held by a faculty, not a founder.' %}{% endblock %}">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z' fill='%230C1E3C'/%3E%3Ctext x='35' y='65' font-family='sans-serif' font-size='48' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='central'%3EC%3C/text%3E%3Ctext x='68' y='65' font-family='sans-serif' font-size='38' font-weight='700' fill='%23C8960C' text-anchor='middle' dominant-baseline='central'%3EX%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .lang-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 8px;
+        }
+
+        .lang-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 42px;
+            height: 40px;
+            padding: 0 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(200, 150, 12, 0.22);
+            color: inherit;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+
+        .lang-link.active {
+            background: rgba(200, 150, 12, 0.16);
+            border-color: rgba(200, 150, 12, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .lang-switch {
+                margin: 12px 0 0;
+            }
+        }
+    </style>
     {% block css %}
     
     {% endblock css %}
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 </head>
 <body>
-    <!-- ═══════════════════════════════════════
-         NAVIGATION
-         ═══════════════════════════════════════ -->
     <nav class="nav" id="mainNav">
         <div class="nav-inner">
             <button class="nav-logo" id="navLogo" onclick="window.location.href='{% url 'index' %}'">
@@ -27,23 +60,31 @@
                 <div class="nav-brand">Citadel <span class="nav-brand-accent">Exzellenz</span></div>
             </button>
             <div class="nav-links">
-                <button class="nav-link" onclick="window.location.href='{% url 'index' %}'">Group</button>
-                <button class="nav-link" onclick="window.location.href='{% url 'akademie' %}'">Akademie</button>
-                <button class="nav-link" onclick="window.location.href='{% url 'geotech' %}'">GeoTech</button>
-                <button class="nav-link" onclick="window.location.href='{% url 'faculty' %}'">Faculty</button>
-                <button class="nav-link" onclick="window.location.href='{% url 'insights' %}'">Intelligence</button>
-                <button class="nav-cta-btn" onclick="window.location.href='{% url 'contact' %}'">Request a Consultation</button>
-                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" id="themeBtn">☀</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'index' %}'">{% copy_text 'base.nav.group' 'Group' %}</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'akademie' %}'">{% copy_text 'base.nav.akademie' 'Akademie' %}</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'geotech' %}'">{% copy_text 'base.nav.geotech' 'GeoTech' %}</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'faculty' %}'">{% copy_text 'base.nav.faculty' 'Faculty' %}</button>
+                <button class="nav-link" onclick="window.location.href='{% url 'insights' %}'">{% copy_text 'base.nav.intelligence' 'Intelligence' %}</button>
+                <button class="nav-cta-btn" onclick="window.location.href='{% url 'contact' %}'">{% copy_text 'base.nav.consultation' 'Request a Consultation' %}</button>
+                <div class="lang-switch" aria-label="Language switcher">
+                    <a class="lang-link {% if request.LANGUAGE_CODE == 'en' %}active{% endif %}" href="{% switch_language_url 'en' %}">EN</a>
+                    <a class="lang-link {% if request.LANGUAGE_CODE == 'de' %}active{% endif %}" href="{% switch_language_url 'de' %}">DE</a>
+                </div>
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" id="themeBtn">&#9728;</button>
             </div>
             <button class="hamburger" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
         </div>
         <div class="mob-menu" id="mobMenu">
-            <button class="mob-link" onclick="window.location.href='{% url 'index' %}'">Group</button>
-            <button class="mob-link" onclick="window.location.href='{% url 'akademie' %}'">Akademie</button>
-            <button class="mob-link" onclick="window.location.href='{% url 'geotech' %}'">GeoTech</button>
-            <button class="mob-link" onclick="window.location.href='{% url 'faculty' %}'">Faculty</button>
-            <button class="mob-link" onclick="window.location.href='{% url 'insights' %}'">Intelligence</button>
-            <button class="mob-link" onclick="window.location.href='{% url 'contact' %}'">Contact</button>
+            <button class="mob-link" onclick="window.location.href='{% url 'index' %}'">{% copy_text 'base.nav.group' 'Group' %}</button>
+            <button class="mob-link" onclick="window.location.href='{% url 'akademie' %}'">{% copy_text 'base.nav.akademie' 'Akademie' %}</button>
+            <button class="mob-link" onclick="window.location.href='{% url 'geotech' %}'">{% copy_text 'base.nav.geotech' 'GeoTech' %}</button>
+            <button class="mob-link" onclick="window.location.href='{% url 'faculty' %}'">{% copy_text 'base.nav.faculty' 'Faculty' %}</button>
+            <button class="mob-link" onclick="window.location.href='{% url 'insights' %}'">{% copy_text 'base.nav.intelligence' 'Intelligence' %}</button>
+            <button class="mob-link" onclick="window.location.href='{% url 'contact' %}'">{% copy_text 'base.nav.contact' 'Contact' %}</button>
+            <div class="lang-switch">
+                <a class="lang-link {% if request.LANGUAGE_CODE == 'en' %}active{% endif %}" href="{% switch_language_url 'en' %}">EN</a>
+                <a class="lang-link {% if request.LANGUAGE_CODE == 'de' %}active{% endif %}" href="{% switch_language_url 'de' %}">DE</a>
+            </div>
         </div>
     </nav>
 
@@ -57,40 +98,40 @@
                         <svg width="26" height="31" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#fff"/><text x="35" y="65" font-family="Outfit,sans-serif" font-size="48" font-weight="800" fill="#0C1E3C" text-anchor="middle" dominant-baseline="central">C</text><text x="68" y="65" font-family="Outfit,sans-serif" font-size="38" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg>
                         <span>Citadel Exzellenz Group</span>
                     </div>
-                    <p class="footer-tagline">Intelligence that executes.</p>
-                    <p class="footer-legal">Citadel Exzellenz · HRB 22474, Münster<br>USt-IdNr.: DE453937721</p>
+                    <p class="footer-tagline">{% copy_text 'base.footer.tagline' 'Intelligence that executes.' %}</p>
+                    <p class="footer-legal">{% copy_html 'base.footer.legal' 'Citadel Exzellenz · HRB 22474, Munster<br>USt-IdNr.: DE453937721' %}</p>
                     <p class="footer-legal">info@citadelexzellenz.com</p>
                 </div>
                 <div>
-                    <h5>Akademie</h5>
-                    <button onclick="window.location.href='{% url 'akademie' %}'">Leadership Journey</button>
-                    <button onclick="window.location.href='{% url 'akademie' %}'">Executive Coaching</button>
-                    <button onclick="window.location.href='{% url 'akademie' %}'">Geospatial &amp; Data</button>
-                    <button onclick="window.location.href='{% url 'akademie' %}'">Oil &amp; Gas Technical</button>
-                    <button onclick="window.location.href='{% url 'akademie' %}'">Bespoke / In-House</button>
+                    <h5>{% copy_text 'base.footer.akademie.title' 'Akademie' %}</h5>
+                    <button onclick="window.location.href='{% url 'akademie' %}'">{% copy_text 'base.footer.akademie.track_1' 'Leadership Journey' %}</button>
+                    <button onclick="window.location.href='{% url 'akademie' %}'">{% copy_text 'base.footer.akademie.track_2' 'Executive Coaching' %}</button>
+                    <button onclick="window.location.href='{% url 'akademie' %}'">{% copy_text 'base.footer.akademie.track_3' 'Geospatial & Data' %}</button>
+                    <button onclick="window.location.href='{% url 'akademie' %}'">{% copy_text 'base.footer.akademie.track_4' 'Oil & Gas Technical' %}</button>
+                    <button onclick="window.location.href='{% url 'akademie' %}'">{% copy_text 'base.footer.akademie.track_5' 'Bespoke / In-House' %}</button>
                 </div>
                 <div>
-                    <h5>GeoTech</h5>
-                    <button onclick="window.location.href='{% url 'geotech' %}'">Citadel PROS</button>
-                    <button onclick="window.location.href='{% url 'geotech' %}'">Citadel GIM</button>
-                    <button onclick="window.location.href='{% url 'geotech' %}'">Citadel uDMS</button>
+                    <h5>{% copy_text 'base.footer.geotech.title' 'GeoTech' %}</h5>
+                    <button onclick="window.location.href='{% url 'geotech' %}'">{% copy_text 'base.footer.geotech.pros' 'Citadel PROS' %}</button>
+                    <button onclick="window.location.href='{% url 'geotech' %}'">{% copy_text 'base.footer.geotech.gim' 'Citadel GIM' %}</button>
+                    <button onclick="window.location.href='{% url 'geotech' %}'">{% copy_text 'base.footer.geotech.udms' 'Citadel uDMS' %}</button>
                 </div>
                 <div>
-                    <h5>Group</h5>
-                    <button onclick="window.location.href='{% url 'faculty' %}'">Faculty Network</button>
-                    <button onclick="window.location.href='{% url 'insights' %}'">Intelligence</button>
-                    <button onclick="window.location.href='{% url 'contact' %}'">Contact</button>
-                    <button onclick="window.location.href='https://citadelexzellenz.com:2096/'">Webmail</button>
-                    <button onclick="window.location.href='https://citadelexzellenz.com/admin/'">Admin</button>
+                    <h5>{% copy_text 'base.footer.group.title' 'Group' %}</h5>
+                    <button onclick="window.location.href='{% url 'faculty' %}'">{% copy_text 'base.footer.group.faculty' 'Faculty Network' %}</button>
+                    <button onclick="window.location.href='{% url 'insights' %}'">{% copy_text 'base.footer.group.intelligence' 'Intelligence' %}</button>
+                    <button onclick="window.location.href='{% url 'contact' %}'">{% copy_text 'base.footer.group.contact' 'Contact' %}</button>
+                    <button onclick="window.location.href='https://citadelexzellenz.com:2096/'">{% copy_text 'base.footer.group.webmail' 'Webmail' %}</button>
+                    <button onclick="window.location.href='https://citadelexzellenz.com/admin/'">{% copy_text 'base.footer.group.admin' 'Admin' %}</button>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 Citadel Exzellenz Group. All rights reserved.</p>
+                <p>{% copy_text 'base.footer.copyright' '© 2026 Citadel Exzellenz Group. All rights reserved.' %}</p>
                 <div class="footer-bottom-links">
-                    <a href="{% url 'privacy' %}">Privacy Policy</a>
-                    <a href="{% url 'imprint' %}">Imprint</a>
+                    <a href="{% url 'privacy' %}">{% copy_text 'base.footer.privacy' 'Privacy Policy' %}</a>
+                    <a href="{% url 'imprint' %}">{% copy_text 'base.footer.imprint' 'Imprint' %}</a>
                 </div>
-                <p>The Meridian Standard · citadelexzellenz.com</p>
+                <p>{% copy_text 'base.footer.meridian' 'The Meridian Standard · citadelexzellenz.com' %}</p>
             </div>
         </div>
     </footer>

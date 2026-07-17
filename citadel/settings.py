@@ -137,7 +137,7 @@ LANGUAGES = [
     ('de', _('German'))
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -149,7 +149,7 @@ LOCALE_PATHS = [
     BASE_DIR / 'locale'
 ]
 
-MODELTRANSLATION_LANGUAGES = ('en', 'de', 'fr')
+MODELTRANSLATION_LANGUAGES = ('en', 'de')
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
 

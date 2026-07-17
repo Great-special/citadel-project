@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static content_blocks %}
+
+{% block title %}{% copy_text 'geotech.meta.title' 'Citadel GeoTech - Citadel Exzellenz Group' %}{% endblock %}
+{% block meta_description %}{% copy_text 'geotech.meta.description' 'AI-powered geospatial intelligence products for route planning, monitoring, and unified data management.' %}{% endblock %}
 
 {% block css %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -10,15 +13,16 @@
     <section class="hero hero-geo">
       <div class="geogrid-bg"><svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice"><line x1="0" y1="0" x2="0" y2="600" stroke="#00a8b5" stroke-width=".5"/><line x1="50" y1="0" x2="50" y2="600" stroke="#00a8b5" stroke-width=".5"/><line x1="100" y1="0" x2="100" y2="600" stroke="#00a8b5" stroke-width=".5"/><line x1="150" y1="0" x2="150" y2="600" stroke="#00a8b5" stroke-width=".5"/><line x1="200" y1="0" x2="200" y2="600" stroke="#00a8b5" stroke-width=".5"/><line x1="250" y1="0" x2="250" y2="600" stroke="#00a8b5" stroke-width=".5"/><line x1="300" y1="0" x2="300" y2="600" stroke="#00a8b5" stroke-width=".5"/><line x1="350" y1="0" x2="350" y2="600" stroke="#00a8b5" stroke-width=".5"/><line x1="400" y1="0" x2="400" y2="600" stroke="#00a8b5" stroke-width=".5"/><line x1="450" y1="0" x2="450" y2="600" stroke="#00a8b5" stroke-width=".5"/><line x1="500" y1="0" x2="500" y2="600" stroke="#00a8b5" stroke-width=".5"/><line x1="550" y1="0" x2="550" y2="600" stroke="#00a8b5" stroke-width=".5"/><line x1="600" y1="0" x2="600" y2="600" stroke="#00a8b5" stroke-width=".5"/><line x1="0" y1="50" x2="600" y2="50" stroke="#00a8b5" stroke-width=".5"/><line x1="0" y1="100" x2="600" y2="100" stroke="#00a8b5" stroke-width=".5"/><line x1="0" y1="150" x2="600" y2="150" stroke="#00a8b5" stroke-width=".5"/><line x1="0" y1="200" x2="600" y2="200" stroke="#00a8b5" stroke-width=".5"/><line x1="0" y1="250" x2="600" y2="250" stroke="#00a8b5" stroke-width=".5"/><line x1="0" y1="300" x2="600" y2="300" stroke="#00a8b5" stroke-width=".5"/><line x1="0" y1="350" x2="600" y2="350" stroke="#00a8b5" stroke-width=".5"/><line x1="0" y1="400" x2="600" y2="400" stroke="#00a8b5" stroke-width=".5"/><line x1="0" y1="450" x2="600" y2="450" stroke="#00a8b5" stroke-width=".5"/><line x1="0" y1="500" x2="600" y2="500" stroke="#00a8b5" stroke-width=".5"/><line x1="0" y1="550" x2="600" y2="550" stroke="#00a8b5" stroke-width=".5"/><line x1="0" y1="600" x2="600" y2="600" stroke="#00a8b5" stroke-width=".5"/><path d="M 60 520 L 140 420 L 250 440 L 340 320 L 410 220 L 480 140 L 540 60" fill="none" stroke="#00a8b5" stroke-width="2.5" stroke-dasharray="8 5"><animate attributeName="stroke-dashoffset" from="120" to="0" dur="4s" repeatCount="indefinite"/></path><circle cx="60" cy="520" r="5" fill="#00a8b5" opacity=".5"><animate attributeName="r" values="3;7;3" dur="2s" repeatCount="indefinite"/></circle><circle cx="340" cy="320" r="5" fill="#00a8b5" opacity=".5"><animate attributeName="r" values="3;7;3" dur="3s" repeatCount="indefinite"/></circle><circle cx="540" cy="60" r="5" fill="#00a8b5" opacity=".5"><animate attributeName="r" values="3;7;3" dur="4s" repeatCount="indefinite"/></circle></svg></div>
       <div class="hero-content">
-        <div class="hero-logo-row"><svg width="30" height="36" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#006470"/><text x="35" y="65" font-family="Outfit,sans-serif" font-size="48" font-weight="800" fill="#fff" text-anchor="middle" dominant-baseline="central">C</text><text x="68" y="65" font-family="Outfit,sans-serif" font-size="38" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg><span class="hero-division">Citadel GeoTech</span></div>
-        <div class="launch-badge"><span class="launch-dot"></span> Now Accepting Founding Clients · September 2026</div>
-        <h1 class="hero-h1">Your SCADA tells you <em>what</em>. PROS tells you <em class="accent">where</em>, <em class="accent">why</em>, and <em class="accent">what to do next</em>.</h1>
-        <p class="hero-body">Three AI-powered products built on 14 peer-reviewed publications. Explainable AI — not black-box predictions. Map-first geospatial intelligence linking route optimisation, predictive monitoring, and unified data management.</p>
-        <div class="early-access-box"><h3>Apply for Early Access</h3><p>Founding client pricing, direct input to product development, and priority onboarding.</p><button class="btn-primary" onclick="window.location.href='{% url 'contact' %}'">Apply for Early Access →</button></div>
+        <div class="hero-logo-row"><svg width="30" height="36" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#006470"/><text x="35" y="65" font-family="Outfit,sans-serif" font-size="48" font-weight="800" fill="#fff" text-anchor="middle" dominant-baseline="central">C</text><text x="68" y="65" font-family="Outfit,sans-serif" font-size="38" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg><span class="hero-division">{% copy_text 'geotech.hero.division' 'Citadel GeoTech' %}</span></div>
+        <div class="launch-badge"><span class="launch-dot"></span> {% copy_text 'geotech.hero.badge' 'Now Accepting Founding Clients · September 2026' %}</div>
+        <h1 class="hero-h1">{% static_copy_html 'geotech.hero.title' %}Your SCADA tells you <em>what</em>. PROS tells you <em class="accent">where</em>, <em class="accent">why</em>, and <em class="accent">what to do next</em>.{% endstatic_copy_html %}</h1>
+        <p class="hero-body">{% copy_text 'geotech.hero.body' 'Three AI-powered products built on 14 peer-reviewed publications. Explainable AI - not black-box predictions. Map-first geospatial intelligence linking route optimisation, predictive monitoring, and unified data management.' %}</p>
+        <div class="early-access-box"><h3>{% copy_text 'geotech.hero.cta_title' 'Apply for Early Access' %}</h3><p>{% copy_text 'geotech.hero.cta_body' 'Founding client pricing, direct input to product development, and priority onboarding.' %}</p><button class="btn-primary" onclick="window.location.href='{% url 'contact' %}'">{% copy_text 'geotech.hero.cta_button' 'Apply for Early Access →' %}</button></div>
       </div>
     </section>
 
     <section class="section bg-surface"><div class="section-inner">
+      {% static_copy_html 'geotech.products.section' %}
       <p class="section-eye">Three Products. One Workflow.</p>
       <h2 class="section-h2">Plan Corridors. Monitor Assets. Act With Clarity.</h2>
       <div class="prod-grid">
@@ -26,32 +30,37 @@
         <div class="prod-card"><img src="{% static 'images/monitoring.jpg.jpeg' %}" alt="Citadel GIM" class="prod-image"><span class="prod-tag">Subsurface Intelligence</span><h3 class="prod-name">Citadel GIM</h3><p class="prod-full">Geotechnical Intelligent Mapper</p><p class="prod-desc">Geotechnical analysis and intelligent mapping. Visualise subsurface conditions, terrain classification, geological constraints. AI-driven from a decade of published research.</p></div>
         <div class="prod-card"><img src="{% static 'images/data-management.png' %}" alt="Citadel uDMS" class="prod-image"><span class="prod-tag">Data Governance</span><h3 class="prod-name">Citadel uDMS</h3><p class="prod-full">Unified Data Management System</p><p class="prod-desc">Centralise routing studies, monitoring evidence, GIS layers, and operational records. Versioned uploads with metadata and lineage. Audit-ready.</p></div>
       </div>
+      {% endstatic_copy_html %}
     </div></section>
 
     <section class="section bg-dark"><div class="section-inner">
+      {% static_copy_html 'geotech.pillars.section' %}
       <p class="section-eye gold">Technology Pillars</p>
       <h2 class="section-h2" style="color:#fff">Defensible. Explainable. Unified.</h2>
       <div class="tech-grid">
-        <div class="tech-card"><h4>Defensible Decisions</h4><p>PROS documents every constraint, every trade-off, every scenario — so your route can be explained to any stakeholder or regulator.</p></div>
+        <div class="tech-card"><h4>Defensible Decisions</h4><p>PROS documents every constraint, every trade-off, every scenario - so your route can be explained to any stakeholder or regulator.</p></div>
         <div class="tech-card"><h4>Explainable AI</h4><p>No black-box models. Every alert, route ranking, and risk score is explained in terms an engineer can verify.</p></div>
         <div class="tech-card"><h4>One Map, One Workflow</h4><p>No more switching between GIS, SCADA, spreadsheets, and inboxes. One operational view for planning and operations.</p></div>
       </div>
+      {% endstatic_copy_html %}
     </div></section>
 
     <section class="section bg-surface"><div class="section-inner">
+      {% static_copy_html 'geotech.research.section' %}
       <p class="section-eye">Research Credibility</p>
       <h2 class="section-h2">Built on Published Science, Not Marketing Claims</h2>
-      <div class="research-quote">ESRI sells tools built by engineers. Citadel GeoTech is built by a scientist who publishes in the journals your engineers read. That's the difference between a vendor and a research partner.</div>
+      <div class="research-quote">ESRI sells tools built by engineers. Citadel GeoTech is built by a scientist who publishes in the journals your engineers read. That is the difference between a vendor and a research partner.</div>
       <p class="section-sub">14 peer-reviewed publications across Solid Earth, Journal of Structural Geology, Geothermics, Sedimentology.</p>
       <div class="pub-grid">
         <div class="pub-card"><p class="pub-title">Impact of stress regime change on permeability of naturally fractured carbonate buildup</p><p class="pub-journal">Solid Earth · 2024</p></div>
         <div class="pub-card"><p class="pub-title">Structural control on hydrothermal fluid flow in carbonate geothermal reservoir</p><p class="pub-journal">Geothermics · 2025</p></div>
         <div class="pub-card"><p class="pub-title">Morphology and topology of dolostone lithons in regional fault zone</p><p class="pub-journal">J. Structural Geology · 2020</p></div>
-        <div class="pub-card"><p class="pub-title">Stratigraphic interpretation through pattern recognition and AI</p><p class="pub-journal">MSc Thesis — Erasmus Mundus · 2011</p></div>
+        <div class="pub-card"><p class="pub-title">Stratigraphic interpretation through pattern recognition and AI</p><p class="pub-journal">MSc Thesis - Erasmus Mundus · 2011</p></div>
       </div>
+      {% endstatic_copy_html %}
     </div></section>
 
-    <section class="section bg-main"><div class="section-inner"><div class="flywheel-row"><div class="flywheel-text"><p class="section-eye">The Flywheel</p><p class="flywheel-body">Your teams make decisions using spatial data. Are they trained to trust it? Citadel Akademie delivers the only training designed for geospatial intelligence workflows.</p></div><button class="btn-outline" onclick="window.location.href='{% url 'akademie' %}'">Explore Citadel Akademie →</button></div></div></section>
+    <section class="section bg-main"><div class="section-inner"><div class="flywheel-row"><div class="flywheel-text"><p class="section-eye">{% copy_text 'geotech.flywheel.eyebrow' 'The Flywheel' %}</p><p class="flywheel-body">{% copy_text 'geotech.flywheel.body' 'Your teams make decisions using spatial data. Are they trained to trust it? Citadel Akademie delivers the only training designed for geospatial intelligence workflows.' %}</p></div><button class="btn-outline" onclick="window.location.href='{% url 'akademie' %}'">{% copy_text 'geotech.flywheel.cta' 'Explore Citadel Akademie →' %}</button></div></div></section>
   </div>
 
 {% endblock content %}

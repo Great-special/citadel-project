@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static content_blocks %}
+
+{% block title %}{% copy_text 'contact.meta.title' 'Contact - Citadel Exzellenz Group' %}{% endblock %}
+{% block meta_description %}{% copy_text 'contact.meta.description' 'Book a discovery call with Citadel Exzellenz Group.' %}{% endblock %}
 
 {% block css %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -10,28 +13,28 @@
   <section class="hero hero-home hero-tall"><div class="hero-content">
     <div class="contact-grid">
       <div>
-        <p class="eyebrow">Start a Conversation</p>
-        <h1 class="hero-h1" style="font-size:clamp(2.2rem,4vw,3.4rem)">Tell us your challenge<span class="gold">.</span> We'll match you with the right faculty.</h1>
-        <p class="hero-body">Every engagement begins with a diagnostic, not a catalogue. Book a discovery call with Dr. Igbokwe to discuss your specific requirements.</p>
+        <p class="eyebrow">{% copy_text 'contact.hero.eyebrow' 'Start a Conversation' %}</p>
+        <h1 class="hero-h1" style="font-size:clamp(2.2rem,4vw,3.4rem)">{% copy_html 'contact.hero.title' 'Tell us your challenge<span class="gold">.</span> We will match you with the right faculty.' %}</h1>
+        <p class="hero-body">{% copy_text 'contact.hero.body' 'Every engagement begins with a diagnostic, not a catalogue. Book a discovery call with Dr. Igbokwe to discuss your specific requirements.' %}</p>
         <div class="contact-details">
-          <p><strong>Phone:</strong> +49 (0) 251 3790 6631</p>
-          <p><strong>WhatsApp:</strong> +44 (0) 7438 463590</p>
-          <p><strong>Email:</strong> info@citadelexzellenz.com</p>
-          <p><strong>Venues:</strong> Münster · St Andrews · Edinburgh · London · Abuja · Lagos</p>
-          <p><strong>Web:</strong> citadelexzellenz.com</p>
-          <p><strong>Registration:</strong> Citadel Exzellenz · HRB 22474 · USt-IdNr.: DE453937721</p>
+          <p><strong>{% copy_text 'contact.details.phone_label' 'Phone:' %}</strong> +49 (0) 251 3790 6631</p>
+          <p><strong>{% copy_text 'contact.details.whatsapp_label' 'WhatsApp:' %}</strong> +44 (0) 7438 463590</p>
+          <p><strong>{% copy_text 'contact.details.email_label' 'Email:' %}</strong> info@citadelexzellenz.com</p>
+          <p><strong>{% copy_text 'contact.details.venues_label' 'Venues:' %}</strong> {% copy_text 'contact.details.venues_value' 'Munster · St Andrews · Edinburgh · London · Abuja · Lagos' %}</p>
+          <p><strong>{% copy_text 'contact.details.web_label' 'Web:' %}</strong> citadelexzellenz.com</p>
+          <p><strong>{% copy_text 'contact.details.registration_label' 'Registration:' %}</strong> {% copy_text 'contact.details.registration_value' 'Citadel Exzellenz · HRB 22474 · USt-IdNr.: DE453937721' %}</p>
         </div>
       </div>
       <div class="contact-form">
         <form action="{% url 'contact' %}" method="post">
           {% csrf_token %}
-          <h3>Book a Discovery Call</h3>
-          <div class="form-group"><label>Full Name</label><input name="full_name" type="text"></div>
-          <div class="form-group"><label>Organisation</label><input name="organisation" type="text"></div>
-          <div class="form-group"><label>Email</label><input name="email" type="email"></div>
-          <div class="form-group"><label>Role / Title</label><input name="role" type="text"></div>
-          <div class="form-group"><label>I'm interested in</label><select name="interest"><option>Training Programme Proposal</option><option>GeoTech Early Access</option><option>Government Capacity Building</option><option>Faculty Briefing</option></select></div>
-          <button type="submit" class="btn-primary" style="width:100%;margin-top:8px">Book Discovery Call</button>
+          <h3>{% copy_text 'contact.form.title' 'Book a Discovery Call' %}</h3>
+          <div class="form-group"><label>{% copy_text 'contact.form.full_name' 'Full Name' %}</label><input name="full_name" type="text"></div>
+          <div class="form-group"><label>{% copy_text 'contact.form.organisation' 'Organisation' %}</label><input name="organisation" type="text"></div>
+          <div class="form-group"><label>{% copy_text 'contact.form.email' 'Email' %}</label><input name="email" type="email"></div>
+          <div class="form-group"><label>{% copy_text 'contact.form.role' 'Role / Title' %}</label><input name="role" type="text"></div>
+          <div class="form-group"><label>{% copy_text 'contact.form.interest' 'I am interested in' %}</label><select name="interest"><option>{% copy_text 'contact.form.interest_training' 'Training Programme Proposal' %}</option><option>{% copy_text 'contact.form.interest_geotech' 'GeoTech Early Access' %}</option><option>{% copy_text 'contact.form.interest_government' 'Government Capacity Building' %}</option><option>{% copy_text 'contact.form.interest_faculty' 'Faculty Briefing' %}</option></select></div>
+          <button type="submit" class="btn-primary" style="width:100%;margin-top:8px">{% copy_text 'contact.form.submit' 'Book Discovery Call' %}</button>
         </form>
       </div>
     </div>

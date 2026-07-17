@@ -17,6 +17,7 @@ import json
 from .models import Course, EnrolledCustomer, Payment, CourseRegistration, FeedBack
 from .forms import CourseRegistrationForm
 from .serializers import serialize_tracks, serialize_upcoming
+from .static_content import get_static_content_value
 
 
 # Create your views here.
@@ -31,7 +32,14 @@ def contact_view(request):
         message = f"Organisation: {request.POST.get('organisation')}\nRole/Title: {request.POST.get('role')}\nInterest: {request.POST.get('interest')}"
 
         FeedBack(name=name, email=email, message=message).save()
-        messages.success(request, 'Your message has been sent successfully!')
+        messages.success(
+            request,
+            get_static_content_value(
+                'contact.messages.success',
+                getattr(request, 'LANGUAGE_CODE', 'en'),
+                'Your message has been sent successfully!',
+            ),
+        )
         return redirect('contact')
 
     return render(request, 'contact.html')

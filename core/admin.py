@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Cluster, Course, UpcomingEvent, Testimonial, Payment, FeedBack, CourseRegistration, AccessModel
+from .models import Category, Cluster, Course, UpcomingEvent, Testimonial, Payment, FeedBack, CourseRegistration, AccessModel, StaticContentBlock
 # Register your models here.
 
 class ClusterInline(admin.TabularInline):
@@ -87,6 +87,13 @@ class AccessModelAdmin(admin.ModelAdmin):
     list_display = ("id",)
 
 
+class StaticContentBlockAdmin(admin.ModelAdmin):
+    list_display = ('page', 'block', 'is_rich_text', 'updated_at')
+    list_filter = ('page', 'is_rich_text')
+    search_fields = ('page', 'block', 'content_en', 'content_de')
+    ordering = ('page', 'block')
+
+
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Cluster, ClusterAdmin)
@@ -94,6 +101,7 @@ admin.site.register(Testimonial, TestimonialsAdmin)
 admin.site.register(Payment, PaymentAdmin)
 admin.site.register(FeedBack)
 admin.site.register(CourseRegistration)
+admin.site.register(StaticContentBlock, StaticContentBlockAdmin)
 
 
 
@@ -118,3 +126,4 @@ admin_set_up.register(Payment, PaymentAdmin)
 admin_set_up.register(FeedBack)
 admin_set_up.register(CourseRegistration)
 admin_set_up.register(AccessModel, AccessModelAdmin)
+admin_set_up.register(StaticContentBlock, StaticContentBlockAdmin)

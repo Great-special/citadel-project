@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static content_blocks %}
+
+{% block title %}{% copy_text 'intelligence.meta.title' 'Citadel Intelligence - Citadel Exzellenz Group' %}{% endblock %}
+{% block meta_description %}{% copy_text 'intelligence.meta.description' 'Research and insight from the Africa-Europe energy corridor.' %}{% endblock %}
 
 {% block css %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -9,19 +12,21 @@
 
   <div>
   <section class="hero hero-home hero-short"><div class="hero-content">
-    <p class="eyebrow">Citadel Intelligence</p>
-    <h1 class="hero-h1">Research and insights from the Africa–Europe energy corridor<span class="gold">.</span></h1>
+    <p class="eyebrow">{% copy_text 'intelligence.hero.eyebrow' 'Citadel Intelligence' %}</p>
+    <h1 class="hero-h1">{% copy_html 'intelligence.hero.title' 'Research and insights from the Africa-Europe energy corridor<span class="gold">.</span>' %}</h1>
   </div></section>
   <section class="section bg-surface"><div class="section-inner">
-    <div class="insight-card"><span class="insight-tag">Annual Report · Coming 2027</span><h3 class="insight-title">The Oil &amp; Gas Leadership Competency Report</h3><p class="insight-desc">The first comprehensive analysis of leadership capability gaps across Africa-Europe energy corridor operations.</p></div>
-    <div class="insight-card"><span class="insight-tag">Insight Series</span><h3 class="insight-title">The Africa–Europe Energy Leadership Gap</h3><p class="insight-desc">A three-part series examining why the most important commercial corridor of the next 30 years remains the least served by executive education.</p></div>
-    <div class="insight-card"><span class="insight-tag">GeoTech Technical Notes</span><h3 class="insight-title">Explainable AI in Pipeline Route Optimisation</h3><p class="insight-desc">Why black-box AI fails regulatory scrutiny in critical infrastructure — and how Citadel GeoTech's approach is different.</p></div>
+    {% static_copy_html 'intelligence.cards.section' %}
+    <div class="insight-card"><span class="insight-tag">Annual Report - Coming 2027</span><h3 class="insight-title">The Oil &amp; Gas Leadership Competency Report</h3><p class="insight-desc">The first comprehensive analysis of leadership capability gaps across Africa-Europe energy corridor operations.</p></div>
+    <div class="insight-card"><span class="insight-tag">Insight Series</span><h3 class="insight-title">The Africa-Europe Energy Leadership Gap</h3><p class="insight-desc">A three-part series examining why the most important commercial corridor of the next 30 years remains the least served by executive education.</p></div>
+    <div class="insight-card"><span class="insight-tag">GeoTech Technical Notes</span><h3 class="insight-title">Explainable AI in Pipeline Route Optimisation</h3><p class="insight-desc">Why black-box AI fails regulatory scrutiny in critical infrastructure - and how Citadel GeoTech's approach is different.</p></div>
     <div class="insight-card"><span class="insight-tag">Publication Abstracts</span><h3 class="insight-title">14 Peer-Reviewed Publications</h3><p class="insight-desc">Accessible summaries of Dr. Igbokwe's research portfolio spanning structural geology, geospatial intelligence, and environmental geoscience.</p></div>
+    {% endstatic_copy_html %}
   </div></section>
   <section class="section bg-dark" style="text-align:center"><div class="section-inner" style="max-width:700px">
-    <p class="section-eye gold">Citadel Alumni</p>
-    <p class="alumni-text">Join 500+ energy and government leaders trained through Citadel. Alumni receive quarterly intelligence briefings, exclusive GeoTech previews, and access to the Citadel professional network.</p>
-    <button class="btn-outline" style="margin-top:24px">Join the Alumni Network</button>
+    <p class="section-eye gold">{% copy_text 'intelligence.alumni.eyebrow' 'Citadel Alumni' %}</p>
+    <p class="alumni-text">{% copy_text 'intelligence.alumni.body' 'Join 500+ energy and government leaders trained through Citadel. Alumni receive quarterly intelligence briefings, exclusive GeoTech previews, and access to the Citadel professional network.' %}</p>
+    <button class="btn-outline" style="margin-top:24px">{% copy_text 'intelligence.alumni.cta' 'Join the Alumni Network' %}</button>
   </div></section>
 </div>
 {% endblock content %}

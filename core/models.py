@@ -271,6 +271,52 @@ class CourseRegistration(models.Model):
         return f"{self.name} ({self.email})"
 
 
+class StaticContentBlock(models.Model):
+    page = models.CharField(max_length=100, verbose_name=_('page'))
+    block = models.CharField(max_length=150, verbose_name=_('block'))
+    content_en = models.TextField(blank=True, verbose_name=_('content (English)'))
+    content_de = models.TextField(blank=True, verbose_name=_('content (German)'))
+    is_rich_text = models.BooleanField(default=False, verbose_name=_('rich text'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+    updated_at = models.DateTimeField(auto_now=True, verbose_name=_('updated at'))
+
+    class Meta:
+        verbose_name = _('static content block')
+        verbose_name_plural = _('static content blocks')
+        ordering = ['page', 'block']
+        constraints = [
+            models.UniqueConstraint(fields=['page', 'block'], name='unique_static_content_block'),
+        ]
+
+    def __str__(self):
+        return self.key
+
+    @property
+    def key(self):
+        return f"{self.page}.{self.block}"
+
+    def value_for(self, language_code):
+        language = (language_code or 'en').split('-', 1)[0]
+        if language == 'de' and self.content_de.strip():
+            return self.content_de
+        return self.content_en
+
+    def save(self, *args, **kwargs):
+        self.page = (self.page or '').strip()
+        self.block = (self.block or '').strip()
+        super().save(*args, **kwargs)
+
+        from .static_content import clear_static_content_cache
+        clear_static_content_cache()
+
+    def delete(self, *args, **kwargs):
+        result = super().delete(*args, **kwargs)
+
+        from .static_content import clear_static_content_cache
+        clear_static_content_cache()
+        return result
+
+
 class AccessModel(models.Model):
     mode = models.CharField(max_length=50, verbose_name=_('mode'))
     description = models.TextField(blank=True, null=True, verbose_name=_('description'))

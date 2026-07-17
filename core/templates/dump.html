@@ -1,0 +1,371 @@
+<body>
+
+    <!-- ═══════════════════════════════════════
+         NAVIGATION (fully responsive)
+         ═══════════════════════════════════════ -->
+    <nav class="nav" id="mainNav">
+        <div class="nav-inner">
+            <button class="nav-logo" onclick="window.location.href='#'">
+                <svg width="39" height="44" viewBox="0 0 100 120">
+                    <path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#fff" />
+                    <text x="36" y="65" font-family="Outfit,sans-serif" font-size="60" font-weight="900" fill="#0C1E3C" text-anchor="middle" dominant-baseline="central">C </text>
+                    <text x="73" y="65" font-family="Outfit,sans-serif" font-size="50" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text>
+                </svg>
+                <div class="nav-brand">Citadel <span class="nav-brand-accent">Exzellenz</span></div>
+            </button>
+
+            <div class="nav-links">
+                <button class="nav-link active" onclick="window.location.href='#'">Group</button>
+                <button class="nav-link" onclick="window.location.href='#'">Akademie</button>
+                <button class="nav-link" onclick="window.location.href='#'">GeoTech</button>
+                <button class="nav-link" onclick="window.location.href='#'">Faculty</button>
+                <button class="nav-link" onclick="window.location.href='#'">Intelligence</button>
+                <button class="nav-cta-btn" onclick="window.location.href='#'">Request a Consultation</button>
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" id="themeBtn">☀</button>
+            </div>
+
+            <button class="hamburger" onclick="toggleMob()" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <div class="mob-menu" id="mobMenu">
+            <button class="mob-link active" onclick="window.location.href='#'">Group</button>
+            <button class="mob-link" onclick="window.location.href='#'">Akademie</button>
+            <button class="mob-link" onclick="window.location.href='#'">GeoTech</button>
+            <button class="mob-link" onclick="window.location.href='#'">Faculty</button>
+            <button class="mob-link" onclick="window.location.href='#'">Intelligence</button>
+            <button class="mob-link" onclick="window.location.href='#'" style="border-bottom:none; padding-bottom:6px;">
+                <span class="nav-cta-btn" style="display:inline-block; margin:6px 0 0;">Contact</span>
+            </button>
+            <div class="mob-lang">
+                <a href="#" class="active">EN</a>
+                <a href="#">DE</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════ -->
+    <section class="hero hero-home" style="min-height:auto; padding-top:64px; padding-bottom:40px;">
+        <div class="meridian-bg">
+            <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice">
+                <defs><linearGradient id="mg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C8960C"/><stop offset="100%" stop-color="#C8960C" stop-opacity="0"/></linearGradient></defs>
+                <line x1="700" y1="0" x2="700" y2="900" stroke="url(#mg)" stroke-width="1.5"><animate attributeName="opacity" values="0.4;1;0.4" dur="5s" repeatCount="indefinite"/></line>
+                <circle cx="700" cy="120" r="3" fill="#C8960C" opacity=".5"><animate attributeName="r" values="2;6;2" dur="3s" repeatCount="indefinite"/></circle>
+                <circle cx="700" cy="300" r="3" fill="#C8960C" opacity=".5"><animate attributeName="r" values="2;6;2" dur="3.8s" repeatCount="indefinite"/></circle>
+                <circle cx="700" cy="480" r="3" fill="#C8960C" opacity=".5"><animate attributeName="r" values="2;6;2" dur="4.6s" repeatCount="indefinite"/></circle>
+                <circle cx="700" cy="660" r="3" fill="#C8960C" opacity=".5"><animate attributeName="r" values="2;6;2" dur="5.4s" repeatCount="indefinite"/></circle>
+            </svg>
+        </div>
+        <div class="hero-content">
+            <p class="eyebrow">The Africa-Europe Intelligence Corridor · Münster, Germany</p>
+            <h1 class="hero-h1">The intelligence gap in critical infrastructure</h1>
+            <p class="hero-h1-sub">Citadel Exzellenz closes it</p>
+            <p class="hero-body">PetroKnowledge sells courses. ESRI sells software. Only Citadel Exzellenz delivers both the intelligence platform and the human capability to operate it — combining professor-led training, AI-powered geospatial intelligence, and senior-level consulting.</p>
+            <div class="hero-paths">
+                <button class="path-card" onclick="window.location.href='#'"><span class="path-label">For Energy Companies</span><span class="path-desc">Pipeline intelligence, operator certification, and leadership training for IOCs and NOCs.</span></button>
+                <button class="path-card" onclick="window.location.href='#'"><span class="path-label">For Government Agencies</span><span class="path-desc">Capacity building, regulatory compliance, and geospatial infrastructure intelligence.</span></button>
+            </div>
+            <div class="hero-ctas">
+                <button class="btn-primary" onclick="window.location.href='#'">Book a Discovery Call</button>
+                <button class="btn-outline" onclick="window.location.href='#'">Explore Programmes →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         PROOF BAR
+         ═══════════════════════════════════════ -->
+    <div class="proof-bar">
+        <div class="proof-scroll">
+            <span class="proof-item"><span class="proof-img" style="background:#1a1a1a;border-radius:4px;width:auto;height:40px;padding:4px 12px;color:#fff;font-weight:600;font-size:0.75rem;display:flex;align-items:center;">SHELL</span> Shell — £52.5K Consultancy</span>
+            <span class="proof-item"><span class="proof-img" style="background:#1a1a1a;border-radius:4px;width:auto;height:40px;padding:4px 12px;color:#fff;font-weight:600;font-size:0.75rem;display:flex;align-items:center;">RENAISSANCE</span> Renaissance Africa Energy — 5/5</span>
+            <span class="proof-item"><span class="proof-img" style="background:#1a1a1a;border-radius:4px;width:auto;height:40px;padding:4px 12px;color:#fff;font-weight:600;font-size:0.75rem;display:flex;align-items:center;">St ANDREWS</span> University of St Andrews — Founded 1413</span>
+            <span class="proof-item"><span class="proof-img" style="background:#1a1a1a;border-radius:4px;width:auto;height:40px;padding:4px 12px;color:#fff;font-weight:600;font-size:0.75rem;display:flex;align-items:center;">AADFI</span> AADFI — 90+ DFIs, 50+ Countries</span>
+            <span class="proof-item"><span class="proof-img" style="background:#1a1a1a;border-radius:4px;width:auto;height:40px;padding:4px 12px;color:#fff;font-weight:600;font-size:0.75rem;display:flex;align-items:center;">NSCDC</span> Nigeria Security &amp; Civil Defence Corps</span>
+            <!-- duplicate for seamless loop -->
+            <span class="proof-item"><span class="proof-img" style="background:#1a1a1a;border-radius:4px;width:auto;height:40px;padding:4px 12px;color:#fff;font-weight:600;font-size:0.75rem;display:flex;align-items:center;">SHELL</span> Shell — £52.5K Consultancy</span>
+            <span class="proof-item"><span class="proof-img" style="background:#1a1a1a;border-radius:4px;width:auto;height:40px;padding:4px 12px;color:#fff;font-weight:600;font-size:0.75rem;display:flex;align-items:center;">RENAISSANCE</span> Renaissance Africa Energy — 5/5</span>
+            <span class="proof-item"><span class="proof-img" style="background:#1a1a1a;border-radius:4px;width:auto;height:40px;padding:4px 12px;color:#fff;font-weight:600;font-size:0.75rem;display:flex;align-items:center;">St ANDREWS</span> University of St Andrews — Founded 1413</span>
+            <span class="proof-item"><span class="proof-img" style="background:#1a1a1a;border-radius:4px;width:auto;height:40px;padding:4px 12px;color:#fff;font-weight:600;font-size:0.75rem;display:flex;align-items:center;">AADFI</span> AADFI — 90+ DFIs, 50+ Countries</span>
+            <span class="proof-item"><span class="proof-img" style="background:#1a1a1a;border-radius:4px;width:auto;height:40px;padding:4px 12px;color:#fff;font-weight:600;font-size:0.75rem;display:flex;align-items:center;">NSCDC</span> Nigeria Security &amp; Civil Defence Corps</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         PARTNERS (5-card responsive)
+         ═══════════════════════════════════════ -->
+    <section class="section bg-surface partners-section">
+        <div class="section-inner">
+            <div class="partners-head">
+                <span class="section-eye">Institutional Partnerships &amp; Clients</span>
+                <h2 class="partners-h2">Trusted Across Energy and Government</h2>
+                <p class="partners-sub">Five institutions that verify the Meridian Standard — in the classroom, in the field, and in the ledger.</p>
+            </div>
+            <div class="partners-grid">
+                <article class="partner-card">
+                    <div class="partner-icon">🎓</div>
+                    <h3 class="partner-name">University of St Andrews Consulting Service</h3>
+                    <p class="partner-desc">Delivered at the quality of the University of St Andrews — #5 in the UK, founded in 1413. Three current faculty members across Earth Sciences and the Business School.</p>
+                    <span class="partner-tag">Academic Partner</span>
+                </article>
+                <article class="partner-card">
+                    <div class="partner-icon">🌍</div>
+                    <h3 class="partner-name">AADFI — African Development Finance Institute</h3>
+                    <p class="partner-desc">Endorsed by AADFI — the network of 90+ development finance institutions across 50+ African countries, financing the continent's critical infrastructure.</p>
+                    <span class="partner-tag">Partnership MOU</span>
+                </article>
+                <article class="partner-card">
+                    <div class="partner-icon">💧</div>
+                    <h3 class="partner-name">Shell SPDC Nigeria</h3>
+                    <p class="partner-desc">£52,500 expert consulting engagement covering GIS and Management — delivered to Shell SPDC Nigeria.</p>
+                    <span class="partner-tag">Consulting Client</span>
+                </article>
+                <article class="partner-card">
+                    <div class="partner-icon">🏢</div>
+                    <h3 class="partner-name">Renaissance Africa Energy Company</h3>
+                    <p class="partner-desc">Leadership Spark courses and Technical Training — Asset Integrity Management, Offshore Engineering, ASME Series, and more.</p>
+                    <span class="partner-tag">Training Client</span>
+                </article>
+                <article class="partner-card">
+                    <div class="partner-icon">🛡️</div>
+                    <h3 class="partner-name">Nigeria Security &amp; Civil Defence Corps</h3>
+                    <p class="partner-desc">Capacity building for government agency personnel — leadership, geospatial intelligence, and operational readiness.</p>
+                    <span class="partner-tag">Government Client</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         STATS
+         ═══════════════════════════════════════ -->
+    <section class="section bg-dark">
+        <div class="section-inner">
+            <div class="stats-grid">
+                <div style="text-align:center"><div class="stat-num">500+</div><div class="stat-label">Professionals Trained</div></div>
+                <div style="text-align:center"><div class="stat-num">14</div><div class="stat-label">Peer-Reviewed Publications</div></div>
+                <div style="text-align:center"><div class="stat-num">90+</div><div class="stat-label">AADFI Member Institutions</div></div>
+                <div style="text-align:center"><div class="stat-num">8</div><div class="stat-label">Faculty Across 3 Continents</div></div>
+                <div style="text-align:center"><div class="stat-num">20+</div><div class="stat-label">Years Experience</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         THE MERIDIAN STANDARD (doctrine)
+         ═══════════════════════════════════════ -->
+    <section class="section bg-main standard-section" id="standard">
+        <div class="standard-bg" aria-hidden="true">
+            <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice">
+                <line x1="700" y1="0" x2="700" y2="900" stroke="#C8960C" stroke-width="1"/>
+                <circle cx="700" cy="200" r="2" fill="#C8960C"/>
+                <circle cx="700" cy="450" r="2" fill="#C8960C"/>
+                <circle cx="700" cy="700" r="2" fill="#C8960C"/>
+            </svg>
+        </div>
+        <div class="standard-inner">
+            <p class="standard-eyebrow">Citadel Exzellenz Group · Doctrine</p>
+            <h1 class="standard-h1">The Meridian Standard<span class="gold">.</span></h1>
+            <p class="standard-sub">The discipline of operating between Africa and Europe, to one standard, delivered by a faculty, not a founder.</p>
+
+            <figure class="meridian-visual" aria-label="Geographic focus and European headquarters">
+                <div class="mv-tile">
+                    <div style="background:linear-gradient(135deg,#1a2a3a,#0a1a2a);width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.15);font-size:1.2rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">Africa–Europe</div>
+                    <span class="mv-label">The Meridian <span class="gold">·</span> Africa–Europe</span>
+                </div>
+                <div class="mv-tile tall">
+                    <div style="background:linear-gradient(135deg,#2a3a4a,#1a2a3a);width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.15);font-size:1.2rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">Münster</div>
+                    <span class="mv-label">Münster <span class="gold">·</span> Group HQ</span>
+                </div>
+            </figure>
+            <p class="meridian-caption">One reference line · One operating headquarters</p>
+
+            <div class="doctrine-block">
+                <p>ESMT Berlin trains Europeans. Meirc trains the Gulf. ESRI engineers for North American utilities. The leaders, engineers, and operators who move capital, energy, and data across the Africa–Europe meridian have been asked to assemble their own training, tools, and frameworks from institutions designed for someone else.</p>
+                <p>Citadel Exzellenz Group was founded to close that gap — and to close it to a specific standard.</p>
+                <p class="doctrine-lede">The Meridian Standard is the discipline of operating at the intersection of earth sciences, geospatial intelligence, engineering, and leadership: delivered with <em>German process rigor,</em> <em>Scottish academic credibility,</em> and <em>Chevron-grade operational realism,</em> and explainable to any engineer or regulator who audits it.</p>
+
+                <div class="doctrine-marker"><span>Its Author</span></div>
+                <p>Dr. Onyedika Anthony Igbokwe began as a field geologist in northern Nigeria in 2005. An Erasmus Mundus Scholarship took him across Germany, Spain, and Portugal, where his Master's thesis applied AI to oil sands data a decade before AI became a corporate keyword. A Commonwealth Scholarship at Loughborough, a further Master's and a PhD at Ruhr University Bochum, fourteen peer-reviewed publications, an Assistant Professorship at the University of St Andrews, and a £52,500 Shell SPDC consultancy followed.</p>
+                <p class="muted">Five countries. Five degrees. Field, academy, and industry. The biography is not the offering — it is the evidence that whoever authored the Standard had to have stood in all three rooms.</p>
+
+                <div class="doctrine-marker"><span>Its Custodians</span></div>
+                <p>The Standard is now held by a faculty — practitioners drawn from the University of St Andrews, Oxford, Manchester, Bochum, Cambridge, and over a quarter-century of combined service at Chevron Nigeria — covering leadership development, executive coaching, organisational behaviour, geospatial and UAV intelligence, asset integrity, and offshore engineering between them.</p>
+                <p class="muted">Five disciplines. Six practitioners. Two operating divisions. One standard that is not negotiable.</p>
+
+                <div class="standard-close">
+                    <p class="summary"><strong>Citadel Akademie.</strong> &nbsp;·&nbsp; <strong>Citadel GeoTech.</strong></p>
+                    <p class="citadel-line">That is Citadel Exzellenz<span class="gold">.</span></p>
+                    <div class="hero-ctas">
+                        <button class="btn-outline" onclick="window.location.href='#'">Meet the Faculty →</button>
+                        <button class="btn-primary" onclick="window.location.href='#'">Book a Discovery Call</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         TWO DIVISIONS
+         ═══════════════════════════════════════ -->
+    <section class="section bg-dark">
+        <div class="section-inner">
+            <p class="section-eye gold">Two Divisions. One Intelligence Platform.</p>
+            <div class="green-box" style="color:rgb(58,170,6);">The only organisation positioned to deliver both.</div>
+            <div class="div-grid">
+                <button class="div-card div-akad" onclick="window.location.href='#'">
+                    <svg width="28" height="34" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#185FA5"/><text x="35" y="65" font-family="Outfit,sans-serif" font-size="48" font-weight="800" fill="#fff" text-anchor="middle" dominant-baseline="central">C</text><text x="68" y="65" font-family="Outfit,sans-serif" font-size="38" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg>
+                    <span class="div-label">Citadel Akademie — Training &amp; Leadership</span>
+                    <h3 class="div-title">Germany exports precision engineering. Citadel Akademie applies the same standard to workforce performance.</h3>
+                    <p class="div-desc">Five programme tracks. Eight faculty across St Andrews, Oxford, and the global oil and gas industry. Performance benchmarks — not just certificates.</p>
+                    <span class="div-link">Explore Programmes →</span>
+                </button>
+                <button class="div-card div-geo" onclick="window.location.href='#'">
+                    <svg width="28" height="34" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#006470"/><text x="35" y="65" font-family="Outfit,sans-serif" font-size="48" font-weight="800" fill="#fff" text-anchor="middle" dominant-baseline="central">C</text><text x="68" y="65" font-family="Outfit,sans-serif" font-size="38" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg>
+                    <span class="div-label">Citadel GeoTech — AI Geospatial Intelligence</span>
+                    <h3 class="div-title">Your SCADA tells you what. PROS tells you where, why, and what to do next.</h3>
+                    <p class="div-desc">Pipeline Route Optimisation. Geotechnical Intelligent Mapping. Unified Data Management. Built on 14 peer-reviewed publications.</p>
+                    <span class="div-link">Apply for Early Access →</span>
+                </button>
+            </div>
+            <div class="green-box" style="margin-top:32px;">
+                <span class="arrow">⟵</span>  Smart infrastructure runs on two things: the right data, and the right people. We build both — with one partner. <span class="arrow">→</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         TESTIMONIALS
+         ═══════════════════════════════════════ -->
+    <section class="section bg-surface">
+        <div class="section-inner">
+            <p class="section-eye">Client Feedback — Renaissance Africa Energy</p>
+            <h2 class="section-h2">In Their Own Words</h2>
+            <p class="section-sub" style="width:80%;">Executive leaders • 5 days • Applied Emotional Intelligence • Leadership Spark • University of St Andrews consulting service • 5/5 rating.</p>
+            <div class="test-grid">
+                <div class="test-card"><p class="test-quote">"The Johari Window will change the way I think about how I interact with my team."</p><p class="test-src">Renaissance Africa Energy — June 2025</p></div>
+                <div class="test-card"><p class="test-quote">"Everyone in a leadership role should attend this. The course exposed me to many new ideas."</p><p class="test-src">Renaissance Africa Energy — June 2025</p></div>
+                <div class="test-card"><p class="test-quote">"Brilliant facilitation. You combined depth with practicality."</p><p class="test-src">Renaissance Africa Energy — June 2025</p></div>
+                <div class="test-card"><p class="test-quote">"It exposed areas of weakness in my leadership effectiveness and gave me strategies to strengthen them."</p><p class="test-src">Renaissance Africa Energy — June 2025</p></div>
+                <div class="test-card"><p class="test-quote">"I can see myself in the scenarios. It made me reflect deeply on my own leadership."</p><p class="test-src">Renaissance Africa Energy — June 2025</p></div>
+                <div class="test-card"><p class="test-quote">"All the exercises were really engaging. One of the most interactive leadership sessions I've attended."</p><p class="test-src">Renaissance Africa Energy — June 2025</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         BELIEFS
+         ═══════════════════════════════════════ -->
+    <section class="section bg-main">
+        <div class="section-inner" style="max-width:860px">
+            <p class="section-eye gold">What Citadel Believes</p>
+            <div class="belief-row"><span class="belief-num">01</span><p class="belief-text">Intelligence is only valuable when it executes.</p></div>
+            <div class="belief-row"><span class="belief-num">02</span><p class="belief-text">The gap between strategy and performance is never a technology problem — it is a human capability problem.</p></div>
+            <div class="belief-row"><span class="belief-num">03</span><p class="belief-text">Africa–Europe is not a charity corridor. It is the most important commercial corridor of the next 30 years.</p></div>
+            <div class="belief-row"><span class="belief-num">04</span><p class="belief-text">German precision engineering applied to human performance creates outcomes that can be measured, audited, and compounded.</p></div>
+            <div class="belief-row"><span class="belief-num">05</span><p class="belief-text">Proprietary insight — built on research, not borrowed from consultants — is the only defensible advantage.</p></div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FOOTER (fully responsive)
+         ═══════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <svg width="26" height="31" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#fff"/><text x="35" y="65" font-family="Outfit,sans-serif" font-size="48" font-weight="800" fill="#0C1E3C" text-anchor="middle" dominant-baseline="central">C</text><text x="68" y="65" font-family="Outfit,sans-serif" font-size="38" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg>
+                        <span>Citadel Exzellenz Group</span>
+                    </div>
+                    <p class="footer-tagline">Intelligence that executes.</p>
+                    <p class="footer-legal">Citadel Exzellenz · HRB 22474, Münster<br>USt-IdNr.: DE453937721</p>
+                    <p class="footer-legal">info@citadelexzellenz.com</p>
+                </div>
+                <div>
+                    <h5>Akademie</h5>
+                    <button onclick="window.location.href='#'">Leadership Journey</button>
+                    <button onclick="window.location.href='#'">Executive Coaching</button>
+                    <button onclick="window.location.href='#'">Geospatial &amp; Data</button>
+                    <button onclick="window.location.href='#'">Oil &amp; Gas Technical</button>
+                    <button onclick="window.location.href='#'">Bespoke / In-House</button>
+                </div>
+                <div>
+                    <h5>GeoTech</h5>
+                    <button onclick="window.location.href='#'">Citadel PROS</button>
+                    <button onclick="window.location.href='#'">Citadel GIM</button>
+                    <button onclick="window.location.href='#'">Citadel uDMS</button>
+                </div>
+                <div>
+                    <h5>Group</h5>
+                    <button onclick="window.location.href='#'">Faculty Network</button>
+                    <button onclick="window.location.href='#'">Intelligence</button>
+                    <button onclick="window.location.href='#'">Contact</button>
+                    <button onclick="window.location.href='#'">Webmail</button>
+                    <button onclick="window.location.href='#'">Admin</button>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Citadel Exzellenz Group. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Imprint</a>
+                </div>
+                <p>The Meridian Standard · citadelexzellenz.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════
+         SCRIPTS
+         ═══════════════════════════════════════ -->
+    <script>
+        // ─── Theme toggle ───
+        function toggleTheme() {
+            const html = document.documentElement;
+            const cur = html.getAttribute('data-theme');
+            const next = cur === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            document.getElementById('themeBtn').textContent = next === 'dark' ? '☀' : '☾';
+            try { localStorage.setItem('citadel_theme', next); } catch (e) {}
+        }
+
+        // ─── Mobile menu toggle ───
+        function toggleMob() {
+            document.getElementById('mobMenu').classList.toggle('open');
+        }
+
+        // ─── Restore theme ───
+        (function() {
+            try {
+                const saved = localStorage.getItem('citadel_theme');
+                if (saved) {
+                    document.documentElement.setAttribute('data-theme', saved);
+                    document.getElementById('themeBtn').textContent = saved === 'dark' ? '☀' : '☾';
+                }
+            } catch (e) {}
+        })();
+
+        // ─── Close mobile menu on link click ───
+        document.querySelectorAll('.mob-link, .mob-lang a').forEach(el => {
+            el.addEventListener('click', function() {
+                document.getElementById('mobMenu').classList.remove('open');
+            });
+        });
+
+        // ─── Close mobile menu on escape ───
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('mobMenu').classList.remove('open');
+            }
+        });
+
+        // ─── Touch-friendly hover alternative for cards (no-op but preserves click) ───
+        console.log('Citadel Exzellenz — fully responsive');
+    </script>
+
+</body>
+</html>

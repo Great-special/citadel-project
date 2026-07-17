@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static content_blocks %}
+
+{% block title %}{% copy_text 'index.meta.title' 'Citadel Exzellenz Group - The Meridian Standard' %}{% endblock %}
+{% block meta_description %}{% copy_text 'index.meta.description' 'The intelligence platform for the Africa-Europe corridor across training, geospatial intelligence, and executive consulting.' %}{% endblock %}
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -289,17 +292,17 @@
         <section class="hero hero-home">
             <div class="meridian-bg"><svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="mg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C8960C"/><stop offset="100%" stop-color="#C8960C" stop-opacity="0"/></linearGradient></defs><line x1="700" y1="0" x2="700" y2="900" stroke="url(#mg)" stroke-width="1.5"><animate attributeName="opacity" values="0.4;1;0.4" dur="5s" repeatCount="indefinite"/></line><circle cx="700" cy="120" r="3" fill="#C8960C" opacity=".5"><animate attributeName="r" values="2;6;2" dur="3s" repeatCount="indefinite"/></circle><line x1="620" y1="120" x2="696" y2="120" stroke="#C8960C" stroke-width=".4" opacity=".25"/><line x1="704" y1="120" x2="780" y2="120" stroke="#C8960C" stroke-width=".4" opacity=".25"/><circle cx="700" cy="300" r="3" fill="#C8960C" opacity=".5"><animate attributeName="r" values="2;6;2" dur="3.8s" repeatCount="indefinite"/></circle><line x1="580" y1="300" x2="696" y2="300" stroke="#C8960C" stroke-width=".4" opacity=".25"/><line x1="704" y1="300" x2="820" y2="300" stroke="#C8960C" stroke-width=".4" opacity=".25"/><circle cx="700" cy="480" r="3" fill="#C8960C" opacity=".5"><animate attributeName="r" values="2;6;2" dur="4.6s" repeatCount="indefinite"/></circle><circle cx="700" cy="660" r="3" fill="#C8960C" opacity=".5"><animate attributeName="r" values="2;6;2" dur="5.4s" repeatCount="indefinite"/></circle><path d="M 280 700 Q 490 480 700 400" fill="none" stroke="#C8960C" stroke-width=".6" opacity=".15" stroke-dasharray="6 4"><animate attributeName="stroke-dashoffset" from="200" to="0" dur="8s" repeatCount="indefinite"/></path><path d="M 1120 150 Q 910 300 700 400" fill="none" stroke="#C8960C" stroke-width=".6" opacity=".15" stroke-dasharray="6 4"><animate attributeName="stroke-dashoffset" from="200" to="0" dur="8s" repeatCount="indefinite"/></path><circle cx="700" cy="400" r="14" fill="none" stroke="#C8960C" stroke-width=".6" opacity=".3"><animate attributeName="r" values="10;20;10" dur="6s" repeatCount="indefinite"/></circle></svg></div>
             <div class="hero-content">
-            <p class="eyebrow">The Africa–Europe Intelligence Corridor · Münster, Germany</p>
-            <h1 class="hero-h1">The intelligence gap in critical infrastructure</h1>
-            <p class="hero-h1-sub">Citadel Exzellenz closes it</p>
-            <p class="hero-body">PetroKnowledge sells courses. ESRI sells software. Only Citadel Exzellenz delivers both the intelligence platform and the human capability to operate it — combining professor-led training, AI-powered geospatial intelligence, and senior-level consulting.</p>
+            <p class="eyebrow">{% copy_text 'index.hero.eyebrow' 'The Africa-Europe Intelligence Corridor · Munster, Germany' %}</p>
+            <h1 class="hero-h1">{% copy_text 'index.hero.title' 'The intelligence gap in critical infrastructure' %}</h1>
+            <p class="hero-h1-sub">{% copy_text 'index.hero.subtitle' 'Citadel Exzellenz closes it' %}</p>
+            <p class="hero-body">{% copy_text 'index.hero.body' 'PetroKnowledge sells courses. ESRI sells software. Only Citadel Exzellenz delivers both the intelligence platform and the human capability to operate it - combining professor-led training, AI-powered geospatial intelligence, and senior-level consulting.' %}</p>
             <div class="hero-paths">
-                <button class="path-card" onclick="window.location.href='{% url "akademie" %}'"><span class="path-label">For Energy Companies</span><span class="path-desc">Pipeline intelligence, operator certification, and leadership training for IOCs and NOCs.</span></button>
-                <button class="path-card" onclick="window.location.href='{% url "akademie" %}'"><span class="path-label">For Government Agencies</span><span class="path-desc">Capacity building, regulatory compliance, and geospatial infrastructure intelligence.</span></button>
+                <button class="path-card" onclick="window.location.href='{% url "akademie" %}'"><span class="path-label">{% copy_text 'index.hero.path_1_label' 'For Energy Companies' %}</span><span class="path-desc">{% copy_text 'index.hero.path_1_desc' 'Pipeline intelligence, operator certification, and leadership training for IOCs and NOCs.' %}</span></button>
+                <button class="path-card" onclick="window.location.href='{% url "akademie" %}'"><span class="path-label">{% copy_text 'index.hero.path_2_label' 'For Government Agencies' %}</span><span class="path-desc">{% copy_text 'index.hero.path_2_desc' 'Capacity building, regulatory compliance, and geospatial infrastructure intelligence.' %}</span></button>
             </div>
             <div class="hero-ctas">
-                <button class="btn-primary" onclick="window.location.href='{% url "contact" %}'">Book a Discovery Call</button>
-                <button class="btn-outline" onclick="window.location.href='{% url "akademie" %}'">Explore Programmes →</button>
+                <button class="btn-primary" onclick="window.location.href='{% url "contact" %}'">{% copy_text 'index.hero.cta_primary' 'Book a Discovery Call' %}</button>
+                <button class="btn-outline" onclick="window.location.href='{% url "akademie" %}'">{% copy_text 'index.hero.cta_secondary' 'Explore Programmes →' %}</button>
             </div>
             </div>
         </section>
@@ -307,6 +310,7 @@
         <!-- ─── PROOF BAR ─── -->
         <div class="proof-bar">
             <div class="proof-scroll">
+                {% static_copy_html 'index.proof_bar.items' %}
                 <span class="proof-item"><img src="{% static 'images/shell.png' %}" alt="Shell" class="proof-img"> Shell — £52.5K Consultancy</span>
                 <span class="proof-item"><img src="{% static 'images/renaissance.png' %}" alt="Renaissance" class="proof-img"> Renaissance Africa Energy — 5/5</span>
                 <span class="proof-item"><img src="{% static 'images/st_uni.png' %}" alt="St Andrews" class="proof-img"> University of St Andrews — Founded 1413</span>
@@ -318,6 +322,7 @@
                 <span class="proof-item"><img src="{% static 'images/st_uni.png' %}" alt="St Andrews" class="proof-img"> University of St Andrews — Founded 1413</span>
                 <span class="proof-item"><img src="{% static 'images/aiafd.png' %}" alt="AADFI" class="proof-img"> AADFI — 90+ DFIs, 50+ Countries</span>
                 <span class="proof-item"><img src="{% static 'images/nscdc.png' %}" alt="NSCDC" class="proof-img"> Nigeria Security & Civil Defence Corps</span>
+                {% endstatic_copy_html %}
             </div>
         </div>
 
@@ -327,10 +332,11 @@
              Institutional_Partnership.docx
              ═══════════════════════════════════════ -->
         <section class="section bg-surface partners-section"><div class="section-inner">
+            {% static_copy_html 'index.partners.section' %}
             <div class="partners-head">
-                <span class="section-eye">Institutional Partnerships &amp; Clients</span>
-                <h2 class="partners-h2">Trusted Across Energy and Government</h2>
-                <p class="partners-sub">Five institutions that verify the Meridian Standard — in the classroom, in the field, and in the ledger.</p>
+                <span class="section-eye">{% copy_text 'index.partners.eyebrow' 'Institutional Partnerships & Clients' %}</span>
+                <h2 class="partners-h2">{% copy_text 'index.partners.title' 'Trusted Across Energy and Government' %}</h2>
+                <p class="partners-sub">{% copy_text 'index.partners.subtitle' 'Five institutions that verify the Meridian Standard - in the classroom, in the field, and in the ledger.' %}</p>
             </div>
 
             <div class="partners-grid">
@@ -371,10 +377,12 @@
                 </article>
 
             </div>
+            {% endstatic_copy_html %}
         </div></section>
 
         <!-- ─── STATS ─── -->
         <section class="section bg-dark"><div class="section-inner">
+            {% static_copy_html 'index.stats.section' %}
             <div class="stats-grid">
             <div style="text-align:center"><div class="stat-num" data-target="500" data-suffix="+">0</div><div class="stat-label">Professionals Trained</div></div>
             <div style="text-align:center"><div class="stat-num" data-target="14">0</div><div class="stat-label">Peer-Reviewed Publications</div></div>
@@ -382,6 +390,7 @@
             <div style="text-align:center"><div class="stat-num" data-target="8">0</div><div class="stat-label">Faculty Across 3 Continents</div></div>
             <div style="text-align:center"><div class="stat-num" data-target="20" data-suffix="+">0</div><div class="stat-label">Years Experience</div></div>
             </div>
+            {% endstatic_copy_html %}
         </div></section>
 
         <!-- ═══════════════════════════════════════
@@ -402,9 +411,10 @@
           </div>
 
           <div class="standard-inner">
-            <p class="standard-eyebrow">Citadel Exzellenz Group · Doctrine</p>
-            <h1 class="standard-h1">The Meridian Standard<span class="gold">.</span></h1>
-            <p class="standard-sub">The discipline of operating between Africa and Europe, to one standard, delivered by a faculty, not a founder.</p>
+            {% static_copy_html 'index.doctrine.section' %}
+            <p class="standard-eyebrow">{% copy_text 'index.doctrine.eyebrow' 'Citadel Exzellenz Group · Doctrine' %}</p>
+            <h1 class="standard-h1">{% copy_html 'index.doctrine.title' 'The Meridian Standard<span class="gold">.</span>' %}</h1>
+            <p class="standard-sub">{% copy_text 'index.doctrine.subtitle' 'The discipline of operating between Africa and Europe, to one standard, delivered by a faculty, not a founder.' %}</p>
 
             <!-- ─── Combined neutral images: world map + Münster streetscape ─── -->
             <figure class="meridian-visual" aria-label="Geographic focus and European headquarters">
@@ -448,13 +458,15 @@
                     </div>
                 </div>
             </div>
+            {% endstatic_copy_html %}
           </div>
         </section>
 
         <!-- ─── TWO DIVISIONS ─── -->
         <section class="section bg-dark"><div class="section-inner">
-            <p class="section-eye gold">Two Divisions. One Intelligence Platform.</p>
-            <p class="green-box" style="color: rgb(58, 170, 6);">The only organisation positioned to deliver both.</p>
+            {% static_copy_html 'index.divisions.section' %}
+            <p class="section-eye gold">{% copy_text 'index.divisions.eyebrow' 'Two Divisions. One Intelligence Platform.' %}</p>
+            <p class="green-box" style="color: rgb(58, 170, 6);">{% copy_text 'index.divisions.lede' 'The only organisation positioned to deliver both.' %}</p>
             <div class="div-grid">
             <button class="div-card div-akad" onclick="window.location.href='{% url "akademie" %}'">
                 <svg width="28" height="34" viewBox="0 0 100 120"><path d="M50 4L92 24v48Q92 104 50 116 8 104 8 72V24Z" fill="#185FA5"/><text x="35" y="65" font-family="Outfit,sans-serif" font-size="48" font-weight="800" fill="#fff" text-anchor="middle" dominant-baseline="central">C</text><text x="68" y="65" font-family="Outfit,sans-serif" font-size="38" font-weight="700" fill="#C8960C" text-anchor="middle" dominant-baseline="central">X</text></svg>
@@ -471,18 +483,22 @@
                 <span class="div-link">Apply for Early Access →</span>
             </button>
             </div>
+            {% endstatic_copy_html %}
         </div>
+        {% static_copy_html 'index.divisions.footer' %}
         <div class="green-box">
           <span class="arrow">⟵</span>  Smart infrastructure runs on two things: the right data, and the right people. We build both — with one partner. <span class="arrow">→</span>
         </div>
+        {% endstatic_copy_html %}
     </section>
 
   
 
         <!-- ─── TESTIMONIALS ─── -->
         <section class="section bg-surface"><div class="section-inner">
-            <p class="section-eye">Client Feedback — Renaissance Africa Energy</p>
-            <h2 class="section-h2">In Their Own Words</h2>
+            {% static_copy_html 'index.testimonials.section' %}
+            <p class="section-eye">{% copy_text 'index.testimonials.eyebrow' 'Client Feedback — Renaissance Africa Energy' %}</p>
+            <h2 class="section-h2">{% copy_text 'index.testimonials.title' 'In Their Own Words' %}</h2>
             <p class="section-sub" style="width:80%;">Executive leaders • 5 days • Applied Emotional Intelligence • Leadership Spark • University of St Andrews consulting service • 5/5 rating.</p>
             <div class="test-grid">
             <div class="test-card"><p class="test-quote">"The Johari Window will change the way I think about how I interact with my team."</p><p class="test-src">Renaissance Africa Energy — June 2025</p></div>
@@ -492,16 +508,19 @@
             <div class="test-card"><p class="test-quote">"I can see myself in the scenarios. It made me reflect deeply on my own leadership."</p><p class="test-src">Renaissance Africa Energy — June 2025</p></div>
             <div class="test-card"><p class="test-quote">"All the exercises were really engaging. One of the most interactive leadership sessions I've attended."</p><p class="test-src">Renaissance Africa Energy — June 2025</p></div>
             </div>
+            {% endstatic_copy_html %}
         </div></section>
 
         <!-- ─── BELIEFS ─── -->
         <section class="section bg-main"><div class="section-inner" style="max-width:860px">
-            <p class="section-eye gold">What Citadel Believes</p>
+            {% static_copy_html 'index.beliefs.section' %}
+            <p class="section-eye gold">{% copy_text 'index.beliefs.eyebrow' 'What Citadel Believes' %}</p>
             <div class="belief-row"><span class="belief-num">01</span><p class="belief-text">Intelligence is only valuable when it executes.</p></div>
             <div class="belief-row"><span class="belief-num">02</span><p class="belief-text">The gap between strategy and performance is never a technology problem — it is a human capability problem.</p></div>
             <div class="belief-row"><span class="belief-num">03</span><p class="belief-text">Africa–Europe is not a charity corridor. It is the most important commercial corridor of the next 30 years.</p></div>
             <div class="belief-row"><span class="belief-num">04</span><p class="belief-text">German precision engineering applied to human performance creates outcomes that can be measured, audited, and compounded.</p></div>
             <div class="belief-row"><span class="belief-num">05</span><p class="belief-text">Proprietary insight — built on research, not borrowed from consultants — is the only defensible advantage.</p></div>
+            {% endstatic_copy_html %}
         </div></section>
     </div>
 {% endblock content %}
